@@ -17,7 +17,7 @@ Status: `[ ]` todo · `[~]` doing · `[x]` done. Put the task ID in every branch
 | 00:00 → 06:00 | Phase 4 overnight, sleep in shifts |
 | Sat 14 Nov 06:00 | Phase 5: freeze prep, bug fixes only |
 | 08:00 | Final push + tag, then travel |
-| 09:00 | Check-in at Melsoft Academy, 173 Oxford Road, Rosebank (treat as our code freeze) |
+| 09:00 | Check-in at WeWork The Link, 173 Oxford Rd, Rosebank (treat as our code freeze) |
 | 11:00 · 12:00 · 14:00 | Submission (repo link + README) · final presentations · winner |
 
 ## Team roles
@@ -61,7 +61,7 @@ Switching concept? Keep the engine; swap the workers (Marking → Marker · Curr
 - [ ] P0-09 Logistics: transport for 08:15 Saturday, chargers, extension cord, HDMI/USB-C adapter, mobile hotspot, food, sleep shifts
 
 ## Phase 1 — Foundation (Fri 11:00–13:00)
-- [ ] S0-01 Create the public GitHub repo; add CLAUDE.md, ROADMAP.md, docs/ and .claude/; first commit; invite the team
+- [x] S0-01 Create the public GitHub repo; add CLAUDE.md, ROADMAP.md, docs/ and .claude/; first commit; invite the team
 - [~] S0-02 Scaffold Next.js + TS strict + Tailwind + ESLint (sonarjs) + Prettier + Vitest + Husky/lint-staged; add the scripts in CLAUDE.md §12
 - [~] S0-03 CI workflow + SonarQube Cloud project (Automatic Analysis OFF) + `SONAR_TOKEN` + badge; Dependabot; turn on CodeQL, secret scanning and push protection; protect `main` (CI required)
 - [x] S0-04 `config/env.ts` (Zod) + `.env.example`
