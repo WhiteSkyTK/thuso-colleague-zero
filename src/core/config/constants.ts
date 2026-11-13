@@ -24,6 +24,15 @@ export const AGENT_META = {
   SYS: { code: 'SYS', name: 'Orchestrator', colorToken: '--c-ink-900', textToken: ON_DARK, sign: 'RUN' },
 } as const satisfies Record<AgentCode, AgentMeta>;
 
+/** The five agents that do the work, in hand-off order (the Orchestrator is not shown as a worker). */
+export const WORKER_AGENTS: readonly AgentMeta[] = [
+  AGENT_META.PL,
+  AGENT_META.AN,
+  AGENT_META.CO,
+  AGENT_META.RV,
+  AGENT_META.MS,
+];
+
 export const DEMO_GOAL_TEXT =
   'Find every Grade 10 learner at risk of failing Mathematics this term, work out why, ' +
   'and send each one a personalised 2-week catch-up plan with a booked support session.';

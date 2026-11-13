@@ -9,7 +9,7 @@ const ORDER_HINT = 'Keep each topic in order: foundation, guided, independent, e
 
 /** Topics are built up rung by rung: start low enough for the learner and never step down. */
 export const scaffoldCheck: ReviewCheck = ({ plan, diagnosis }) => {
-  const levelOf = new Map(diagnosis.weakTopics.map((weak) => [weak.topic, weak.capsLevel]));
+  const levelOf = new Map<string, number>(diagnosis.weakTopics.map((weak) => [weak.topic, weak.capsLevel]));
   const lastRung = new Map<string, number>();
   const inOrder = [...plan.sessions].sort((a, b) => a.day - b.day);
 

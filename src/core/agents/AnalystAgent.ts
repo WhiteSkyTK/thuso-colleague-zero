@@ -125,7 +125,11 @@ export class AnalystAgent extends Agent<StepRequest, StepResult> implements Step
       topic,
       average: results.reduce((total, result) => total + result.scorePct, 0) / results.length,
     }));
-    const weakest = averages.reduce((low, next) => (next.average < low.average ? next : low));
+    const [first, ...rest] = averages;
+    if (!first) {
+      return;
+    }
+    const weakest = rest.reduce((low, next) => (next.average < low.average ? next : low), first);
     const line = `the weakest topic for the whole class is ${weakest.topic} (average ${Math.round(weakest.average)}%)`;
     ctx.note(`Class-wide, ${line} — worth reteaching to everyone.`);
     this.say(ctx, { level: 'INFO', message: `Class picture: ${line}.` });

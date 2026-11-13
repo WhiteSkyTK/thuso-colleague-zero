@@ -1,8 +1,10 @@
 'use client';
 
 import { LearnerCards } from '@/components/learners/LearnerCards';
+import { ParallaxScene } from '@/components/parallax/ParallaxScene';
 import { useRunStream } from '@/hooks/useRunStream';
 import type { RunStatus } from '@/lib/runView';
+import { worldSpeedFor } from '@/lib/worldSpeed';
 import { AgentChips } from './AgentChips';
 import { GoalForm } from './GoalForm';
 import { RunConsole } from './RunConsole';
@@ -21,6 +23,11 @@ export function LiveRun() {
 
   return (
     <section className="flex flex-col gap-6">
+      <ParallaxScene
+        className="h-[clamp(220px,30vw,340px)] w-full rounded-card shadow-card"
+        worldSpeed={worldSpeedFor(view.events)}
+        activeAgent={view.activeAgent}
+      />
       <GoalForm
         isRunning={view.status === 'running'}
         onRun={(goal) => {

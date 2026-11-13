@@ -1,7 +1,5 @@
-import { AGENT_META } from '@/core/config/constants';
+import { WORKER_AGENTS as WORKERS } from '@/core/config/constants';
 import type { AgentCode } from '@/core/domain/codes';
-
-const WORKERS = Object.values(AGENT_META).filter((agent) => agent.code !== 'SYS');
 
 const STATUS = {
   idle: { icon: '○', label: 'idle' },

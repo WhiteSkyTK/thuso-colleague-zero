@@ -70,13 +70,13 @@ function riskScoreOf(signals: RiskSignals): number {
 
 /** The root cause is the strongest warning signal — worked out in code, never guessed by a model. */
 function causeOf(signals: RiskSignals): RiskCause {
-  const ranked: [RiskCause, number][] = [
-    ['attendance', signals.attendance ?? 0],
+  const first: [RiskCause, number] = ['attendance', signals.attendance ?? 0];
+  const others: [RiskCause, number][] = [
     ['homework', signals.homework],
     ['assessment-trend', signals.trend],
     ['topic-gap', signals.topicGap],
   ];
-  return ranked.reduce((top, next) => (next[1] > top[1] ? next : top))[0];
+  return others.reduce((top, next) => (next[1] > top[1] ? next : top), first)[0];
 }
 
 const EVIDENCE: Record<RiskCause, (record: LearnerRecord, facts: Facts) => string> = {

@@ -3,6 +3,7 @@ import type { AgentEvent } from '@/core/domain/agentEvent';
 import { EventBus } from '@/core/events/EventBus';
 import { isFinalEvent, TraceRecorder } from '@/core/events/TraceRecorder';
 import { INITIAL_RUN_VIEW, runViewReducer, type RunView } from '@/lib/runView';
+import { WORLD_SPEED, worldSpeedFor } from '@/lib/worldSpeed';
 
 const event = (seq: number, overrides: Partial<AgentEvent> = {}): AgentEvent => ({
   runId: 'run-1',
@@ -98,5 +99,21 @@ describe('runViewReducer', () => {
     expect(failed).toMatchObject({ status: 'failed', error: 'Lost the connection.' });
     const finished = play([DONE]);
     expect(runViewReducer(finished, { type: 'failed', message: 'late' })).toBe(finished);
+  });
+});
+
+describe('worldSpeedFor', () => {
+  it('runs at normal speed before anything happens', () => {
+    expect(worldSpeedFor([])).toBe(WORLD_SPEED.normal);
+  });
+
+  it('slows while a flag is up and recovers when the fix passes', () => {
+    const flagged = [event(0), event(1, { agent: 'RV', level: 'FLAG' }), event(2, { level: 'FIX' })];
+    expect(worldSpeedFor(flagged)).toBe(WORLD_SPEED.flagged);
+    expect(worldSpeedFor([...flagged, event(3, { agent: 'RV', level: 'PASS' })])).toBe(WORLD_SPEED.normal);
+  });
+
+  it('speeds up when the run is done', () => {
+    expect(worldSpeedFor([event(0), DONE])).toBe(WORLD_SPEED.celebrating);
   });
 });

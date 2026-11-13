@@ -36,7 +36,6 @@ export function RunConsole({ events }: Readonly<RunConsoleProps>) {
       role="log"
       aria-label="Agent log"
       aria-live="off"
-      tabIndex={0}
       className="h-96 overflow-y-auto rounded-card bg-ink p-4 font-mono text-sm leading-6 text-paper shadow-card"
     >
       {events.length === 0 && <li className="opacity-70">Waiting for a goal…</li>}

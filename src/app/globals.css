@@ -30,18 +30,120 @@ body {
   font-size: var(--text-body);
 }
 
+/* --- Jacaranda Street (DESIGN.md §5): each layer is two tiles sliding by one tile width. --- */
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes stride {
+  from {
+    transform: rotate(-14deg);
+  }
+  to {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes petal-fall {
+  from {
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-90px, 460px, 0) rotate(300deg);
+  }
+}
+
+.scene-strip {
+  display: flex;
+  width: max-content;
+  height: 100%;
+}
+
+.scene-tile {
+  display: block;
+  flex: none;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 5 / 1;
+}
+
+.agent-walker {
+  height: clamp(84px, 13vw, 150px);
+  width: auto;
+  aspect-ratio: 80 / 150;
+  overflow: visible;
+}
+
+.agent-walker.is-active {
+  transform: translateY(-10px) scale(1.12);
+}
+
+.agent-leg {
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.petal {
+  position: absolute;
+  top: -12px;
+  width: 9px;
+  height: 7px;
+  border-radius: 60% 0;
+  background: var(--c-jacaranda-300);
+}
+
+.marquee:hover .scene-strip,
+.marquee:focus-within .scene-strip {
+  animation-play-state: paused;
+}
+
 :focus-visible {
   outline: 3px solid var(--c-jacaranda-500);
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/* Motion only for viewers who have not asked for less (DESIGN.md §8); no overrides needed. */
+@media (prefers-reduced-motion: no-preference) {
+  .scene-strip {
+    animation-name: drift;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .agent-walker {
+    transition: transform var(--dur-base) var(--ease-ui);
+  }
+
+  .agent-bob {
+    animation: bob 0.6s ease-in-out infinite;
+  }
+
+  .agent-leg {
+    animation: stride 0.6s ease-in-out infinite alternate;
+  }
+
+  .agent-leg-b {
+    animation-direction: alternate-reverse;
+  }
+
+  .petal {
+    animation-name: petal-fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
 }
