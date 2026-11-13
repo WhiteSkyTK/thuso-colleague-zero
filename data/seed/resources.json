@@ -1,0 +1,142 @@
+[
+  {
+    "id": "R-001",
+    "title": "Factorising trinomials step by step",
+    "topic": "algebraic expressions",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-002",
+    "title": "Products and factors worksheet",
+    "topic": "algebraic expressions",
+    "minutes": 40,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-003",
+    "title": "Simplifying algebraic fractions",
+    "topic": "algebraic expressions",
+    "minutes": 30,
+    "kind": "practice"
+  },
+  {
+    "id": "R-004",
+    "title": "Solving linear equations",
+    "topic": "equations and inequalities",
+    "minutes": 15,
+    "kind": "video"
+  },
+  {
+    "id": "R-005",
+    "title": "Quadratic equations by factorising",
+    "topic": "equations and inequalities",
+    "minutes": 35,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-006",
+    "title": "Inequalities on a number line",
+    "topic": "equations and inequalities",
+    "minutes": 25,
+    "kind": "practice"
+  },
+  {
+    "id": "R-007",
+    "title": "Straight-line graphs: gradient and intercept",
+    "topic": "functions",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-008",
+    "title": "Sketching parabolas",
+    "topic": "functions",
+    "minutes": 40,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-009",
+    "title": "Reading graphs: domain and range",
+    "topic": "functions",
+    "minutes": 30,
+    "kind": "practice"
+  },
+  {
+    "id": "R-010",
+    "title": "Sin, cos and tan in right-angled triangles",
+    "topic": "trigonometry",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-011",
+    "title": "Special angles drill",
+    "topic": "trigonometry",
+    "minutes": 25,
+    "kind": "practice"
+  },
+  {
+    "id": "R-012",
+    "title": "Solving triangles worksheet",
+    "topic": "trigonometry",
+    "minutes": 40,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-013",
+    "title": "Properties of quadrilaterals",
+    "topic": "euclidean geometry",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-014",
+    "title": "Proving triangles congruent",
+    "topic": "euclidean geometry",
+    "minutes": 40,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-015",
+    "title": "Midpoint theorem practice",
+    "topic": "euclidean geometry",
+    "minutes": 30,
+    "kind": "practice"
+  },
+  {
+    "id": "R-016",
+    "title": "Venn diagrams and probability",
+    "topic": "probability",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-017",
+    "title": "Mutually exclusive events worksheet",
+    "topic": "probability",
+    "minutes": 35,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-018",
+    "title": "Simple and compound interest",
+    "topic": "finance and growth",
+    "minutes": 20,
+    "kind": "video"
+  },
+  {
+    "id": "R-019",
+    "title": "Hire purchase and inflation problems",
+    "topic": "finance and growth",
+    "minutes": 40,
+    "kind": "worksheet"
+  },
+  {
+    "id": "R-020",
+    "title": "Exchange rates practice",
+    "topic": "finance and growth",
+    "minutes": 25,
+    "kind": "practice"
+  }
+]

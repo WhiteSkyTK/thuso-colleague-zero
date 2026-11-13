@@ -1,0 +1,1552 @@
+[
+  {
+    "learnerId": "L-001",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-001",
+    "week": 10,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-002",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-002",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 6,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-003",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-003",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-004",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 3,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-005",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-005",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-006",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-007",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-007",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 4,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-008",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-008",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 5,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-009",
+    "week": 6,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-009",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-009",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-009",
+    "week": 10,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-010",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 3,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-010",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-010",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-011",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-012",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-013",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-014",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-014",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-014",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-014",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-014",
+    "week": 5,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-014",
+    "week": 6,
+    "absences": 2
+  },
+  {
+    "learnerId": "L-014",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-014",
+    "week": 8,
+    "absences": 2
+  },
+  {
+    "learnerId": "L-014",
+    "week": 9,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-014",
+    "week": 10,
+    "absences": 2
+  },
+  {
+    "learnerId": "L-015",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 4,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-015",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-016",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 1,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-017",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 6,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-017",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 6,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-018",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-018",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-018",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 2,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-019",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
+    "week": 10,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-020",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 3,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-020",
+    "week": 4,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-020",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-020",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-020",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-021",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-021",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-022",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-023",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 5,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-024",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-024",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-024",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 1,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-025",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-025",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 5,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-026",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-026",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 6,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-027",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-027",
+    "week": 9,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-027",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-028",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-028",
+    "week": 10,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-029",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-029",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-031",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-031",
+    "week": 10,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 1,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 5,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 6,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 8,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-032",
+    "week": 9,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-032",
+    "week": 10,
+    "absences": 0
+  }
+]
