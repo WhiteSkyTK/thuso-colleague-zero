@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Big_Shoulders, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
@@ -23,7 +25,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${code.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Vercel page views and Core Web Vitals; cookie-free, no personal data. */}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
