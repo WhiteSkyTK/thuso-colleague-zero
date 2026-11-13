@@ -4,6 +4,7 @@ import { AddTaskForm } from '@/components/lecturer/AddTaskForm';
 import { MarkSheetForm } from '@/components/lecturer/MarkSheetForm';
 import { SubjectInsightCard } from '@/components/lecturer/SubjectInsightCard';
 import { ThusoMascot } from '@/components/mascot/ThusoMascot';
+import { MessageList } from '@/components/messages/MessageList';
 import { buildClassInsights } from '@/core/insights/classInsights';
 import { requireUser } from '@/lib/auth';
 import { teacherTips } from '@/lib/mascotTips';
@@ -15,7 +16,7 @@ export const metadata: Metadata = { title: 'My classes — Thuso' };
 export default async function TeacherPage({
   searchParams,
 }: Readonly<{ searchParams: Promise<{ grade?: string }> }>) {
-  const [user, query, { users, riskThreshold }] = await Promise.all([
+  const [user, query, { users, messages, riskThreshold }] = await Promise.all([
     requireUser(['teacher']),
     searchParams,
     school(),
@@ -35,6 +36,7 @@ export default async function TeacherPage({
       .filter((r) => mine.has(r.subjectId))
       .map((r) => [`${r.taskId}|${r.topic}|${r.learnerId}`, r.scorePct]),
   );
+  const sent = await messages.latestRunFor(grade);
   const atRisk = new Set(insights.subjects.flatMap((s) => s.atRisk.map((l) => l.learnerId))).size;
 
   return (
@@ -105,6 +107,16 @@ export default async function TeacherPage({
           onAdd={addTaskAction}
         />
       </div>
+      <section aria-labelledby="sent-heading" className="flex flex-col gap-3">
+        <h2 id="sent-heading" className="font-display text-4xl font-extrabold uppercase">
+          Sent by Thuso · Grade {grade}
+        </h2>
+        <MessageList
+          messages={sent}
+          showRecipient
+          emptyText="Nothing sent yet for this grade. Press Let Thuso write the plans."
+        />
+      </section>
       <ThusoMascot tips={teacherTips(insights, grade)} />
     </>
   );

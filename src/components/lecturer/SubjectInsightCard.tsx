@@ -33,7 +33,7 @@ export function SubjectInsightCard({ insight }: Readonly<{ insight: SubjectInsig
               </div>
               <div className="mt-1 h-2 rounded-full bg-jacaranda-50">
                 <div
-                  className="h-2 rounded-full bg-ember-500"
+                  className="bar-fill h-2 rounded-full bg-ember-500"
                   style={{ width: `${topic.scorePct}%` }}
                 />
               </div>

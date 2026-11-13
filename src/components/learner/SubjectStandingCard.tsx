@@ -39,7 +39,7 @@ export function SubjectStandingCard({ standing }: Readonly<{ standing: SubjectSt
             </div>
             <div className="mt-1 h-2 rounded-full bg-jacaranda-50">
               <div
-                className={`h-2 rounded-full ${topic.capsLevel <= 2 ? 'bg-ember-500' : 'bg-teal'}`}
+                className={`bar-fill h-2 rounded-full ${topic.capsLevel <= 2 ? 'bg-ember-500' : 'bg-teal'}`}
                 style={{ width: `${topic.scorePct}%` }}
               />
             </div>

@@ -27,3 +27,4 @@ docs/design/refs/*
 .DS_Store
 Thumbs.db
 npm-debug.log*
+.neon

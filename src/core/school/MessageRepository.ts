@@ -24,7 +24,7 @@ export interface MessageStore {
 }
 
 const FIELDS = `id, run_id AS "runId", grade, about, audience, to_address AS "to", subject, body,
-  invite IS NOT NULL AS "hasInvite", status, created_at::text AS "createdAt"`;
+  invite IS NOT NULL AS "hasInvite", status, to_char(created_at AT TIME ZONE 'Africa/Johannesburg', 'YYYY-MM-DD HH24:MI') AS "createdAt"`;
 
 /** Every message Thuso sent: the portal inbox for learners, the sent log for teachers. */
 export class MessageRepository implements MessageStore {

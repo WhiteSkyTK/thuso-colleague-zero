@@ -36,7 +36,10 @@ export function ThusoMascot({ tips, live }: ThusoMascotProps) {
       aria-label="Thuso, your helper"
       className="fixed bottom-4 right-4 z-40 flex max-w-xs items-end gap-2"
     >
-      <div className="relative rounded-card bg-white p-3 pr-8 text-sm shadow-card">
+      <div
+        key={message}
+        className="mascot-bubble relative rounded-card bg-white p-3 pr-8 text-sm shadow-card"
+      >
         <p role="status" aria-live="polite">
           {message}
         </p>

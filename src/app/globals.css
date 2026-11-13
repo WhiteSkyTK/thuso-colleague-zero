@@ -162,3 +162,94 @@ body {
     transition: none;
   }
 }
+
+/* --- Small UI motion (feedback: "small animations help for everything"). Transform and opacity
+   only; skipped entirely for viewers who ask for reduced motion. --- */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shadow-card:not(.scene),
+  main h1 {
+    animation: rise-in var(--dur-slow) var(--ease-ui) both;
+  }
+
+  li:nth-child(2) > .shadow-card,
+  li.shadow-card:nth-child(2) {
+    animation-delay: 50ms;
+  }
+
+  li:nth-child(3) > .shadow-card,
+  li.shadow-card:nth-child(3) {
+    animation-delay: 100ms;
+  }
+
+  li:nth-child(4) > .shadow-card,
+  li.shadow-card:nth-child(4) {
+    animation-delay: 150ms;
+  }
+
+  li:nth-child(n + 5) > .shadow-card,
+  li.shadow-card:nth-child(n + 5) {
+    animation-delay: 200ms;
+  }
+
+  .bar-fill {
+    transform-origin: left center;
+    animation: grow-x 700ms var(--ease-ui) both;
+  }
+
+  .mascot-bubble {
+    animation: pop-in var(--dur-base) var(--ease-ui) both;
+  }
+
+  button,
+  a.rounded-full,
+  a.rounded-card,
+  summary {
+    transition:
+      transform var(--dur-fast) var(--ease-ui),
+      background-color var(--dur-base) var(--ease-ui),
+      box-shadow var(--dur-base) var(--ease-ui);
+  }
+
+  button:not(:disabled):hover,
+  a.rounded-full:hover,
+  a.rounded-card:hover {
+    transform: translateY(-2px);
+  }
+
+  button:not(:disabled):active,
+  a.rounded-full:active,
+  a.rounded-card:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
