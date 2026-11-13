@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { WORKER_AGENTS } from '@/core/config/constants';
 import type { AgentCode } from '@/core/domain/codes';
 import { AgentCharacter } from './AgentCharacter';
@@ -33,8 +33,15 @@ function LayerStrip({ layer }: Readonly<{ layer: SceneLayer }>) {
   );
 }
 
-const prefersReducedMotion = () =>
-  globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
+
+function subscribeToMotionPreference(onChange: () => void): () => void {
+  const query = globalThis.matchMedia?.(REDUCED_MOTION);
+  query?.addEventListener('change', onChange);
+  return () => query?.removeEventListener('change', onChange);
+}
+
+const prefersReducedMotion = () => globalThis.matchMedia?.(REDUCED_MOTION).matches ?? false;
 
 /** The Jacaranda Street: parallax layers, drifting petals and the five agents walking with their signs. */
 export function ParallaxScene({
@@ -43,11 +50,18 @@ export function ParallaxScene({
   className = '',
 }: ParallaxSceneProps) {
   const sceneRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const prefersStill = useSyncExternalStore(
+    subscribeToMotionPreference,
+    prefersReducedMotion,
+    () => false,
+  );
+  // The viewer's own click wins; until then, reduced-motion viewers start with a still street.
+  const [choice, setChoice] = useState<'play' | 'pause' | null>(null);
+  const isPaused = choice === null ? prefersStill : choice === 'pause';
 
   useEffect(() => {
     const scene = sceneRef.current;
-    if (!scene || prefersReducedMotion()) {
+    if (!scene) {
       return;
     }
     // Changing playbackRate keeps every layer where it is, so speed changes are smooth.
@@ -93,7 +107,7 @@ export function ParallaxScene({
       </div>
       <button
         type="button"
-        onClick={() => setIsPaused((value) => !value)}
+        onClick={() => setChoice(isPaused ? 'play' : 'pause')}
         className="absolute bottom-2 right-2 rounded-full bg-ink/85 px-3 py-1 text-xs font-semibold text-paper"
       >
         {isPaused ? '▶ Play motion' : '❚❚ Pause motion'}
