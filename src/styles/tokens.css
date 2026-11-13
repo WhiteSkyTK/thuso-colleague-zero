@@ -1,0 +1,30 @@
+/* Design tokens — single source of truth (docs/DESIGN.md §3). */
+:root {
+  /* Colour */
+  --c-jacaranda-50: #f3f1fd;
+  --c-jacaranda-300: #a79be8;
+  --c-jacaranda-500: #6e5fd3; /* primary, Planner — white text passes */
+  --c-jacaranda-700: #4a3e9e;
+  --c-ink-900: #16152b;
+  --c-paper: #fbf6ee;
+  --c-blush: #fce3da;
+  --c-ember-500: #f0532a; /* Reviewer flags — ink text only */
+  --c-ember-700: #c2410c; /* accent with white text */
+  --c-teal-500: #0e9f8e; /* Analyst — ink text */
+  --c-sun-400: #f2b53a; /* Coach, escalations — ink text */
+  --c-leaf-500: #3baa5c; /* Messenger, success — ink text */
+
+  /* Shape */
+  --shape-radius-card: 12px;
+  --shape-shadow-card: 0 8px 24px -12px rgb(74 62 158 / 0.35); /* tinted jacaranda, never grey */
+
+  /* Motion */
+  --ease-ui: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 400ms;
+
+  /* Type */
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-hero: clamp(3.5rem, 2rem + 9vw, 10rem);
+}

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Map the design tokens into Tailwind, e.g. bg-jacaranda-500, text-ink, font-display. */
+@theme inline {
+  --color-jacaranda-50: var(--c-jacaranda-50);
+  --color-jacaranda-300: var(--c-jacaranda-300);
+  --color-jacaranda-500: var(--c-jacaranda-500);
+  --color-jacaranda-700: var(--c-jacaranda-700);
+  --color-ink: var(--c-ink-900);
+  --color-paper: var(--c-paper);
+  --color-blush: var(--c-blush);
+  --color-ember-500: var(--c-ember-500);
+  --color-ember-700: var(--c-ember-700);
+  --color-teal: var(--c-teal-500);
+  --color-sun: var(--c-sun-400);
+  --color-leaf: var(--c-leaf-500);
+  /* --ff-* are set by next/font in the root layout; the fallbacks keep text readable without them. */
+  --font-display: var(--ff-display, "Arial Narrow"), sans-serif;
+  --font-sans: var(--ff-body, system-ui), sans-serif;
+  --font-mono: var(--ff-code, ui-monospace), monospace;
+  --radius-card: var(--shape-radius-card);
+  --shadow-card: var(--shape-shadow-card);
+}
+
+body {
+  background: var(--c-paper);
+  color: var(--c-ink-900);
+  font-family: var(--ff-body, system-ui), sans-serif;
+  font-size: var(--text-body);
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-jacaranda-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -11,7 +11,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text-summary', 'lcov'],
-      include: ['src/core/**/*.ts'],
+      include: ['src/core/**/*.ts', 'src/lib/runView.ts'],
     },
   },
 });
