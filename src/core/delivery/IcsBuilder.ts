@@ -45,7 +45,11 @@ const icsTime = (instant: Date): string =>
 
 /** RFC 5545 §3.3.11: escape backslash, semicolon, comma and line breaks in TEXT values. */
 export const escapeText = (value: string): string =>
-  value.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+  value
+    .replaceAll('\\', String.raw`\\`)
+    .replaceAll(';', String.raw`\;`)
+    .replaceAll(',', String.raw`\,`)
+    .replace(/\r?\n/g, String.raw`\n`);
 
 /** RFC 5545 §3.1: lines longer than 75 octets continue on the next line after a space. */
 export function foldLine(line: string): string {

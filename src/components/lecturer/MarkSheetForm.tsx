@@ -54,7 +54,7 @@ export function MarkSheetForm({ grade, tasks, learners, existing, onSave }: Mark
       </h3>
       <div className="flex flex-wrap gap-3">
         <label className="flex flex-col gap-1 text-sm font-medium">
-          Task
+          <span>Task</span>
           <select
             value={taskId}
             onChange={(event) => setTaskId(event.target.value)}
@@ -68,7 +68,7 @@ export function MarkSheetForm({ grade, tasks, learners, existing, onSave }: Mark
           </select>
         </label>
         <label className="flex flex-col gap-1 text-sm font-medium">
-          Topic
+          <span>Topic</span>
           <select
             value={activeTopic}
             onChange={(event) => setTopic(event.target.value)}
@@ -106,9 +106,7 @@ export function MarkSheetForm({ grade, tasks, learners, existing, onSave }: Mark
       >
         {isPending ? 'Saving…' : `Save ${filled.length} marks`}
       </button>
-      <p role="status" className="text-sm">
-        {result.error ?? result.message}
-      </p>
+      <output className="block text-sm">{result.error ?? result.message}</output>
     </section>
   );
 }

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useTransition } from 'react';
 import type { Notification } from '@/core/school/NotificationRepository';
+import { useSeenTips } from '@/hooks/useSeenTips';
 import { MascotRun } from './MascotRun';
 import { ThusoFace } from './ThusoFace';
 
@@ -66,22 +67,62 @@ function AlertList({
   );
 }
 
+const TIME_FORMAT = new Intl.DateTimeFormat('en-ZA', {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'Africa/Johannesburg',
+});
+const NOON = 12;
+const EVENING = 17;
+
+function greeting(now: Date): string {
+  const hour = Number(
+    now.toLocaleString('en-ZA', {
+      hour: '2-digit',
+      hour12: false,
+      timeZone: 'Africa/Johannesburg',
+    }),
+  );
+  if (hour < NOON) {
+    return 'Good morning';
+  }
+  return hour < EVENING ? 'Good afternoon' : 'Good evening';
+}
+
 /**
  * Thuso, the on-screen helper: tells each person what it noticed in the background, what to do
- * next, and (for staff) runs the agents right here. Polite to screen readers; tuck it away any time.
+ * next, and (for staff) runs the agents right here. It only pops up for something new — a tip not
+ * seen yet, an alert or a live run — and tucks itself away once everything has been read.
  */
 export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }: ThusoMascotProps) {
+  const { seen, markSeen } = useSeenTips();
   const [index, setIndex] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
+  const [choice, setChoice] = useState<'open' | 'closed' | null>(null);
   const [showTips, setShowTips] = useState(false);
-  const message = live ?? tips[index % Math.max(tips.length, 1)] ?? '';
+  const unseen = tips.filter((tip) => !seen.has(tip));
+  const hasNews = unseen.length > 0 || alerts.length > 0 || Boolean(live);
+  const isOpen = choice === 'open' || (choice === null && hasNews);
+  // Opened on purpose: every tip again. Popped up on its own: only what is new.
+  const pool = choice === 'open' || unseen.length === 0 ? tips : unseen;
+  const isLastTip = index >= pool.length - 1;
+  const message = live ?? pool[Math.min(index, pool.length - 1)] ?? '';
   const hasAlerts = alerts.length > 0 && !showTips && !live;
+
+  const close = () => {
+    markSeen(tips);
+    setChoice('closed');
+    setIndex(0);
+  };
+  const next = () => (isLastTip ? close() : setIndex((value) => value + 1));
 
   if (!isOpen) {
     return (
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setChoice('open');
+          setIndex(0);
+        }}
         aria-label={
           alerts.length ? `Show Thuso, ${alerts.length} new alerts` : 'Show Thuso, your helper'
         }
@@ -97,6 +138,7 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
     );
   }
 
+  const now = new Date();
   return (
     <aside
       aria-label="Thuso, your helper"
@@ -106,6 +148,12 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
         key={hasAlerts ? 'alerts' : message}
         className="mascot-bubble relative min-w-0 flex-1 rounded-card bg-white p-3 pr-8 text-sm shadow-card"
       >
+        <p
+          className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-jacaranda-700"
+          suppressHydrationWarning
+        >
+          {greeting(now)} · {TIME_FORMAT.format(now)}
+        </p>
         {hasAlerts ? (
           <AlertList alerts={alerts} onRead={onReadAlerts} />
         ) : (
@@ -114,13 +162,9 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
           </p>
         )}
         <div className="mt-2 flex flex-wrap gap-3 text-xs font-semibold">
-          {!live && !hasAlerts && tips.length > 1 && (
-            <button
-              type="button"
-              onClick={() => setIndex((value) => value + 1)}
-              className="underline"
-            >
-              Next tip
+          {!live && !hasAlerts && pool.length > 0 && (
+            <button type="button" onClick={next} className="underline">
+              {isLastTip ? '✓ That’s all for now' : `Next tip (${index + 1}/${pool.length})`}
             </button>
           )}
           {!live && alerts.length > 0 && (
@@ -136,7 +180,7 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
         {runGrade !== undefined && <MascotRun grade={runGrade} />}
         <button
           type="button"
-          onClick={() => setIsOpen(false)}
+          onClick={close}
           aria-label="Hide Thuso"
           className="absolute right-2 top-1 text-lg leading-none"
         >

@@ -55,7 +55,7 @@ export default function HomePage() {
           A learner-support colleague · Melsoft Colleague Zero 2026
         </p>
         <h1 className="font-display text-[length:var(--text-hero)] font-extrabold uppercase leading-[0.85]">
-          Meet Thuso.
+          <span className="block">Meet Thuso.</span>
           <span className="block font-extralight text-jacaranda-500">Your newest colleague.</span>
         </h1>
         <p className="max-w-2xl text-xl">

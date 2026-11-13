@@ -8,12 +8,15 @@ import { classFor, school } from './school';
 /** Turns alerts into notifications for the subject's teachers and the learner. */
 export async function notifyAlerts(grade: number, alerts: readonly Alert[]): Promise<number> {
   const { users, notifications } = await school();
-  const teachersBySubject = new Map<string, string[]>();
+  const subjects = [...new Set(alerts.map((alert) => alert.subjectId))];
+  const teacherLists = await Promise.all(
+    subjects.map((subjectId) => users.teachersFor(grade, subjectId)),
+  );
+  const teachersBySubject = new Map(
+    subjects.map((subjectId, at) => [subjectId, teacherLists[at] ?? []]),
+  );
   const list: NewNotification[] = [];
   for (const alert of alerts) {
-    if (!teachersBySubject.has(alert.subjectId)) {
-      teachersBySubject.set(alert.subjectId, await users.teachersFor(grade, alert.subjectId));
-    }
     const text = describeAlert(alert);
     const common = { kind: alert.kind, learnerId: alert.learnerId, grade };
     for (const teacherId of teachersBySubject.get(alert.subjectId) ?? []) {
@@ -77,15 +80,23 @@ export async function notifyRunFinished(
 /** The daily background check across every grade (Vercel Cron, or the principal's button). */
 export async function runWatch(): Promise<{ checked: number; alerts: number; notified: number }> {
   const { riskThreshold } = await school();
-  let checked = 0;
-  let alertCount = 0;
-  let notified = 0;
-  for (const grade of GRADES) {
-    const data = await classFor(grade);
-    const alerts = alertsForWatch(data, riskThreshold);
-    checked += data.learners.length;
-    alertCount += alerts.length;
-    notified += await notifyAlerts(grade, alerts);
-  }
-  return { checked, alerts: alertCount, notified };
+  const perGrade = await Promise.all(
+    GRADES.map(async (grade) => {
+      const data = await classFor(grade);
+      const alerts = alertsForWatch(data, riskThreshold);
+      return {
+        checked: data.learners.length,
+        alerts: alerts.length,
+        notified: await notifyAlerts(grade, alerts),
+      };
+    }),
+  );
+  return perGrade.reduce(
+    (total, one) => ({
+      checked: total.checked + one.checked,
+      alerts: total.alerts + one.alerts,
+      notified: total.notified + one.notified,
+    }),
+    { checked: 0, alerts: 0, notified: 0 },
+  );
 }

@@ -28,7 +28,7 @@ jobs:
           cache: npm
       # npm on Windows drops some optional WebAssembly packages from the lockfile that npm on Linux
       # expects (a known npm cross-platform bug), so install rather than ci, exactly as Vercel does.
-      - run: npm install --no-audit --no-fund
+      - run: npm install --no-audit --no-fund --ignore-scripts
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:cov

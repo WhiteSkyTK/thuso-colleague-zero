@@ -29,7 +29,7 @@ const BUILDINGS = [
 
 function SkylineTile() {
   return (
-    <svg viewBox={VIEW_BOX} className={TILE_CLASS}>
+    <svg aria-hidden="true" viewBox={VIEW_BOX} className={TILE_CLASS}>
       <polygon points="560,400 640,300 860,300 940,400" className="fill-sun/45" />
       <polygon points="1520,400 1590,320 1700,320 1760,400" className="fill-sun/45" />
       {BUILDINGS.map(([x, width, height]) => (
@@ -78,7 +78,7 @@ function JacarandaTree({ x, size }: Readonly<{ x: number; size: number }>) {
 
 function TreesTile() {
   return (
-    <svg viewBox={VIEW_BOX} className={TILE_CLASS}>
+    <svg aria-hidden="true" viewBox={VIEW_BOX} className={TILE_CLASS}>
       {TREES.map((tree) => (
         <JacarandaTree key={tree.x} x={tree.x} size={tree.size} />
       ))}
@@ -91,7 +91,7 @@ const FENCE_POSTS = Array.from({ length: 50 }, (_, index) => index * 40 + 8);
 
 function SchoolTile() {
   return (
-    <svg viewBox={VIEW_BOX} className={TILE_CLASS}>
+    <svg aria-hidden="true" viewBox={VIEW_BOX} className={TILE_CLASS}>
       <rect x={0} y={318} width={2000} height={30} className="fill-leaf/50" />
       <polygon points="590,190 1000,130 1410,190" className="fill-jacaranda-700" />
       <rect x={610} y={190} width={780} height={130} className="fill-blush" />
@@ -123,7 +123,7 @@ const LANE_DASHES = Array.from({ length: 14 }, (_, index) => index * 143 + 20);
 
 function RoadTile() {
   return (
-    <svg viewBox={VIEW_BOX} className={TILE_CLASS}>
+    <svg aria-hidden="true" viewBox={VIEW_BOX} className={TILE_CLASS}>
       <rect x={0} y={300} width={2000} height={42} className="fill-jacaranda-50" />
       <rect x={0} y={342} width={2000} height={6} className="fill-ink/40" />
       <rect x={0} y={348} width={2000} height={52} className="fill-ink" />
@@ -146,7 +146,7 @@ function RoadTile() {
 
 function ForegroundTile() {
   return (
-    <svg viewBox={VIEW_BOX} className={`${TILE_CLASS} blur-[1px]`}>
+    <svg aria-hidden="true" viewBox={VIEW_BOX} className={`${TILE_CLASS} blur-[1px]`}>
       {[420, 1380].map((x) => (
         <g key={x}>
           <rect x={x} y={150} width={9} height={250} className="fill-ink/85" />

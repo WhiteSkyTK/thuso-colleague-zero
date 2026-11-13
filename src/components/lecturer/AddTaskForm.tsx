@@ -49,7 +49,7 @@ export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
     <form onSubmit={submit} className="flex flex-col gap-3 rounded-card bg-white p-5 shadow-card">
       <h3 className="font-display text-2xl font-extrabold uppercase">Set a task · Grade {grade}</h3>
       <label className="flex flex-col gap-1 font-medium">
-        Title
+        <span>Title</span>
         <input
           name="title"
           required
@@ -60,7 +60,7 @@ export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
       </label>
       <div className="grid gap-3 sm:grid-cols-3">
         <label className="flex flex-col gap-1 font-medium">
-          Subject
+          <span>Subject</span>
           <select
             value={subjectId}
             onChange={(event) => setSubjectId(event.target.value)}
@@ -74,7 +74,7 @@ export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
           </select>
         </label>
         <label className="flex flex-col gap-1 font-medium">
-          Kind
+          <span>Kind</span>
           <select name="kind" className={FIELD}>
             {KINDS.map((kind) => (
               <option key={kind.value} value={kind.value}>
@@ -84,7 +84,7 @@ export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
           </select>
         </label>
         <label className="flex flex-col gap-1 font-medium">
-          Week
+          <span>Week</span>
           <input
             name="week"
             type="number"
@@ -117,9 +117,7 @@ export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
       >
         {isPending ? 'Adding…' : 'Add task'}
       </button>
-      <p role="status" className="text-sm">
-        {result.error ?? result.message}
-      </p>
+      <output className="block text-sm">{result.error ?? result.message}</output>
     </form>
   );
 }

@@ -76,7 +76,11 @@ export function ParallaxScene({
   }, [worldSpeed, isPaused]);
 
   return (
-    <div ref={sceneRef} className={`scene relative overflow-hidden ${className}`}>
+    <div
+      ref={sceneRef}
+      data-motion={isPaused ? 'off' : 'on'}
+      className={`scene relative overflow-hidden ${className}`}
+    >
       <div aria-hidden="true" className="absolute inset-0">
         <div className="absolute inset-0 bg-linear-to-b from-jacaranda-50 via-paper to-blush" />
         <div className="absolute right-[12%] top-[12%] size-16 rounded-full bg-sun/80 sm:size-24" />

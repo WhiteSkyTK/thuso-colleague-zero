@@ -58,17 +58,21 @@ export function useRunStream(grade: number): {
           return;
         }
         const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
-        let buffer = '';
-        for (let chunk = await reader.read(); !chunk.done; chunk = await reader.read()) {
+        const pump = async (buffer: string): Promise<void> => {
+          const chunk = await reader.read();
+          if (chunk.done) {
+            return;
+          }
           const { payloads, rest } = takeFrames(buffer + chunk.value);
-          buffer = rest;
           for (const payload of payloads) {
             const parsed = AgentEventSchema.safeParse(JSON.parse(payload));
             if (parsed.success) {
               dispatch({ type: 'event', event: parsed.data });
             }
           }
-        }
+          return pump(rest);
+        };
+        await pump('');
       } catch {
         if (!controller.signal.aborted) {
           dispatch({ type: 'failed', message: LOST_CONNECTION });

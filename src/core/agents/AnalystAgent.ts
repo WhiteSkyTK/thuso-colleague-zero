@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { assessRisk } from '../analysis/assessRisk';
+import { classReport, FILTER_LABEL, ReportFilterSchema } from '../analysis/classReport';
 import { TEMPERATURE } from '../config/constants';
 import type { Diagnosis, RiskAssessment } from '../domain/diagnosis';
 import type { LearnerRecord } from '../domain/learnerRecord';
@@ -20,6 +21,10 @@ const StepInputSchema = z.object({
   allowPartialData: z.boolean().default(false),
 });
 
+const ReportInputSchema = z.object({ subjectId: z.string().min(1), filter: ReportFilterSchema });
+/** The log shows every learner up to this many; the teacher's note always has the full list. */
+const MAX_REPORT_LINES = 40;
+
 const ExplanationsSchema = z.object({
   explanations: z.array(z.object({ learnerId: LearnerIdSchema, explanation: z.string().min(1) })),
 });
@@ -35,6 +40,13 @@ export class AnalystAgent extends Agent<StepRequest, StepResult> implements Step
         'Input: { subjectId, allowPartialData } — fails if records are missing unless allowPartialData is true.',
       scope: 'once',
       handle: (request, ctx) => this.findAtRisk(request, ctx),
+    },
+    'list-learners': {
+      description:
+        'Answer a question about the class without writing plans, e.g. "show failing learners". ' +
+        "Input: { subjectId, filter: 'failing' | 'passing' | 'at-risk' | 'all' }. Follow it with send-summary.",
+      scope: 'once',
+      handle: (request, ctx) => this.listLearners(request, ctx),
     },
   });
 
@@ -91,6 +103,32 @@ export class AnalystAgent extends Agent<StepRequest, StepResult> implements Step
         payload: diagnosis,
       })),
     };
+  }
+
+  /** "Who is failing / passing?" — computed in code, reported to the teacher, nothing sent to learners. */
+  private listLearners(request: StepRequest, ctx: RunContext): Promise<StepResult> {
+    const input = ReportInputSchema.parse(request.step.input);
+    const records = this.source.recordsFor(input.subjectId);
+    if (records.length === 0) {
+      throw new StepFailedError(`no results found for subject "${input.subjectId}"`);
+    }
+    const rows = classReport(records, input.filter, ctx.goal.constraints.riskThreshold);
+    const label = FILTER_LABEL[input.filter];
+    this.say(ctx, {
+      level: 'ACT',
+      message: `${rows.length} of ${records.length} learners in ${input.subjectId} are ${label}.`,
+    });
+    for (const row of rows.slice(0, MAX_REPORT_LINES)) {
+      this.say(ctx, {
+        level: 'INFO',
+        itemId: row.learnerId,
+        message: `${row.learnerId}: ${row.averagePct}% average, CAPS level ${row.capsLevel}, risk ${row.riskScore}.`,
+      });
+    }
+    const list = rows.map((row) => `${row.learnerId} (${row.averagePct}%)`).join(', ');
+    const ending = rows.length > 0 ? ': ' + list : '.';
+    ctx.note(`${input.subjectId} — ${rows.length} learners ${label}${ending}`);
+    return Promise.resolve({ kind: 'outputs', outputs: [] });
   }
 
   /** Missing registers stop the step unless the Planner has chosen to continue without them. */

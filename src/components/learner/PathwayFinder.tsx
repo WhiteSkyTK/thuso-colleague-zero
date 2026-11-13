@@ -94,7 +94,7 @@ export function PathwayFinder({
             </div>
           </fieldset>
           <label className="flex flex-col gap-1 text-sm">
-            Or paste your CV / tell us about yourself
+            <span>Or paste your CV / tell us about yourself</span>
             <textarea
               value={cvText}
               maxLength={MAX_CV_CHARS}

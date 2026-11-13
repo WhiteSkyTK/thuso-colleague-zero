@@ -11,6 +11,7 @@ import {
   type RiskCause,
 } from '../../domain/vocab';
 import { StepFailedError } from '../../errors/AppError';
+import type { ReportFilter } from '../../analysis/classReport';
 import type { MockResponder } from '../MockProvider';
 
 /**
@@ -25,6 +26,45 @@ const PlannerInputSchema = z.object({
   issue: z.string().optional(),
 });
 
+/** A question ("show failing learners") gets a report, not catch-up plans. */
+const QUESTION = /^(show|list|who|which|how many|give me|tell me)\b/;
+const FILTER_WORDS: readonly [RegExp, ReportFilter][] = [
+  [/at[ -]risk/, 'at-risk'],
+  [/fail|struggl|below/, 'failing'],
+  [/pass|top|best|doing well/, 'passing'],
+];
+
+function reportPlan(
+  goalText: string,
+  subject: { id: string; name: string },
+): PlanDraft | undefined {
+  const filter = FILTER_WORDS.find(([words]) => words.test(goalText))?.[1];
+  if (!QUESTION.test(goalText.trim()) || !filter) {
+    return undefined;
+  }
+  return {
+    rationale: `This is a question, not a request for plans: list the ${filter} learners in ${subject.name} and report to the teacher. Nothing is sent to learners.`,
+    steps: [
+      {
+        id: 's1',
+        agent: 'AN',
+        action: 'list-learners',
+        input: { subjectId: subject.id, filter },
+        successCriteria: [],
+        dependsOn: [],
+      },
+      {
+        id: 's2',
+        agent: 'MS',
+        action: 'send-summary',
+        input: {},
+        successCriteria: [],
+        dependsOn: ['s1'],
+      },
+    ],
+  };
+}
+
 function plan(input: unknown): PlanDraft {
   const { goal, overview, issue } = PlannerInputSchema.parse(input);
   const goalText = goal.text.toLowerCase();
@@ -33,6 +73,10 @@ function plan(input: unknown): PlanDraft {
     overview.subjects[0];
   if (!subject) {
     throw new StepFailedError('the class has no subjects to plan for');
+  }
+  const report = reportPlan(goalText, subject);
+  if (report) {
+    return report;
   }
   const allowPartialData = issue?.includes('missing') ?? false;
   const step = (

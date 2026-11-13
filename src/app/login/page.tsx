@@ -34,7 +34,7 @@ export default async function LoginPage({
         <section className="flex flex-col gap-4">
           <ThusoFace size={110} />
           <h1 className="font-display text-5xl font-extrabold uppercase leading-none sm:text-6xl">
-            Sawubona!
+            <span className="block">Sawubona!</span>
             <span className="block font-extralight text-jacaranda-500">I&apos;m Thuso.</span>
           </h1>
           <p className="text-lg">

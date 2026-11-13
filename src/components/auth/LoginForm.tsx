@@ -12,11 +12,11 @@ export function LoginForm() {
   return (
     <form action={action} className="flex flex-col gap-3">
       <label className="flex flex-col gap-1 font-medium">
-        Email
+        <span>Email</span>
         <input name="email" type="email" required autoComplete="username" className={FIELD} />
       </label>
       <label className="flex flex-col gap-1 font-medium">
-        Password
+        <span>Password</span>
         <input
           name="password"
           type="password"

@@ -17,10 +17,12 @@ export class PgliteDatabase implements Database {
   }
 
   async batch(statements: readonly Statement[]): Promise<void> {
-    await this.db.transaction(async (tx) => {
-      for (const { text, params = [] } of statements) {
-        await tx.query(text, [...params]);
-      }
-    });
+    // In order, one after another, inside one transaction.
+    await this.db.transaction((tx) =>
+      statements.reduce<Promise<unknown>>(
+        (previous, { text, params = [] }) => previous.then(() => tx.query(text, [...params])),
+        Promise.resolve(),
+      ),
+    );
   }
 }

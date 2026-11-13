@@ -8,17 +8,20 @@ const LINKS: Record<Role, readonly { href: string; label: string }[]> = {
   learner: [
     { href: '/portal/learner', label: 'My page' },
     { href: '/portal/calendar', label: 'Calendar' },
+    { href: '/portal/papers', label: 'Past papers' },
   ],
   teacher: [
     { href: '/portal/teacher', label: 'My classes' },
     { href: '/portal/runs', label: 'History' },
     { href: '/portal/calendar', label: 'Calendar' },
+    { href: '/portal/papers', label: 'Past papers' },
     { href: '/run', label: 'Live run' },
   ],
   principal: [
     { href: '/portal/principal', label: 'School' },
     { href: '/portal/runs', label: 'History' },
     { href: '/portal/calendar', label: 'Calendar' },
+    { href: '/portal/papers', label: 'Past papers' },
     { href: '/run', label: 'Live run' },
   ],
   admin: [
@@ -26,6 +29,7 @@ const LINKS: Record<Role, readonly { href: string; label: string }[]> = {
     { href: '/portal/principal', label: 'School' },
     { href: '/portal/runs', label: 'History' },
     { href: '/portal/calendar', label: 'Calendar' },
+    { href: '/portal/papers', label: 'Past papers' },
   ],
 };
 

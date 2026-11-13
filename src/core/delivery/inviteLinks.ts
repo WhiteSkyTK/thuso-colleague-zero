@@ -9,7 +9,11 @@ export interface InviteSummary {
 }
 
 const unescapeText = (value: string) =>
-  value.replace(/\\n/g, '\n').replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\\\/g, '\\');
+  value
+    .replaceAll(String.raw`\n`, '\n')
+    .replaceAll(String.raw`\,`, ',')
+    .replaceAll(String.raw`\;`, ';')
+    .replaceAll(String.raw`\\`, '\\');
 
 /** Reads the first event of an .ics file (unfolding continuation lines first). */
 export function readInvite(ics: string): InviteSummary | undefined {

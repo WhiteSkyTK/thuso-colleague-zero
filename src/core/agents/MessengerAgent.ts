@@ -125,9 +125,12 @@ export class MessengerAgent extends Agent<StepRequest, StepResult> implements St
   }
 
   private async sendSummary(ctx: RunContext): Promise<StepResult> {
-    const headline =
-      `${ctx.deliveredCount} plans delivered · ${ctx.fixes} fixed after review · ` +
-      `${ctx.escalations.length} escalated`;
+    // A question ("show failing learners") delivers no plans: the report is the result.
+    const isReport = ctx.deliveredCount === 0 && ctx.escalations.length === 0;
+    const headline = isReport
+      ? 'Report ready — nothing was sent to learners'
+      : `${ctx.deliveredCount} plans delivered · ${ctx.fixes} fixed after review · ` +
+        `${ctx.escalations.length} escalated`;
     const notes = ctx.teacherNotes.map((note) => `• ${note}`);
     const needsYou = ctx.escalations.map(
       (escalation) => `• Needs you: ${escalation.subjectId} — ${escalation.reason}`,

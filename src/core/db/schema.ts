@@ -90,6 +90,12 @@ const SCHEMA = [
     created_at timestamptz NOT NULL DEFAULT now(), read_at timestamptz
   )`,
   `CREATE INDEX IF NOT EXISTS notifications_user ON notifications (user_id, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS past_papers (
+    id text PRIMARY KEY, grade int NOT NULL, subject_id text NOT NULL, year int NOT NULL,
+    paper text NOT NULL, title text NOT NULL, url text NOT NULL, memo_url text,
+    topics text[] NOT NULL DEFAULT '{}', created_by text, created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS past_papers_grade ON past_papers (grade, subject_id, year DESC)`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

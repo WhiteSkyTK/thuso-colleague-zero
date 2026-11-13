@@ -20,15 +20,11 @@ export class FallbackProvider implements LlmProvider {
     return this.firstThatWorks((provider) => provider.completeStructured(schema, request));
   }
 
-  private async firstThatWorks<R>(call: (provider: LlmProvider) => Promise<R>): Promise<R> {
-    let lastError: unknown = new Error('No model provider is configured.');
-    for (const provider of this.providers) {
-      try {
-        return await call(provider);
-      } catch (error) {
-        lastError = error;
-      }
-    }
-    throw lastError;
+  /** Each provider is tried only after the one before it failed; the last error is reported. */
+  private firstThatWorks<R>(call: (provider: LlmProvider) => Promise<R>): Promise<R> {
+    return this.providers.reduce<Promise<R>>(
+      (attempt, provider) => attempt.catch(() => call(provider)),
+      Promise.reject(new Error('No model provider is configured.')),
+    );
   }
 }
