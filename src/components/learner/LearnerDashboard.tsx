@@ -1,6 +1,7 @@
 import type { Task } from '@/core/domain/classData';
 import type { LearnerCategory } from '@/core/insights/learnerCategory';
 import type { LearnerProfile } from '@/core/insights/learnerProfile';
+import type { LearnerNote } from '@/core/school/NoteRepository';
 import { DBE_PAST_PAPERS_URL, FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
 import { PathwayFinder } from './PathwayFinder';
 import { SubjectStandingCard } from './SubjectStandingCard';
@@ -16,6 +17,7 @@ interface LearnerDashboardProps {
   readonly category: LearnerCategory;
   readonly facts: readonly string[];
   readonly chosenSubjects: readonly string[];
+  readonly notes: readonly LearnerNote[];
 }
 
 /** Everything about one learner: standing per subject, why they slip, what to study, tasks, future. */
@@ -27,6 +29,7 @@ export function LearnerDashboard({
   category,
   facts,
   chosenSubjects,
+  notes,
 }: LearnerDashboardProps) {
   const { learner, subjects } = profile;
   return (
@@ -72,6 +75,24 @@ export function LearnerDashboard({
               <li key={fact}>{fact}</li>
             ))}
           </ul>
+          {notes.length > 0 && (
+            <>
+              <h3 className="mt-3 text-sm font-semibold">From our check-ins</h3>
+              <ul className="mt-1 flex flex-col gap-1 text-sm">
+                {notes.map((note) => (
+                  <li
+                    key={note.question + note.createdAt}
+                    className="rounded-lg bg-jacaranda-50 px-2 py-1"
+                  >
+                    <span className="opacity-70">
+                      {note.createdAt} · {note.question}
+                    </span>{' '}
+                    <strong>{note.answer}</strong>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {chosenSubjects.length > 0 && (
             <p className="mt-2 text-sm">
               <strong>Subjects:</strong> {chosenSubjects.join(' · ')}

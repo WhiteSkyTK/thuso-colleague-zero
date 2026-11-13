@@ -2,8 +2,12 @@
 
 import Link from 'next/link';
 import { useState, useTransition } from 'react';
+import type { AssistantAnswer } from '@/core/assistant/answerQuestion';
+import type { CheckIn } from '@/core/assistant/checkIns';
 import type { Notification } from '@/core/school/NotificationRepository';
 import { useSeenTips } from '@/hooks/useSeenTips';
+import { AskBox } from './AskBox';
+import { CheckInCard } from './CheckInCard';
 import { MascotRun } from './MascotRun';
 import { ThusoFace } from './ThusoFace';
 
@@ -16,6 +20,16 @@ interface ThusoMascotProps {
   readonly onReadAlerts?: () => Promise<void>;
   /** Staff only: run the agents for this grade from inside the bubble. */
   readonly runGrade?: number;
+  /** Ask Thuso: the text box, answered from the live data this person may see. */
+  readonly ask?: {
+    onAsk: (question: string) => Promise<AssistantAnswer>;
+    examples: readonly string[];
+  };
+  /** Learners: today's one-tap question, until it is answered. */
+  readonly checkIn?: {
+    question: CheckIn;
+    onAnswer: (input: { id: string; value: string }) => Promise<{ message: string }>;
+  };
 }
 
 const KIND_ICON: Record<Notification['kind'], string> = {
@@ -96,13 +110,14 @@ function greeting(now: Date): string {
  * next, and (for staff) runs the agents right here. It only pops up for something new — a tip not
  * seen yet, an alert or a live run — and tucks itself away once everything has been read.
  */
-export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }: ThusoMascotProps) {
+export function ThusoMascot(props: ThusoMascotProps) {
+  const { tips, live, alerts = [], onReadAlerts, runGrade, ask, checkIn } = props;
   const { seen, markSeen } = useSeenTips();
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState<'open' | 'closed' | null>(null);
   const [showTips, setShowTips] = useState(false);
   const unseen = tips.filter((tip) => !seen.has(tip));
-  const hasNews = unseen.length > 0 || alerts.length > 0 || Boolean(live);
+  const hasNews = unseen.length > 0 || alerts.length > 0 || Boolean(live) || Boolean(checkIn);
   const isOpen = choice === 'open' || (choice === null && hasNews);
   // Opened on purpose: every tip again. Popped up on its own: only what is new.
   const pool = choice === 'open' || unseen.length === 0 ? tips : unseen;
@@ -148,7 +163,7 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
     >
       <div
         key={hasAlerts ? 'alerts' : message}
-        className="mascot-bubble relative min-w-0 flex-1 rounded-card bg-white p-3 pr-8 text-sm shadow-card"
+        className="mascot-bubble relative max-h-[80vh] min-w-0 flex-1 overflow-y-auto rounded-card bg-white p-3 pr-8 text-sm shadow-card"
       >
         <p
           className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-jacaranda-700"
@@ -179,7 +194,9 @@ export function ThusoMascot({ tips, live, alerts = [], onReadAlerts, runGrade }:
             </button>
           )}
         </div>
+        {checkIn && !live && <CheckInCard checkIn={checkIn.question} onAnswer={checkIn.onAnswer} />}
         {runGrade !== undefined && <MascotRun grade={runGrade} />}
+        {ask && !live && <AskBox onAsk={ask.onAsk} examples={ask.examples} />}
         <button
           type="button"
           onClick={close}

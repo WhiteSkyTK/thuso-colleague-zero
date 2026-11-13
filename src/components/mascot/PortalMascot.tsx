@@ -1,9 +1,19 @@
+import { answerCheckInAction, askThusoAction } from '@/app/portal/ask/actions';
 import { markAlertsReadAction } from '@/app/portal/teacher/actions';
-import type { SchoolUser } from '@/core/domain/schoolUser';
+import { checkInFor } from '@/core/assistant/checkIns';
+import type { Role, SchoolUser } from '@/core/domain/schoolUser';
 import { school } from '@/lib/school';
 import { ThusoMascot } from './ThusoMascot';
 
 const ALERTS_SHOWN = 6;
+
+/** Tap-to-ask starters per role. */
+const ASK_EXAMPLES: Record<Role, readonly string[]> = {
+  learner: ['What should I study?', 'How am I doing?', 'When is my session?'],
+  teacher: ['Who is failing?', 'Who is missing lessons?', 'Weakest topic?'],
+  principal: ['Who is at risk in grade 11?', 'Who is thriving?', 'How many learners?'],
+  admin: ['How many learners?', 'Who is failing in grade 12?', 'Who is missing lessons?'],
+};
 
 interface PortalMascotProps {
   readonly user: SchoolUser;
@@ -12,16 +22,26 @@ interface PortalMascotProps {
   readonly runGrade?: number;
 }
 
-/** Thuso on a portal page: this person's unread alerts first, then tips, and the live run for staff. */
+/** Thuso on a portal page: alerts first, then tips, today's check-in, the Ask box and (staff) the live run. */
 export async function PortalMascot({ user, tips, runGrade }: PortalMascotProps) {
-  const { notifications } = await school();
-  const alerts = await notifications.unreadFor(user.id, ALERTS_SHOWN);
+  const { notifications, notes } = await school();
+  const isLearner = user.role === 'learner';
+  const [alerts, hasCheckedIn] = await Promise.all([
+    notifications.unreadFor(user.id, ALERTS_SHOWN),
+    isLearner ? notes.answeredToday(user.id) : Promise.resolve(true),
+  ]);
   return (
     <ThusoMascot
       tips={tips}
       alerts={alerts}
       onReadAlerts={markAlertsReadAction}
-      runGrade={user.role === 'learner' ? undefined : runGrade}
+      runGrade={isLearner ? undefined : runGrade}
+      ask={{ onAsk: askThusoAction, examples: ASK_EXAMPLES[user.role] }}
+      checkIn={
+        hasCheckedIn
+          ? undefined
+          : { question: checkInFor(new Date()), onAnswer: answerCheckInAction }
+      }
     />
   );
 }

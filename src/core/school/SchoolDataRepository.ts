@@ -127,6 +127,11 @@ export class SchoolDataRepository {
 
   /** Learners per grade, for the principal's overview. */
   /** Changes whenever a grade's data is written, so every server copy knows to reload. */
+  /** Something about a grade changed outside marks and tasks (e.g. a learner's formats): refresh caches. */
+  async touch(grade: number): Promise<void> {
+    await this.db.batch([bumpVersion(grade)]);
+  }
+
   async version(grade: number): Promise<number> {
     const [row] = await this.db.query<{ value: string }>('SELECT value FROM meta WHERE key = $1', [
       versionKey(grade),

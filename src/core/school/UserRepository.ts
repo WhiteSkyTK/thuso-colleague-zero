@@ -100,6 +100,14 @@ export class UserRepository {
     return rows.map((row) => row.id);
   }
 
+  /** Check-ins teach Thuso how a learner learns; their preferred formats follow. */
+  async updateFormats(learnerId: string, formats: readonly string[]): Promise<void> {
+    await this.db.query("UPDATE users SET preferred_formats = $2 WHERE id = $1 AND role = 'learner'", [
+      learnerId,
+      [...formats],
+    ]);
+  }
+
   async listStaff(): Promise<SchoolUser[]> {
     const rows = await this.db.query<UserRow>(
       `SELECT ${USER_FIELDS} FROM users u WHERE u.role <> 'learner' ORDER BY u.role, u.id`,

@@ -119,6 +119,10 @@ const SCHEMA = [
     created_at timestamptz NOT NULL DEFAULT now(),
     UNIQUE (set_id, learner_id)
   )`,
+  `CREATE TABLE IF NOT EXISTS learner_notes (
+    id text PRIMARY KEY, learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    question text NOT NULL, answer text NOT NULL, created_at timestamptz NOT NULL DEFAULT now()
+  )`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

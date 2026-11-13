@@ -201,6 +201,12 @@ body {
   }
 }
 
+@keyframes thinking {
+  50% {
+    opacity: 0.3;
+  }
+}
+
 @keyframes pop-in {
   from {
     opacity: 0;
@@ -245,6 +251,15 @@ body {
 
   .mascot-bubble {
     animation: pop-in var(--dur-base) var(--ease-ui) both;
+  }
+
+  .ask-reply {
+    animation: pop-in var(--dur-base) var(--ease-ui) both;
+  }
+
+  .thinking {
+    display: inline-block;
+    animation: thinking 900ms ease-in-out infinite;
   }
 
   button,
