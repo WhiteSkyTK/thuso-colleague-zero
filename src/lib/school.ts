@@ -1,11 +1,14 @@
 import { hashPassword } from '@/core/auth/passwords';
-import { loadConfig } from '@/core/config/env';
+import { loadConfig, type AppConfig } from '@/core/config/env';
 import type { Database } from '@/core/db/Database';
 import { NeonDatabase } from '@/core/db/NeonDatabase';
 import { PgliteDatabase } from '@/core/db/PgliteDatabase';
 import { migrate } from '@/core/db/schema';
+import type { MailTransport } from '@/core/delivery/MailTransport';
+import { SmtpTransport } from '@/core/delivery/SmtpTransport';
 import type { ClassData } from '@/core/domain/classData';
 import { loadSeedClass } from '@/core/repositories/loadSeedClass';
+import { MessageRepository } from '@/core/school/MessageRepository';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
 import { UserRepository } from '@/core/school/UserRepository';
 import { isSeeded, seedSchool } from '@/core/seed/seedSchool';
@@ -14,7 +17,11 @@ export interface School {
   db: Database;
   data: SchoolDataRepository;
   users: UserRepository;
+  messages: MessageRepository;
   riskThreshold: number;
+  delivery: AppConfig['delivery'];
+  /** Only when SMTP is configured. */
+  transport?: MailTransport;
 }
 
 /** A grade's class is read from the database at most once a minute, and again after any write. */
@@ -41,7 +48,10 @@ async function open(): Promise<School> {
     db,
     data: new SchoolDataRepository(db),
     users: new UserRepository(db),
+    messages: new MessageRepository(db),
     riskThreshold: config.rules.riskThreshold,
+    delivery: config.delivery,
+    transport: config.delivery.smtp ? new SmtpTransport(config.delivery.smtp) : undefined,
   };
 }
 

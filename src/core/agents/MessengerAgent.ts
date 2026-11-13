@@ -1,10 +1,11 @@
-import { CatchUpPlanSchema } from '../domain/catchUpPlan';
+import { CatchUpPlanSchema, type CatchUpPlan } from '../domain/catchUpPlan';
+import { buildInvite } from '../delivery/IcsBuilder';
 import type { StepRequest, StepResult } from '../domain/step';
 import type { Outbox } from '../delivery/Outbox';
 import { StepFailedError } from '../errors/AppError';
 import type { LlmProvider } from '../llm/LlmProvider';
 import type { RunContext } from '../orchestrator/RunContext';
-import type { ContactDirectory } from '../repositories/ClassRepository';
+import type { ContactDirectory, Contacts } from '../repositories/ClassRepository';
 import { ActionTable } from './ActionTable';
 import { Agent } from './Agent';
 import { singleItem } from './singleItem';
@@ -14,11 +15,18 @@ const PLAN_SUBJECT = 'Your 2-week catch-up plan';
 const GUARDIAN_SUBJECT = 'A 2-week catch-up plan for your child';
 const SUMMARY_SUBJECT = 'Thuso run summary';
 const CLASS_SUBJECT_ID = 'class';
+/** Length of a booked support session. */
+export const SUPPORT_SESSION_MINUTES = 45;
+const SESSION_LOCATION = 'School staff room';
+const INVITE_DOMAIN = 'thuso.example.org';
+const TOPICS_IN_INVITE = 3;
 
 export interface MessengerDelivery {
   outbox: Outbox;
   /** Messages only ever go to people in this directory. */
   directory: ContactDirectory;
+  /** Clock for the invite timestamp (tests pass a fixed one). */
+  now?: () => Date;
 }
 
 /** MS — delivers approved plans to learners and guardians, and the summary to the teacher. */
@@ -58,12 +66,14 @@ export class MessengerAgent extends Agent<StepRequest, StepResult> implements St
       throw new StepFailedError(`no contact details on record for ${subjectId}`);
     }
     // Names are added here, in code: the model only ever sees pseudonymous ids.
+    const invite = this.inviteFor(plan, contacts, ctx.runId);
     await this.delivery.outbox.deliver({
       audience: 'learner',
       subjectId,
       to: contacts.learnerEmail,
       subject: PLAN_SUBJECT,
       body: `Hi ${contacts.firstName},\n\n${plan.learnerMessage}`,
+      invite,
     });
     await this.delivery.outbox.deliver({
       audience: 'guardian',
@@ -71,6 +81,7 @@ export class MessengerAgent extends Agent<StepRequest, StepResult> implements St
       to: contacts.guardianEmail,
       subject: GUARDIAN_SUBJECT,
       body: `Dear ${contacts.guardianName},\n\n${plan.guardianMessage}`,
+      invite,
     });
     ctx.recordDelivery(subjectId);
     const { date, time } = plan.supportSession;
@@ -88,6 +99,29 @@ export class MessengerAgent extends Agent<StepRequest, StepResult> implements St
         },
       ],
     };
+  }
+
+  /** One invite for the learner and the guardian, organised by the class teacher. */
+  private inviteFor(plan: CatchUpPlan, contacts: Contacts, runId: string): string {
+    const teacher = this.delivery.directory.teacher();
+    const topics = [...new Set(plan.sessions.map((session) => session.topic))]
+      .slice(0, TOPICS_IN_INVITE)
+      .join(', ');
+    return buildInvite({
+      uid: `${runId}-${plan.learnerId}@${INVITE_DOMAIN}`,
+      date: plan.supportSession.date,
+      time: plan.supportSession.time,
+      durationMinutes: SUPPORT_SESSION_MINUTES,
+      summary: `Catch-up session with ${teacher.name}`,
+      description: `Support session for ${contacts.firstName}. Topics: ${topics}.`,
+      location: SESSION_LOCATION,
+      organizer: teacher,
+      attendees: [
+        { name: contacts.firstName, email: contacts.learnerEmail },
+        { name: contacts.guardianName, email: contacts.guardianEmail },
+      ],
+      stamp: (this.delivery.now ?? (() => new Date()))(),
+    });
   }
 
   private async sendSummary(ctx: RunContext): Promise<StepResult> {

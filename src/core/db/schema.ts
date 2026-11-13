@@ -65,6 +65,14 @@ const SCHEMA = [
     topic text NOT NULL, minutes int NOT NULL, format text NOT NULL, rung text NOT NULL, origin text NOT NULL,
     PRIMARY KEY (grade, id)
   )`,
+  `CREATE TABLE IF NOT EXISTS messages (
+    id text PRIMARY KEY,
+    run_id text NOT NULL, grade int NOT NULL, about text NOT NULL, audience text NOT NULL,
+    to_address text NOT NULL, subject text NOT NULL, body text NOT NULL, invite text,
+    status text NOT NULL, created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS messages_about ON messages (about, created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS messages_grade ON messages (grade, created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

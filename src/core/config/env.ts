@@ -46,6 +46,11 @@ const EnvSchema = z.object({
   PLAN_MAX_HOURS_PER_WEEK: amount(DEFAULTS.maxHoursPerWeek),
   DELIVERY_MODE: choice(['sandbox', 'redirect', 'live'] as const, 'sandbox'),
   DEMO_RECIPIENT: text,
+  SMTP_HOST: text,
+  SMTP_PORT: count(587),
+  SMTP_USER: text,
+  SMTP_PASS: text,
+  MAIL_FROM: z.preprocess(blankToUndefined, z.string().default('Thuso <thuso@school.example.org>')),
   DATABASE_URL: text,
   DEMO_PASSWORD: z.preprocess(blankToUndefined, z.string().min(8).default('thuso-demo-2026')),
   ADMIN_PASSWORD: z.preprocess(blankToUndefined, z.string().min(12).optional()),
@@ -74,7 +79,12 @@ export interface AppConfig {
   };
   run: { maxAttempts: number; maxSteps: number; timeoutMs: number; tokenBudget: number };
   rules: { riskThreshold: number; maxHoursPerWeek: number };
-  delivery: { mode: Env['DELIVERY_MODE']; demoRecipient?: string };
+  delivery: {
+    mode: Env['DELIVERY_MODE'];
+    demoRecipient?: string;
+    /** Only set when SMTP_HOST is; without it messages stay in the portal inbox. */
+    smtp?: { host: string; port: number; user?: string; pass?: string; from: string };
+  };
   /** No DATABASE_URL → an in-process Postgres, seeded on first use (tests and offline demos). */
   school: { databaseUrl?: string; demoPassword: string; adminPassword?: string };
 }
@@ -104,7 +114,19 @@ function toConfig(env: Env): AppConfig {
       tokenBudget: env.RUN_TOKEN_BUDGET,
     },
     rules: { riskThreshold: env.RISK_THRESHOLD, maxHoursPerWeek: env.PLAN_MAX_HOURS_PER_WEEK },
-    delivery: { mode: env.DELIVERY_MODE, demoRecipient: env.DEMO_RECIPIENT },
+    delivery: {
+      mode: env.DELIVERY_MODE,
+      demoRecipient: env.DEMO_RECIPIENT,
+      smtp: env.SMTP_HOST
+        ? {
+            host: env.SMTP_HOST,
+            port: env.SMTP_PORT,
+            user: env.SMTP_USER,
+            pass: env.SMTP_PASS,
+            from: env.MAIL_FROM,
+          }
+        : undefined,
+    },
     school: {
       databaseUrl: env.DATABASE_URL,
       demoPassword: env.DEMO_PASSWORD,

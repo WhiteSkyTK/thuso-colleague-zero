@@ -6,7 +6,9 @@ import { PlannerAgent } from './agents/PlannerAgent';
 import { ReviewerAgent } from './agents/ReviewerAgent';
 import { REVIEW_CHECKS } from './checks/reviewChecks';
 import type { AppConfig } from './config/env';
+import { FanOutOutbox } from './delivery/FanOutOutbox';
 import { InMemoryOutbox } from './delivery/InMemoryOutbox';
+import type { Outbox } from './delivery/Outbox';
 import type { ClassData } from './domain/classData';
 import { GoalSchema } from './domain/goal';
 import type { RunSummary } from './domain/runSummary';
@@ -29,6 +31,8 @@ export interface ColleagueOptions {
   /** Override the model backend (tests). */
   llm?: LlmProvider;
   clock?: Clock;
+  /** Also deliver here (the database inbox and email); the in-memory outbox always records. */
+  outbox?: Outbox;
 }
 
 export interface Colleague {
@@ -58,7 +62,13 @@ export function createColleague(options: ColleagueOptions): Colleague {
     .register(
       new ReviewerAgent(llm, { checks: REVIEW_CHECKS, catalog: classRepo, calendar: classRepo }),
     )
-    .register(new MessengerAgent(llm, { outbox, directory: classRepo }));
+    .register(
+      new MessengerAgent(llm, {
+        outbox: options.outbox ? new FanOutOutbox([outbox, options.outbox]) : outbox,
+        directory: classRepo,
+        now: () => new Date(clock.now()),
+      }),
+    );
   const orchestrator = new Orchestrator({
     planner: new PlannerAgent(llm, classRepo),
     registry,

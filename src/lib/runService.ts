@@ -1,8 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import { loadConfig } from '@/core/config/env';
 import { createColleague, type Colleague } from '@/core/createColleague';
+import { DatabaseOutbox } from '@/core/delivery/DatabaseOutbox';
 import type { EventListener } from '@/core/events/EventBus';
-import { classFor } from './school';
+import { classFor, school } from './school';
 
 /** One run at a time: protects the token budget and keeps the demo readable. */
 const MAX_ACTIVE_RUNS = 1;
@@ -41,7 +42,21 @@ export async function startRun(goalText: string, grade: number): Promise<StartRe
   const runId = randomUUID();
   active.add(runId);
   try {
-    const colleague = createColleague({ config: loadConfig(), classData: await classFor(grade) });
+    const [{ messages, delivery, transport }, classData] = await Promise.all([
+      school(),
+      classFor(grade),
+    ]);
+    // Every message is kept for the portal inbox and emailed when SMTP and the delivery mode allow.
+    const outbox = new DatabaseOutbox({
+      store: messages,
+      runId,
+      grade,
+      mode: delivery.mode,
+      demoRecipient: delivery.demoRecipient,
+      transport,
+      newId: randomUUID,
+    });
+    const colleague = createColleague({ config: loadConfig(), classData, outbox });
     keep(runs, runId, colleague);
     // The orchestrator always resolves with a summary; `finally` only frees the slot.
     void colleague.run(goalText, runId).finally(() => {

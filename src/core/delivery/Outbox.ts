@@ -9,9 +9,11 @@ export interface OutboundMessage {
   to: string;
   subject: string;
   body: string;
+  /** A calendar invite (.ics) for the booked support session, when there is one. */
+  invite?: string;
 }
 
-/** Where finished work leaves the system. Implementations: in-memory now, email in S2-01. */
+/** Where finished work leaves the system: memory (tests), the database (portal inbox) and email. */
 export interface Outbox {
   deliver(message: OutboundMessage): Promise<void>;
 }
