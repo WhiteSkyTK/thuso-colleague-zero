@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# builds and caches
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.llm-cache/
+
+# secrets — only .env.example is committed
+.env*
+!.env.example
+
+# run traces: keep only the golden demo trace
+data/runs/*
+!data/runs/golden-demo.json
+
+# third-party design reference screenshots stay local (not ours to publish)
+docs/design/refs/*
+!docs/design/refs/.gitkeep
+
+# editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+npm-debug.log*
