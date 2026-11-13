@@ -4,6 +4,7 @@ import { EventBus } from '@/core/events/EventBus';
 import { isFinalEvent, TraceRecorder } from '@/core/events/TraceRecorder';
 import { INITIAL_RUN_VIEW, runViewReducer, type RunView } from '@/lib/runView';
 import { narrationFor, WORLD_SPEED, worldSpeedFor } from '@/lib/worldSpeed';
+import { takeFrames } from '@/hooks/useRunStream';
 
 const event = (seq: number, overrides: Partial<AgentEvent> = {}): AgentEvent => ({
   runId: 'run-1',
@@ -138,5 +139,15 @@ describe('narrationFor', () => {
     expect(narrationFor([event(0), flagged])).toBe(
       'The Reviewer (L-014): plan ignores 9 absences.',
     );
+  });
+});
+
+describe('takeFrames', () => {
+  it('returns complete SSE data payloads and keeps a half-received frame for later', () => {
+    expect(takeFrames('data: {"a":1}\n\ndata: {"b"')).toEqual({
+      payloads: ['{"a":1}'],
+      rest: 'data: {"b"',
+    });
+    expect(takeFrames('data: {"b":2}\n\n')).toEqual({ payloads: ['{"b":2}'], rest: '' });
   });
 });

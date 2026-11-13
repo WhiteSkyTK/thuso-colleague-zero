@@ -1,21 +1,23 @@
 import { z } from 'zod';
 import { GOAL_MAX_CHARS } from '@/core/config/constants';
+import { runEventStream } from '@/lib/runEventStream';
 import { startRun } from '@/lib/runService';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+/** A real-model run can take a few minutes; the agents run inside this request (seconds). */
+export const maxDuration = 300;
 
 const BodySchema = z.object({
   goal: z.string().trim().min(1).max(GOAL_MAX_CHARS),
   grade: z.number().int().min(10).max(12).default(10),
 });
 
-const HTTP_ACCEPTED = 202;
 const HTTP_BAD_REQUEST = 400;
 const HTTP_TOO_MANY = 429;
 const HTTP_SERVER_ERROR = 500;
 
-/** POST /api/runs — starts a run for the given goal and returns its id. */
+/** POST /api/runs — starts a run for the goal and grade, and streams its agent log back (SSE). */
 export async function POST(request: Request): Promise<Response> {
   const body: unknown = await request.json().catch(() => null);
   const parsed = BodySchema.safeParse(body);
@@ -33,7 +35,7 @@ export async function POST(request: Request): Promise<Response> {
         { status: HTTP_TOO_MANY },
       );
     }
-    return Response.json(started, { status: HTTP_ACCEPTED });
+    return runEventStream(request, started.runId);
   } catch {
     // Configuration problems are logged by the server; the client gets no internals.
     return Response.json(
