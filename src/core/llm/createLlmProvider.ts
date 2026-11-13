@@ -1,5 +1,6 @@
 import type { AppConfig } from '../config/env';
 import { ConfigError } from '../errors/AppError';
+import { AnthropicProvider } from './AnthropicProvider';
 import type { LlmProvider } from './LlmProvider';
 import { demoResponder } from './mock/demoResponder';
 import { MockProvider } from './MockProvider';
@@ -16,7 +17,19 @@ const notBuiltYet = (name: ProviderName): ProviderFactory => {
 /** Strategy lookup: a new provider is one more entry here. */
 const FACTORIES: Record<ProviderName, ProviderFactory> = {
   mock: (config) => new MockProvider(demoResponder, config.llm.mockLatencyMs),
-  anthropic: notBuiltYet('anthropic'),
+  anthropic: (config) => {
+    const { anthropicApiKey, modelReasoning, modelFast, callTimeoutMs } = config.llm;
+    if (!anthropicApiKey || !modelReasoning || !modelFast) {
+      throw new ConfigError(
+        'LLM_PROVIDER=anthropic needs ANTHROPIC_API_KEY, LLM_MODEL_REASONING and LLM_MODEL_FAST.',
+      );
+    }
+    return new AnthropicProvider({
+      apiKey: anthropicApiKey,
+      models: { reasoning: modelReasoning, fast: modelFast },
+      timeoutMs: callTimeoutMs,
+    });
+  },
   'openai-compatible': notBuiltYet('openai-compatible'),
 };
 
