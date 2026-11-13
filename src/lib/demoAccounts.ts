@@ -61,6 +61,22 @@ export const DEMO_ACCOUNTS: readonly DemoAccount[] = [
     className: 'bg-teal text-ink',
   },
   {
+    key: 'english-teacher',
+    role: 'teacher',
+    email: 'english.teacher@school.example.org',
+    label: 'Teacher · English',
+    detail: 'Ms Mokoena, English FAL',
+    className: 'bg-teal text-ink',
+  },
+  {
+    key: 'life-teacher',
+    role: 'teacher',
+    email: 'life.teacher@school.example.org',
+    label: 'Teacher · Life Sciences',
+    detail: 'Mr Dube, Grades 10–12',
+    className: 'bg-teal text-ink',
+  },
+  {
     key: 'principal',
     role: 'principal',
     email: 'principal@school.example.org',

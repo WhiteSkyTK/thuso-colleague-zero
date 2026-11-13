@@ -127,7 +127,8 @@ export class AnalystAgent extends Agent<StepRequest, StepResult> implements Step
     }
     const list = rows.map((row) => `${row.learnerId} (${row.averagePct}%)`).join(', ');
     const ending = rows.length > 0 ? ': ' + list : '.';
-    ctx.note(`${input.subjectId} — ${rows.length} learners ${label}${ending}`);
+    const noun = rows.length === 1 ? 'learner' : 'learners';
+    ctx.note(`${input.subjectId} — ${rows.length} ${noun} ${label}${ending}`);
     return Promise.resolve({ kind: 'outputs', outputs: [] });
   }
 

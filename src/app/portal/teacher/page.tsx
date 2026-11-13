@@ -9,7 +9,16 @@ import { MessageList } from '@/components/messages/MessageList';
 import { buildClassInsights } from '@/core/insights/classInsights';
 import { requireUser } from '@/lib/auth';
 import { teacherTips } from '@/lib/mascotTips';
+import { CategoryGroups } from '@/components/insights/CategoryGroups';
+import { categoriseClass } from '@/core/insights/learnerCategory';
 import { classFor, school } from '@/lib/school';
+
+const UPDATED = new Intl.DateTimeFormat('en-ZA', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  timeZone: 'Africa/Johannesburg',
+});
 import { addTaskAction, runWatchAction, saveMarksAction } from './actions';
 
 export const metadata: Metadata = { title: 'My classes — Thuso' };
@@ -73,12 +82,16 @@ export default async function TeacherPage({
         ))}
       </nav>
 
+      <p className="text-sm">
+        Grade {grade} · {subjects.map((s) => s.name).join(' and ')} · live from the database,
+        updated {UPDATED.format(new Date())}
+      </p>
       <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
-          { label: 'Learners', value: data.learners.length },
-          { label: 'Need support', value: atRisk },
-          { label: 'Tasks set', value: tasks.length },
-          { label: 'Marks captured', value: Object.keys(existing).length },
+          { label: `Learners in Grade ${grade}`, value: data.learners.length },
+          { label: 'At risk in your subjects', value: atRisk },
+          { label: 'Tasks you set this term', value: tasks.length },
+          { label: 'Topic marks captured', value: Object.keys(existing).length },
         ].map((stat) => (
           <div key={stat.label} className="rounded-card bg-white p-4 shadow-card">
             <dt className="text-sm">{stat.label}</dt>
@@ -86,6 +99,11 @@ export default async function TeacherPage({
           </div>
         ))}
       </dl>
+
+      <CategoryGroups
+        learners={categoriseClass(data, riskThreshold)}
+        title={`Grade ${grade} in groups`}
+      />
 
       <div className="grid gap-4 lg:grid-cols-2">
         {insights.subjects.map((insight) => (

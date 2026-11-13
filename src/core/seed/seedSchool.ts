@@ -1,51 +1,14 @@
 import type { Database, Statement } from '../db/Database';
 import { insertRows } from '../db/insertRows';
 import type { ClassData } from '../domain/classData';
-import type { Role } from '../domain/schoolUser';
+import { DEMO_STAFF, type StaffMember } from './demoStaff';
 import { deriveGrade } from './deriveGrade';
+import { defaultSubjectChoice, withExtraSubjects } from './extraSubjects';
 
-interface StaffMember {
-  id: string;
-  role: Exclude<Role, 'learner'>;
-  email: string;
-  firstName: string;
-  lastName: string;
-  teaches?: string;
-}
+/** Bump when the seed gains data, so existing databases are topped up on their next start. */
+export const SEED_VERSION = 2;
 
-/** Invented staff on example.org. Teachers teach their subject in every grade. */
-export const DEMO_STAFF: readonly StaffMember[] = [
-  {
-    id: 'S-101',
-    role: 'teacher',
-    email: 'maths.teacher@school.example.org',
-    firstName: 'Nomvula',
-    lastName: 'Khoza',
-    teaches: 'MATH',
-  },
-  {
-    id: 'S-102',
-    role: 'teacher',
-    email: 'science.teacher@school.example.org',
-    firstName: 'Pieter',
-    lastName: 'Botha',
-    teaches: 'PHSC',
-  },
-  {
-    id: 'S-201',
-    role: 'principal',
-    email: 'principal@school.example.org',
-    firstName: 'Grace',
-    lastName: 'Molefe',
-  },
-  {
-    id: 'S-301',
-    role: 'admin',
-    email: 'admin@school.example.org',
-    firstName: 'School',
-    lastName: 'Admin',
-  },
-];
+export { DEMO_STAFF } from './demoStaff';
 
 export interface SeedOptions {
   /** The Grade 10 class with the demo's hard cases; Grades 11 and 12 are derived from it. */
@@ -150,6 +113,14 @@ function classStatements(data: ClassData, grade: number, passwordHash: string): 
       })),
     ),
     insertRows(
+      'subject_choices',
+      { learner_id: 'text', subjects: 'text[]' },
+      data.learners.map((l, index) => ({
+        learner_id: l.id,
+        subjects: defaultSubjectChoice(index),
+      })),
+    ),
+    insertRows(
       'reflections',
       { learner_id: 'text', text: 'text' },
       data.reflections.map((r) => ({ learner_id: r.learnerId, text: r.text })),
@@ -191,9 +162,9 @@ function staffStatements(
     member.role === 'admin' ? (options.adminPasswordHash ?? '') : options.demoPasswordHash;
   const teaching = staff.flatMap((member) =>
     [...subjectsByGrade].flatMap(([grade, subjects]) =>
-      member.teaches && subjects.includes(member.teaches)
-        ? [{ teacher_id: member.id, grade, subject_id: member.teaches }]
-        : [],
+      member.teaches
+        .filter((subjectId) => subjects.includes(subjectId))
+        .map((subjectId) => ({ teacher_id: member.id, grade, subject_id: subjectId })),
     ),
   );
   return [
@@ -226,9 +197,9 @@ export async function seedSchool(
   options: SeedOptions,
 ): Promise<{ learners: number }> {
   const classes = [
-    { grade: 10, data: options.grade10 },
-    { grade: 11, data: deriveGrade(options.grade10, 11) },
-    { grade: 12, data: deriveGrade(options.grade10, 12) },
+    { grade: 10, data: withExtraSubjects(options.grade10, 10) },
+    { grade: 11, data: withExtraSubjects(deriveGrade(options.grade10, 11), 11) },
+    { grade: 12, data: withExtraSubjects(deriveGrade(options.grade10, 12), 12) },
   ];
   const subjectsByGrade = new Map(
     classes.map(({ grade, data }) => [grade, data.subjects.map((s) => s.id)]),
@@ -241,8 +212,24 @@ export async function seedSchool(
       { date: 'text', free_slots: 'text[]' },
       options.grade10.calendar.map((day) => ({ date: day.date, free_slots: day.freeSlots })),
     ),
+    {
+      text: `INSERT INTO meta (key, value) VALUES ('seed_version', $1)
+             ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value`,
+      params: [String(SEED_VERSION)],
+    },
   ]);
   return { learners: classes.reduce((total, { data }) => total + data.learners.length, 0) };
+}
+
+/** 0 for an empty database, otherwise the seed version it was last topped up to. */
+export async function seededVersion(db: Database): Promise<number> {
+  if (!(await isSeeded(db))) {
+    return 0;
+  }
+  const [row] = await db.query<{ value: string }>(
+    "SELECT value FROM meta WHERE key = 'seed_version'",
+  );
+  return Number(row?.value ?? 1);
 }
 
 export async function isSeeded(db: Database): Promise<boolean> {

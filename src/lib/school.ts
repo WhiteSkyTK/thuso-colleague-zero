@@ -13,8 +13,9 @@ import { NotificationRepository } from '@/core/school/NotificationRepository';
 import { PastPaperRepository } from '@/core/school/PastPaperRepository';
 import { RunRepository } from '@/core/school/RunRepository';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
+import { SubjectChoiceRepository } from '@/core/school/SubjectChoiceRepository';
 import { UserRepository } from '@/core/school/UserRepository';
-import { isSeeded, seedSchool } from '@/core/seed/seedSchool';
+import { SEED_VERSION, seedSchool, seededVersion } from '@/core/seed/seedSchool';
 
 export interface School {
   db: Database;
@@ -24,18 +25,16 @@ export interface School {
   runs: RunRepository;
   notifications: NotificationRepository;
   papers: PastPaperRepository;
+  choices: SubjectChoiceRepository;
   riskThreshold: number;
   delivery: AppConfig['delivery'];
   /** Only when SMTP is configured. */
   transport?: MailTransport;
 }
 
-/** A grade's class is read from the database at most once a minute, and again after any write. */
-const CLASS_CACHE_MS = 60_000;
-
 const holder = globalThis as typeof globalThis & {
   thusoSchool?: Promise<School>;
-  thusoClassCache?: Map<number, { at: number; data: Promise<ClassData> }>;
+  thusoClassCache?: Map<number, { version: number; data: Promise<ClassData> }>;
 };
 
 async function open(): Promise<School> {
@@ -43,7 +42,8 @@ async function open(): Promise<School> {
   const { databaseUrl, demoPassword, adminPassword } = config.school;
   const db = databaseUrl ? new NeonDatabase(databaseUrl) : await PgliteDatabase.create();
   await migrate(db);
-  if (!(await isSeeded(db))) {
+  // Empty: seed the demo school. Older seed: top it up (existing rows, marks and changes are kept).
+  if ((await seededVersion(db)) < SEED_VERSION) {
     await seedSchool(db, {
       grade10: loadSeedClass(),
       demoPasswordHash: await hashPassword(demoPassword),
@@ -58,6 +58,7 @@ async function open(): Promise<School> {
     runs: new RunRepository(db),
     notifications: new NotificationRepository(db),
     papers: new PastPaperRepository(db),
+    choices: new SubjectChoiceRepository(db),
     riskThreshold: config.rules.riskThreshold,
     delivery: config.delivery,
     transport: config.delivery.smtp ? new SmtpTransport(config.delivery.smtp) : undefined,
@@ -73,16 +74,18 @@ export function school(): Promise<School> {
   return holder.thusoSchool;
 }
 
-/** The class for one grade, shared by every page and agent run until it is a minute old. */
+/** The class for one grade, shared by every page and agent run until any server changes it. */
 export async function classFor(grade: number): Promise<ClassData> {
   const cache = (holder.thusoClassCache ??= new Map());
+  const { data } = await school();
+  // One tiny query: reuse this server's copy only while nobody has changed the grade's data.
+  const version = await data.version(grade);
   const cached = cache.get(grade);
-  if (cached && Date.now() - cached.at < CLASS_CACHE_MS) {
+  if (cached?.version === version) {
     return cached.data;
   }
-  const { data } = await school();
   const loading = data.loadClass(grade);
-  cache.set(grade, { at: Date.now(), data: loading });
+  cache.set(grade, { version, data: loading });
   loading.catch(() => cache.delete(grade));
   return loading;
 }

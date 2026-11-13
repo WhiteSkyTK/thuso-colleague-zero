@@ -7,6 +7,7 @@ import { signOut } from '../login/actions';
 const LINKS: Record<Role, readonly { href: string; label: string }[]> = {
   learner: [
     { href: '/portal/learner', label: 'My page' },
+    { href: '/portal/subjects', label: 'My subjects' },
     { href: '/portal/calendar', label: 'Calendar' },
     { href: '/portal/papers', label: 'Past papers' },
   ],

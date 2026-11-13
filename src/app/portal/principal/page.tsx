@@ -10,6 +10,8 @@ import { buildClassInsights } from '@/core/insights/classInsights';
 import { requireUser } from '@/lib/auth';
 import { CAUSE_LABEL } from '@/lib/labels';
 import { principalTips } from '@/lib/mascotTips';
+import { CategoryGroups } from '@/components/insights/CategoryGroups';
+import { categoriseClass } from '@/core/insights/learnerCategory';
 import { classFor, school } from '@/lib/school';
 
 export const metadata: Metadata = { title: 'School — Thuso' };
@@ -23,10 +25,14 @@ export default async function PrincipalPage({
     school(),
   ]);
   const byGrade = await Promise.all(
-    GRADES.map(async (grade) => ({
-      grade,
-      insights: buildClassInsights(await classFor(grade), riskThreshold),
-    })),
+    GRADES.map(async (grade) => {
+      const data = await classFor(grade);
+      return {
+        grade,
+        insights: buildClassInsights(data, riskThreshold),
+        groups: categoriseClass(data, riskThreshold),
+      };
+    }),
   );
   const open = byGrade.find((entry) => String(entry.grade) === query.grade);
 
@@ -82,6 +88,7 @@ export default async function PrincipalPage({
           <h2 id="grade-heading" className="font-display text-4xl font-extrabold uppercase">
             Grade {open.grade} in detail
           </h2>
+          <CategoryGroups learners={open.groups} title={`Grade ${open.grade} in groups`} />
           <div className="grid gap-4 lg:grid-cols-2">
             {open.insights.subjects.map((insight) => (
               <SubjectInsightCard key={insight.subjectId} insight={insight} />

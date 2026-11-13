@@ -1,4 +1,4 @@
-import type { Database } from '../db/Database';
+import type { Database, Statement } from '../db/Database';
 import { insertRows } from '../db/insertRows';
 import { ClassDataSchema, type ClassData, type Task } from '../domain/classData';
 
@@ -30,6 +30,15 @@ export interface MarkSheet {
 export type NewGradeTask = Omit<Task, 'id'>;
 
 const TASK_ID_DIGITS = 2;
+
+const versionKey = (grade: number) => `data_version:${grade}`;
+
+/** One statement that moves a grade's data version on by one. */
+const bumpVersion = (grade: number): Statement => ({
+  text: `INSERT INTO meta (key, value) VALUES ($1, '1')
+         ON CONFLICT (key) DO UPDATE SET value = (meta.value::int + 1)::text`,
+  params: [versionKey(grade)],
+});
 
 /** Class data for one grade, read in parallel (one round trip each, no N+1), plus the teacher's writes. */
 export class SchoolDataRepository {
@@ -117,6 +126,14 @@ export class SchoolDataRepository {
   }
 
   /** Learners per grade, for the principal's overview. */
+  /** Changes whenever a grade's data is written, so every server copy knows to reload. */
+  async version(grade: number): Promise<number> {
+    const [row] = await this.db.query<{ value: string }>('SELECT value FROM meta WHERE key = $1', [
+      versionKey(grade),
+    ]);
+    return Number(row?.value ?? 0);
+  }
+
   gradeSizes(): Promise<{ grade: number; learners: number }[]> {
     return this.db.query(
       `SELECT grade, count(*)::int AS learners FROM users WHERE role = 'learner' GROUP BY grade ORDER BY grade`,
@@ -134,6 +151,7 @@ export class SchoolDataRepository {
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
       [task.grade, id, task.subjectId, task.title, task.kind, task.week, task.topics, createdBy],
     );
+    await this.db.batch([bumpVersion(task.grade)]);
     return {
       id,
       subjectId: task.subjectId,
@@ -147,6 +165,7 @@ export class SchoolDataRepository {
   /** Saves (or corrects) one topic's marks for a whole class in a single statement. */
   async recordMarks(sheet: MarkSheet): Promise<void> {
     await this.db.batch([
+      bumpVersion(sheet.grade),
       insertRows(
         {
           table: 'results',

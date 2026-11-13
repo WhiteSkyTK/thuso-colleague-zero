@@ -96,6 +96,11 @@ const SCHEMA = [
     topics text[] NOT NULL DEFAULT '{}', created_by text, created_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE INDEX IF NOT EXISTS past_papers_grade ON past_papers (grade, subject_id, year DESC)`,
+  `CREATE TABLE IF NOT EXISTS subject_choices (
+    learner_id text PRIMARY KEY REFERENCES users (id) ON DELETE CASCADE,
+    subjects text[] NOT NULL, updated_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE TABLE IF NOT EXISTS meta (key text PRIMARY KEY, value text NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

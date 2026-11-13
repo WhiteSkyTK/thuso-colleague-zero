@@ -1,4 +1,5 @@
 import type { Task } from '@/core/domain/classData';
+import type { LearnerCategory } from '@/core/insights/learnerCategory';
 import type { LearnerProfile } from '@/core/insights/learnerProfile';
 import { DBE_PAST_PAPERS_URL, FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
 import { PathwayFinder } from './PathwayFinder';
@@ -12,6 +13,9 @@ interface LearnerDashboardProps {
   readonly subjectNames: ReadonlyMap<string, string>;
   /** "Hi Refilwe!" for the learner; the learner's name for staff. */
   readonly isOwnPage: boolean;
+  readonly category: LearnerCategory;
+  readonly facts: readonly string[];
+  readonly chosenSubjects: readonly string[];
 }
 
 /** Everything about one learner: standing per subject, why they slip, what to study, tasks, future. */
@@ -20,6 +24,9 @@ export function LearnerDashboard({
   tasks,
   subjectNames,
   isOwnPage,
+  category,
+  facts,
+  chosenSubjects,
 }: LearnerDashboardProps) {
   const { learner, subjects } = profile;
   return (
@@ -40,6 +47,37 @@ export function LearnerDashboard({
           ))}
           — so that is how Thuso teaches.
         </p>
+      </section>
+
+      <section
+        aria-labelledby="learned-heading"
+        className="grid gap-4 rounded-card bg-white p-5 shadow-card md:grid-cols-[1fr_2fr]"
+      >
+        <div className="flex flex-col gap-2">
+          <p className="font-mono text-xs uppercase tracking-widest text-jacaranda-700">
+            Thuso&apos;s read
+          </p>
+          <p className="font-display text-3xl font-extrabold uppercase">
+            <span aria-hidden="true">{category.icon} </span>
+            {category.label}
+          </p>
+          <p className="text-sm">{category.support}</p>
+        </div>
+        <div>
+          <h2 id="learned-heading" className="font-semibold">
+            {isOwnPage ? 'What Thuso has learned about you' : 'What Thuso has learned'}
+          </h2>
+          <ul className="mt-1 list-disc pl-5 text-sm">
+            {facts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
+          {chosenSubjects.length > 0 && (
+            <p className="mt-2 text-sm">
+              <strong>Subjects:</strong> {chosenSubjects.join(' · ')}
+            </p>
+          )}
+        </div>
       </section>
 
       <div className="grid gap-4 lg:grid-cols-2">

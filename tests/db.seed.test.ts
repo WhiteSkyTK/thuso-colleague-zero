@@ -1,7 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { PgliteDatabase } from '@/core/db/PgliteDatabase';
 import { migrate } from '@/core/db/schema';
-import { isSeeded, seedSchool } from '@/core/seed/seedSchool';
+import { isSeeded, SEED_VERSION, seedSchool, seededVersion } from '@/core/seed/seedSchool';
+import { isValidChoice } from '@/core/subjects/nscSubjects';
 import { hashPassword, hashToken, newSessionToken, verifyPassword } from '@/core/auth/passwords';
 import { buildClassInsights } from '@/core/insights/classInsights';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
@@ -33,7 +34,18 @@ describe('seedSchool', () => {
     const staff = await db.query<{ role: string }>(
       "SELECT role FROM users WHERE role <> 'learner' ORDER BY id",
     );
-    expect(staff.map((s) => s.role)).toEqual(['teacher', 'teacher', 'principal']);
+    expect(staff.map((s) => s.role)).toEqual([
+      'teacher',
+      'teacher',
+      'teacher',
+      'teacher',
+      'teacher',
+      'principal',
+    ]);
+    const choices = await db.query<{ subjects: string[] }>('SELECT subjects FROM subject_choices');
+    expect(choices).toHaveLength(96);
+    expect(choices.every((c) => isValidChoice(c.subjects))).toBe(true);
+    expect(await seededVersion(db)).toBe(SEED_VERSION);
     const [topics] = await db.query<{ topics: string[] }>(
       "SELECT topics FROM subjects WHERE grade = 12 AND id = 'MATH'",
     );
@@ -51,7 +63,16 @@ describe('SchoolDataRepository and UserRepository on Postgres', () => {
     const seed = seedClassData();
     const grade10 = await repo.loadClass(10);
     expect(grade10.learners).toHaveLength(32);
-    expect(grade10.results).toHaveLength(seed.results.length);
+    const core = grade10.results.filter((r) => r.subjectId === 'MATH' || r.subjectId === 'PHSC');
+    expect(core).toHaveLength(seed.results.length);
+    expect(grade10.subjects.map((s) => s.id)).toEqual([
+      'ACCN',
+      'ENGL',
+      'LIFE',
+      'LIFO',
+      'MATH',
+      'PHSC',
+    ]);
     const maths = buildClassInsights(grade10, 40).subjects.find((s) => s.subjectId === 'MATH');
     expect(maths?.atRisk).toHaveLength(7);
     const grade12 = await repo.loadClass(12);
@@ -76,7 +97,8 @@ describe('SchoolDataRepository and UserRepository on Postgres', () => {
       },
       'S-101',
     );
-    expect(task.id).toBe('T-11');
+    expect(task.id).toBe('T-41');
+    const before = await repo.version(11);
     const sheet = {
       grade: 11,
       taskId: task.id,
@@ -87,9 +109,17 @@ describe('SchoolDataRepository and UserRepository on Postgres', () => {
     await repo.recordMarks({ ...sheet, marks: [{ learnerId: 'L-101', scorePct: 40 }] });
     await repo.recordMarks({ ...sheet, marks: [{ learnerId: 'L-101', scorePct: 64 }] });
     const rows = await db.query<{ score_pct: number }>(
-      "SELECT score_pct FROM results WHERE learner_id = 'L-101' AND task_id = 'T-11'",
+      "SELECT score_pct FROM results WHERE learner_id = 'L-101' AND task_id = 'T-41'",
     );
     expect(rows).toEqual([{ score_pct: 64 }]);
+    // Each write moves the grade's data version on, so every server reloads it.
+    expect(await repo.version(11)).toBe(before + 2);
+    // Re-running the seed (an upgrade) keeps the teacher's corrected mark.
+    await seedSchool(db, { grade10: seedClassData(), demoPasswordHash: 'scrypt$x$y' });
+    const again = await db.query<{ score_pct: number }>(
+      "SELECT score_pct FROM results WHERE learner_id = 'L-101' AND task_id = 'T-41'",
+    );
+    expect(again).toEqual([{ score_pct: 64 }]);
   }, 60_000);
 
   it('signs in with a hashed password and a hashed session token', async () => {
