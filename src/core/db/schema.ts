@@ -101,6 +101,24 @@ const SCHEMA = [
     subjects text[] NOT NULL, updated_at timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE TABLE IF NOT EXISTS meta (key text PRIMARY KEY, value text NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS files (
+    id text PRIMARY KEY, owner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    name text NOT NULL, content_type text NOT NULL, size int NOT NULL, data_base64 text NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE TABLE IF NOT EXISTS practice_sets (
+    id text PRIMARY KEY, grade int NOT NULL, subject_id text NOT NULL, title text NOT NULL,
+    task_id text, paper_url text, questions jsonb NOT NULL, created_by text,
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE TABLE IF NOT EXISTS submissions (
+    id text PRIMARY KEY, set_id text NOT NULL REFERENCES practice_sets (id) ON DELETE CASCADE,
+    learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    answers jsonb NOT NULL, work_url text, proposed jsonb NOT NULL, final jsonb,
+    status text NOT NULL, score_pct real NOT NULL, verified_by text, verified_at timestamptz,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    UNIQUE (set_id, learner_id)
+  )`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

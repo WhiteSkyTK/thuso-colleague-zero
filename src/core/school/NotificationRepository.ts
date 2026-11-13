@@ -48,7 +48,7 @@ export class NotificationRepository {
        SELECT r.id, r.user_id, r.kind, r.title, r.body, r.learner_id, r.grade, r.link
        FROM jsonb_to_recordset($1::jsonb) AS r(id text, user_id text, kind text, title text, body text,
          learner_id text, grade int, link text)
-       WHERE r.kind IN ('plan-ready', 'run-summary') OR NOT EXISTS (
+       WHERE r.kind IN ('plan-ready', 'run-summary', 'to-mark', 'marked') OR NOT EXISTS (
          SELECT 1 FROM notifications n WHERE n.user_id = r.user_id AND n.kind = r.kind
            AND n.learner_id IS NOT DISTINCT FROM r.learner_id AND n.title = r.title
            AND n.created_at > now() - make_interval(days => ${QUIET_DAYS})

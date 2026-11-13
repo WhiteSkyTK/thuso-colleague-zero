@@ -23,6 +23,8 @@ const KIND_ICON: Record<Notification['kind'], string> = {
   'low-mark': '!',
   'plan-ready': '✓',
   'run-summary': '★',
+  'to-mark': '✎',
+  marked: '✓',
 };
 
 function AlertList({

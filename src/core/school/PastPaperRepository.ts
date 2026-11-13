@@ -3,7 +3,11 @@ import type { Database } from '../db/Database';
 
 const FIRST_YEAR = 2008;
 const LAST_YEAR = 2030;
-const HttpsUrl = z.url({ protocol: /^https$/ }).max(500);
+/** An https page (e.g. the DBE archive) or a file uploaded to the school portal. */
+const HttpsUrl = z.union([
+  z.url({ protocol: /^https$/ }).max(500),
+  z.string().regex(/^\/api\/files\/[0-9a-f-]{36}$/),
+]);
 
 /** What a teacher types to add or change a past paper. Links must be https. */
 export const PastPaperInputSchema = z.object({

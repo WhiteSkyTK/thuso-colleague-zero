@@ -1,31 +1,14 @@
 import type { Metadata } from 'next';
 import { PortalMascot } from '@/components/mascot/PortalMascot';
 import { DeletePaperButton } from '@/components/papers/DeletePaperButton';
-import { PaperForm, type SubjectChoice } from '@/components/papers/PaperForm';
-import { GRADES, type SchoolUser } from '@/core/domain/schoolUser';
+import { PaperForm } from '@/components/papers/PaperForm';
 import { requireUser } from '@/lib/auth';
 import { DBE_PAST_PAPERS_URL } from '@/lib/labels';
-import { classFor, school } from '@/lib/school';
+import { school } from '@/lib/school';
+import { subjectsInView } from '@/lib/subjectsInView';
 import { deletePaperAction, savePaperAction } from './actions';
 
 export const metadata: Metadata = { title: 'Past papers — Thuso' };
-
-/** Learners see their grade; teachers the subjects and grades they teach; others every grade. */
-async function subjectsInView(user: SchoolUser): Promise<SubjectChoice[]> {
-  const { users } = await school();
-  const teaching = user.role === 'teacher' ? await users.teachingOf(user.id) : [];
-  const grades = user.role === 'learner' ? [user.grade ?? 10] : [...GRADES];
-  const classes = await Promise.all(grades.map((grade) => classFor(grade)));
-  return classes.flatMap((data, at) =>
-    data.subjects
-      .filter(
-        (s) =>
-          user.role !== 'teacher' ||
-          teaching.some((t) => t.grade === grades[at] && t.subjectId === s.id),
-      )
-      .map((s) => ({ grade: grades[at] ?? 10, id: s.id, name: s.name, topics: s.topics })),
-  );
-}
 
 export default async function PastPapersPage() {
   const user = await requireUser();

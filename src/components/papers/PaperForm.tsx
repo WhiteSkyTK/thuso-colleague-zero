@@ -2,6 +2,7 @@
 
 import { useState, useTransition, type FormEvent } from 'react';
 import type { ActionResult } from '@/app/portal/teacher/actions';
+import { FileDrop } from '@/components/files/FileDrop';
 import type { PastPaper } from '@/core/school/PastPaperRepository';
 
 export interface SubjectChoice {
@@ -28,6 +29,8 @@ export function PaperForm({ subjects, onSave, paper }: PaperFormProps) {
   const [choice, setChoice] = useState(
     paper ? `${paper.grade}|${paper.subjectId}` : `${first?.grade}|${first?.id}`,
   );
+  const [url, setUrl] = useState(paper?.url ?? '');
+  const [memoUrl, setMemoUrl] = useState(paper?.memoUrl ?? '');
   const [result, setResult] = useState<ActionResult>({});
   const [isPending, startTransition] = useTransition();
   const subject = subjects.find((s) => `${s.grade}|${s.id}` === choice);
@@ -101,25 +104,27 @@ export function PaperForm({ subjects, onSave, paper }: PaperFormProps) {
           />
         </label>
       </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <FileDrop label="Upload the paper" onUploaded={(file) => setUrl(file.url)} />
+        <FileDrop label="Upload the memo (optional)" onUploaded={(file) => setMemoUrl(file.url)} />
+      </div>
       <label className="flex flex-col gap-1 text-sm font-medium">
-        <span>Link to the paper (https://)</span>
+        <span>…or link to the paper (https://)</span>
         <input
           name="url"
-          type="url"
           required
-          pattern="https://.*"
-          defaultValue={paper?.url}
+          value={url}
+          onChange={(event) => setUrl(event.target.value)}
           placeholder="https://www.education.gov.za/…"
           className={FIELD}
         />
       </label>
       <label className="flex flex-col gap-1 text-sm font-medium">
-        <span>Link to the memo (optional)</span>
+        <span>…and to the memo (optional)</span>
         <input
           name="memoUrl"
-          type="url"
-          pattern="https://.*"
-          defaultValue={paper?.memoUrl}
+          value={memoUrl}
+          onChange={(event) => setMemoUrl(event.target.value)}
           className={FIELD}
         />
       </label>

@@ -6,7 +6,8 @@ import { InMemoryClassRepository } from '../repositories/InMemoryClassRepository
 /** Below this a single topic mark is worth a nudge, even when the learner is not at risk overall. */
 export const LOW_MARK_PCT = 40;
 
-export type AlertKind = 'at-risk' | 'low-mark' | 'plan-ready' | 'run-summary';
+export type AlertKind =
+  'at-risk' | 'low-mark' | 'plan-ready' | 'run-summary' | 'to-mark' | 'marked';
 
 /** Something Thuso noticed, before it is addressed to people. */
 export interface Alert {
