@@ -81,7 +81,12 @@ export class MessengerAgent extends Agent<StepRequest, StepResult> implements St
     });
     return {
       kind: 'outputs',
-      outputs: [{ subjectId, payload: { audiences: ['learner', 'guardian'], supportSession: plan.supportSession } }],
+      outputs: [
+        {
+          subjectId,
+          payload: { audiences: ['learner', 'guardian'], supportSession: plan.supportSession },
+        },
+      ],
     };
   }
 

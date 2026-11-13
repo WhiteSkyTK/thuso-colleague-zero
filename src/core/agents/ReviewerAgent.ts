@@ -47,7 +47,9 @@ export class ReviewerAgent extends Agent<StepRequest, StepResult> implements Ste
   private async reviewPlan(request: StepRequest, ctx: RunContext): Promise<StepResult> {
     const item = singleItem(request);
     const subject = this.subjectOf(item, ctx);
-    const findings = this.sources.checks.map((check) => check(subject)).filter((result) => !result.passed);
+    const findings = this.sources.checks
+      .map((check) => check(subject))
+      .filter((result) => !result.passed);
     const errors = findings.filter((result) => result.severity === 'error');
     if (item.attempt === 1) {
       this.raiseWarnings(item, findings, ctx);
@@ -94,7 +96,11 @@ export class ReviewerAgent extends Agent<StepRequest, StepResult> implements Ste
   }
 
   private async judge(subject: ReviewSubject, ctx: RunContext): Promise<ReviewVerdict> {
-    const input = { plan: subject.plan, diagnosis: subject.diagnosis, constraints: subject.constraints };
+    const input = {
+      plan: subject.plan,
+      diagnosis: subject.diagnosis,
+      constraints: subject.constraints,
+    };
     const asked = await this.ask(ctx, ReviewVerdictSchema, {
       task: 'reviewer.review-plan',
       tier: 'reasoning',
@@ -108,7 +114,8 @@ export class ReviewerAgent extends Agent<StepRequest, StepResult> implements Ste
 
   private announce(item: WorkItem, verdict: ReviewVerdict, ctx: RunContext): void {
     const isPass = verdict.status === 'pass';
-    const evidence = verdict.issues.map((issue) => issue.evidence).join('; ') || 'rubric review failed';
+    const evidence =
+      verdict.issues.map((issue) => issue.evidence).join('; ') || 'rubric review failed';
     this.say(ctx, {
       level: isPass ? 'PASS' : 'FLAG',
       itemId: item.subjectId,
@@ -116,7 +123,11 @@ export class ReviewerAgent extends Agent<StepRequest, StepResult> implements Ste
         ? `${item.subjectId}: plan approved (attempt ${item.attempt}).`
         : `${item.subjectId}: ${evidence}.`,
       // The approved plan travels with the PASS so the run screen can show it.
-      data: { attempt: item.attempt, issues: verdict.issues, ...(isPass && { plan: item.payload }) },
+      data: {
+        attempt: item.attempt,
+        issues: verdict.issues,
+        ...(isPass && { plan: item.payload }),
+      },
     });
   }
 }

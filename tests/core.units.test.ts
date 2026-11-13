@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 import { loadConfig } from '@/core/config/env';
-import { BudgetExceededError, ConfigError, LlmOutputError, TimeoutError } from '@/core/errors/AppError';
+import {
+  BudgetExceededError,
+  ConfigError,
+  LlmOutputError,
+  TimeoutError,
+} from '@/core/errors/AppError';
 import { EventBus } from '@/core/events/EventBus';
 import { formatElapsed, formatEvent } from '@/core/events/formatEvent';
 import { MockProvider } from '@/core/llm/MockProvider';
@@ -17,7 +22,12 @@ describe('loadConfig', () => {
   it('defaults to the offline mock provider with the documented limits', () => {
     const config = loadConfig({});
     expect(config.llm.provider).toBe('mock');
-    expect(config.run).toEqual({ maxAttempts: 3, maxSteps: 25, timeoutMs: 600_000, tokenBudget: 400_000 });
+    expect(config.run).toEqual({
+      maxAttempts: 3,
+      maxSteps: 25,
+      timeoutMs: 600_000,
+      tokenBudget: 400_000,
+    });
     expect(config.rules).toEqual({ riskThreshold: 40, maxHoursPerWeek: 4 });
     expect(config.delivery.mode).toBe('sandbox');
   });
@@ -32,7 +42,9 @@ describe('loadConfig', () => {
   it('fails fast and names the bad key, never its value', () => {
     expect(() => loadConfig({ RUN_MAX_STEPS: 'secret-looking-value' })).toThrow(ConfigError);
     expect(() => loadConfig({ RUN_MAX_STEPS: 'secret-looking-value' })).toThrow(/RUN_MAX_STEPS/);
-    expect(() => loadConfig({ RUN_MAX_STEPS: 'secret-looking-value' })).not.toThrow(/secret-looking/);
+    expect(() => loadConfig({ RUN_MAX_STEPS: 'secret-looking-value' })).not.toThrow(
+      /secret-looking/,
+    );
   });
 
   it('requires the keys of the chosen provider', () => {
@@ -45,7 +57,14 @@ describe('EventBus and formatEvent', () => {
     const bus = new EventBus();
     const seen: string[] = [];
     const unsubscribe = bus.subscribe((event) => seen.push(event.message));
-    const event = { runId: 'r', seq: 0, ts: 0, agent: 'SYS', level: 'INFO', message: 'one' } as const;
+    const event = {
+      runId: 'r',
+      seq: 0,
+      ts: 0,
+      agent: 'SYS',
+      level: 'INFO',
+      message: 'one',
+    } as const;
     bus.publish(event);
     unsubscribe();
     bus.publish({ ...event, message: 'two' });
@@ -89,9 +108,9 @@ describe('MockProvider', () => {
 
   it('fails with LlmOutputError when the repair also fails', async () => {
     const provider = new MockProvider(() => ({ answer: 'still wrong' }));
-    await expect(provider.completeStructured(z.object({ answer: z.number() }), REQUEST)).rejects.toThrow(
-      LlmOutputError,
-    );
+    await expect(
+      provider.completeStructured(z.object({ answer: z.number() }), REQUEST),
+    ).rejects.toThrow(LlmOutputError);
   });
 
   it('completes plain text', async () => {
@@ -101,7 +120,12 @@ describe('MockProvider', () => {
 });
 
 describe('Budget', () => {
-  const limits = { tokenBudget: 100, maxSteps: 2, runTimeoutMs: 1_000, costPerMTok: { input: 3, output: 15 } };
+  const limits = {
+    tokenBudget: 100,
+    maxSteps: 2,
+    runTimeoutMs: 1_000,
+    costPerMTok: { input: 3, output: 15 },
+  };
 
   it('adds usage and estimates cost', () => {
     const budget = new Budget(limits, new ManualClock());
@@ -148,4 +172,3 @@ describe('mapWithLimit and withTimeout', () => {
     await expect(withTimeout(Promise.resolve('ok'), 50, 'fast call')).resolves.toBe('ok');
   });
 });
-

@@ -34,7 +34,7 @@ export const COACH_PROMPT = [
   '- `addresses` lists the causes the plan tackles; the FIRST must be the diagnosed `primaryCause`.',
   '- Sessions cover the weak topics. Build each topic up the ladder: foundation → guided → independent → exam.',
   '  Start at foundation when the topic is at CAPS level 1 or 2. Never step back down.',
-  '- Teach at least half the sessions in one of the learner\'s `preferredFormats`:',
+  "- Teach at least half the sessions in one of the learner's `preferredFormats`:",
   '  worked-examples (a series of solved steps), patterns (a rule or memory trick), visual-story (a comic or picture story),',
   '  audio (listen and teach back), practice (exam-style questions). Make `activity` concrete and creative.',
   '- Cite only resource ids from `resources`. If a topic has none, plan a teacher-led session with an empty `resourceIds`.',

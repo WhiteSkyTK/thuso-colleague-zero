@@ -1,20 +1,5 @@
-import type { LearningFormat, RiskCause } from '@/core/domain/vocab';
+import { CAUSE_LABEL, FORMAT_LABEL } from '@/lib/labels';
 import type { LearnerCard } from '@/lib/runView';
-
-const CAUSE_LABEL: Record<RiskCause, string> = {
-  attendance: 'Attendance',
-  homework: 'Homework not done',
-  'assessment-trend': 'Marks falling',
-  'topic-gap': 'One weak topic',
-};
-
-const FORMAT_LABEL: Record<LearningFormat, string> = {
-  'worked-examples': 'Worked examples',
-  patterns: 'Patterns',
-  'visual-story': 'Visual story',
-  audio: 'Audio',
-  practice: 'Exam practice',
-};
 
 const BADGE = 'rounded-full px-2 py-0.5 text-xs font-semibold text-ink';
 
@@ -51,7 +36,9 @@ function Card({ card }: Readonly<{ card: LearnerCard }>) {
           </ul>
           <p className="text-sm">
             Learns best with:{' '}
-            <strong>{diagnosis.preferredFormats.map((format) => FORMAT_LABEL[format]).join(', ')}</strong>
+            <strong>
+              {diagnosis.preferredFormats.map((format) => FORMAT_LABEL[format]).join(', ')}
+            </strong>
           </p>
         </>
       )}
@@ -66,7 +53,8 @@ function Card({ card }: Readonly<{ card: LearnerCard }>) {
                 <strong>Day {session.day}</strong> · {session.topic} · {session.rung} ·{' '}
                 {FORMAT_LABEL[session.format]} — {session.activity}{' '}
                 <span className="font-mono text-xs">
-                  ({session.resourceIds.length > 0 ? session.resourceIds.join(', ') : 'teacher-led'})
+                  ({session.resourceIds.length > 0 ? session.resourceIds.join(', ') : 'teacher-led'}
+                  )
                 </span>
               </li>
             ))}

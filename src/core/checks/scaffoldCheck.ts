@@ -9,14 +9,21 @@ const ORDER_HINT = 'Keep each topic in order: foundation, guided, independent, e
 
 /** Topics are built up rung by rung: start low enough for the learner and never step down. */
 export const scaffoldCheck: ReviewCheck = ({ plan, diagnosis }) => {
-  const levelOf = new Map<string, number>(diagnosis.weakTopics.map((weak) => [weak.topic, weak.capsLevel]));
+  const levelOf = new Map<string, number>(
+    diagnosis.weakTopics.map((weak) => [weak.topic, weak.capsLevel]),
+  );
   const lastRung = new Map<string, number>();
   const inOrder = [...plan.sessions].sort((a, b) => a.day - b.day);
 
   const check = (topic: string, rung: number): CheckResult | undefined => {
     const previous = lastRung.get(topic);
     const level = levelOf.get(topic);
-    if (previous === undefined && rung > 0 && level !== undefined && level <= NEEDS_FOUNDATION_AT_OR_BELOW) {
+    if (
+      previous === undefined &&
+      rung > 0 &&
+      level !== undefined &&
+      level <= NEEDS_FOUNDATION_AT_OR_BELOW
+    ) {
       return fail(
         ID,
         `${topic} starts at "${SCAFFOLD_RUNGS[rung]}" but the learner is at CAPS level ${level}`,

@@ -4,7 +4,12 @@ import { AGENT_META, MAX_REPLANS, PLAN_ATTEMPTS } from '../config/constants';
 import type { Plan, PlanStep } from '../domain/plan';
 import type { RunSummary } from '../domain/runSummary';
 import { createWorkItem, type WorkItem } from '../domain/workItem';
-import { AppError, BudgetExceededError, PlanInvalidError, StepFailedError } from '../errors/AppError';
+import {
+  AppError,
+  BudgetExceededError,
+  PlanInvalidError,
+  StepFailedError,
+} from '../errors/AppError';
 import type { AgentRegistry } from './AgentRegistry';
 import { buildSummary } from './buildSummary';
 import { mapWithLimit } from './Concurrency';

@@ -33,7 +33,10 @@ const STANDARD_PLAN = planOf(
 );
 
 /** A planner that returns the given plans in order, repeating the last one. */
-function scriptedPlanner(plans: Plan[]): { planner: Agent<PlanRequest, Plan>; requests: PlanRequest[] } {
+function scriptedPlanner(plans: Plan[]): {
+  planner: Agent<PlanRequest, Plan>;
+  requests: PlanRequest[];
+} {
   const requests: PlanRequest[] = [];
   const planner = {
     execute: (request: PlanRequest) => {
@@ -139,7 +142,11 @@ describe('Orchestrator', () => {
 
     expect(coach.requests).toHaveLength(3);
     expect(messenger.requests).toHaveLength(0);
-    expect(summary).toMatchObject({ status: 'completed', itemsDelivered: 0, humanInterventions: 1 });
+    expect(summary).toMatchObject({
+      status: 'completed',
+      itemsDelivered: 0,
+      humanInterventions: 1,
+    });
     expect(summary.escalations[0]).toMatchObject({ subjectId: 'L-021' });
     expect(summary.escalations[0]?.reason).toContain('unknown resource R-999');
     expect(levelsOf(events)).toContain('SYS·ESCALATE');

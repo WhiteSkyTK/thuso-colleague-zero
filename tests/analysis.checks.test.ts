@@ -39,7 +39,9 @@ describe('capsLevel', () => {
 describe('assessRisk on the seed class', () => {
   it('finds exactly the seven at-risk Mathematics learners and each root cause', () => {
     const atRisk = assess('MATH').filter((assessed) => assessed.riskScore >= THRESHOLD);
-    expect(Object.fromEntries(atRisk.map((assessed) => [assessed.learnerId, assessed.primaryCause]))).toEqual({
+    expect(
+      Object.fromEntries(atRisk.map((assessed) => [assessed.learnerId, assessed.primaryCause])),
+    ).toEqual({
       'L-003': 'homework',
       'L-009': 'homework',
       'L-014': 'attendance',
@@ -75,7 +77,11 @@ describe('assessRisk on the seed class', () => {
   });
 
   it('lists weak topics, weakest first, with CAPS levels', () => {
-    expect(find('MATH', 'L-021').weakTopics[0]).toEqual({ topic: 'statistics', scorePct: 20, capsLevel: 1 });
+    expect(find('MATH', 'L-021').weakTopics[0]).toEqual({
+      topic: 'statistics',
+      scorePct: 20,
+      capsLevel: 1,
+    });
     expect(find('MATH', 'L-001').weakTopics).toHaveLength(1);
   });
 
@@ -146,18 +152,27 @@ describe('review checks', () => {
   });
 
   it('fails an invented resource id', () => {
-    const result = resourceExistsCheck(subject({ sessions: [session({ resourceIds: ['R-001', 'R-099'] })] }));
-    expect(result).toMatchObject({ passed: false, evidence: 'R-099 is not in the resource catalogue' });
+    const result = resourceExistsCheck(
+      subject({ sessions: [session({ resourceIds: ['R-001', 'R-099'] })] }),
+    );
+    expect(result).toMatchObject({
+      passed: false,
+      evidence: 'R-099 is not in the resource catalogue',
+    });
   });
 
   it('fails a week with too many minutes', () => {
-    const result = workloadCheck(subject({ sessions: [session({ minutes: 200 }), session({ day: 2, minutes: 60 })] }));
+    const result = workloadCheck(
+      subject({ sessions: [session({ minutes: 200 }), session({ day: 2, minutes: 60 })] }),
+    );
     expect(result.evidence).toBe('week 1 asks for 260 minutes; the limit is 240');
   });
 
   it('fails a topic that skips the foundation or steps back down', () => {
     const lowTopic = diagnosis.weakTopics.find((weak) => weak.capsLevel <= 2)?.topic ?? '';
-    const skipped = scaffoldCheck(subject({ sessions: [session({ topic: lowTopic, rung: 'exam' })] }));
+    const skipped = scaffoldCheck(
+      subject({ sessions: [session({ topic: lowTopic, rung: 'exam' })] }),
+    );
     expect(skipped.evidence).toContain('starts at "exam"');
     const backwards = scaffoldCheck(
       subject({
@@ -172,13 +187,17 @@ describe('review checks', () => {
 
   it('fails a plan that ignores how the learner likes to learn', () => {
     const result = formatFitCheck(
-      subject({ sessions: [session({ format: 'audio' }), session({ day: 3, format: 'practice' })] }),
+      subject({
+        sessions: [session({ format: 'audio' }), session({ day: 3, format: 'practice' })],
+      }),
     );
     expect(result.evidence).toContain('0 of 2 sessions');
   });
 
   it('fails a support session outside the calendar', () => {
-    const result = supportSessionCheck(subject({ supportSession: { date: '2026-11-15', time: '14:30' } }));
+    const result = supportSessionCheck(
+      subject({ supportSession: { date: '2026-11-15', time: '14:30' } }),
+    );
     expect(result.passed).toBe(false);
   });
 
@@ -188,7 +207,10 @@ describe('review checks', () => {
   });
 
   it('warns, but does not fail, on instruction-like learner text', () => {
-    const flagged = suspectTextCheck({ ...subject(), diagnosis: { ...diagnosis, hasSuspectText: true } });
+    const flagged = suspectTextCheck({
+      ...subject(),
+      diagnosis: { ...diagnosis, hasSuspectText: true },
+    });
     expect(flagged).toMatchObject({ passed: false, severity: 'warn' });
     expect(suspectTextCheck(subject()).passed).toBe(true);
   });

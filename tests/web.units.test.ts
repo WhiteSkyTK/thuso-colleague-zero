@@ -62,7 +62,9 @@ describe('runViewReducer', () => {
     );
 
   it('ignores events until a run has started', () => {
-    expect(runViewReducer(INITIAL_RUN_VIEW, { type: 'event', event: event(0) })).toBe(INITIAL_RUN_VIEW);
+    expect(runViewReducer(INITIAL_RUN_VIEW, { type: 'event', event: event(0) })).toBe(
+      INITIAL_RUN_VIEW,
+    );
   });
 
   it('tracks the active agent, the step and the self-correction counters', () => {
@@ -108,9 +110,15 @@ describe('worldSpeedFor', () => {
   });
 
   it('slows while a flag is up and recovers when the fix passes', () => {
-    const flagged = [event(0), event(1, { agent: 'RV', level: 'FLAG' }), event(2, { level: 'FIX' })];
+    const flagged = [
+      event(0),
+      event(1, { agent: 'RV', level: 'FLAG' }),
+      event(2, { level: 'FIX' }),
+    ];
     expect(worldSpeedFor(flagged)).toBe(WORLD_SPEED.flagged);
-    expect(worldSpeedFor([...flagged, event(3, { agent: 'RV', level: 'PASS' })])).toBe(WORLD_SPEED.normal);
+    expect(worldSpeedFor([...flagged, event(3, { agent: 'RV', level: 'PASS' })])).toBe(
+      WORLD_SPEED.normal,
+    );
   });
 
   it('speeds up when the run is done', () => {

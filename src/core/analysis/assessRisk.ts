@@ -26,7 +26,8 @@ interface Facts {
 }
 
 const clamp = (value: number): number => Math.min(FULL, Math.max(0, value));
-const sum = (values: readonly number[]): number => values.reduce((total, value) => total + value, 0);
+const sum = (values: readonly number[]): number =>
+  values.reduce((total, value) => total + value, 0);
 const mean = (values: readonly number[]): number =>
   values.length === 0 ? 0 : sum(values) / values.length;
 
@@ -43,7 +44,10 @@ function factsOf(record: LearnerRecord): Facts {
     firstHalf: mean(scores.slice(0, half)),
     secondHalf: mean(scores.slice(half)),
     recentAbsences: record.absencesByWeek ? sum(record.absencesByWeek.slice(-RECENT_WEEKS)) : null,
-    weakest: ordered.reduce((lowest, next) => (next.scorePct < lowest.scorePct ? next : lowest), first),
+    weakest: ordered.reduce(
+      (lowest, next) => (next.scorePct < lowest.scorePct ? next : lowest),
+      first,
+    ),
   };
 }
 

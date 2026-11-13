@@ -21,7 +21,16 @@ function Prop({ code }: Readonly<{ code: AgentMeta['code'] }>) {
         </g>
       );
     case 'CO':
-      return <rect x={46} y={72} width={14} height={28} rx={4} style={{ fill: 'var(--c-jacaranda-700)' }} />;
+      return (
+        <rect
+          x={46}
+          y={72}
+          width={14}
+          height={28}
+          rx={4}
+          style={{ fill: 'var(--c-jacaranda-700)' }}
+        />
+      );
     case 'RV':
       return (
         <g fill="none" stroke="var(--c-paper)" strokeWidth={2}>
@@ -59,13 +68,35 @@ export function AgentCharacter({ agent, isActive }: AgentCharacterProps) {
         <circle cx={37} cy={48} r={15} style={INK} />
         <circle cx={32} cy={46} r={2} style={PAPER} />
         <circle cx={43} cy={46} r={2} style={PAPER} />
-        <path d="M31 53 Q37 58 43 53" fill="none" stroke="var(--c-paper)" strokeWidth={2} strokeLinecap="round" />
+        <path
+          d="M31 53 Q37 58 43 53"
+          fill="none"
+          stroke="var(--c-paper)"
+          strokeWidth={2}
+          strokeLinecap="round"
+        />
         <rect x={20} y={64} width={36} height={44} rx={12} style={clothes} />
-        <rect x={50} y={70} width={14} height={7} rx={3.5} transform="rotate(-30 50 74)" style={clothes} />
+        <rect
+          x={50}
+          y={70}
+          width={14}
+          height={7}
+          rx={3.5}
+          transform="rotate(-30 50 74)"
+          style={clothes}
+        />
         <Prop code={agent.code} />
       </g>
       <rect x={25} y={104} width={9} height={36} rx={4} className="agent-leg" style={INK} />
-      <rect x={41} y={104} width={9} height={36} rx={4} className="agent-leg agent-leg-b" style={INK} />
+      <rect
+        x={41}
+        y={104}
+        width={9}
+        height={36}
+        rx={4}
+        className="agent-leg agent-leg-b"
+        style={INK}
+      />
     </svg>
   );
 }

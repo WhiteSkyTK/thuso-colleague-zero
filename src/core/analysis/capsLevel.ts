@@ -21,3 +21,8 @@ export function capsLevel(scorePct: number): CapsLevel {
   const band = CAPS_BANDS.find((candidate) => scorePct >= candidate.from) ?? NOT_ACHIEVED;
   return { level: band.level, label: band.label };
 }
+
+/** The lowest percentage that reaches a CAPS level, e.g. level 6 → 70. */
+export function minPercentForLevel(level: number): number {
+  return CAPS_BANDS.find((band) => band.level === level)?.from ?? NOT_ACHIEVED.from;
+}

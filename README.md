@@ -65,12 +65,22 @@ npm run test      # unit tests, orchestrator scenarios and the golden demo test
 To use a real model, copy `.env.example` to `.env.local` and fill in the provider keys.
 
 ```bash
-npm run dev       # web app: open http://localhost:3000/run, press Run and watch the agents work
+npm run dev       # web app on http://localhost:3000 (pages below)
 npm run seed      # regenerate the synthetic class in data/seed
 ```
 
+## The website
+| Page | For | What it shows |
+|---|---|---|
+| `/` | Everyone | The Jacaranda Street scene with the five agents, how the loop works, learning formats |
+| `/lecturer` | Lecturer | Every subject: class average, the topics to reteach, who is at risk, the root cause and how each learns best · set a task |
+| `/learner` → `/learner/L-014` | Learner | My marks per topic, what is holding me back, what to study next in my format, my tasks, DBE past papers, and **where my marks can take me** (APS and study/career pathways) |
+| `/run` | Demo | Type a goal, press Run, watch the agents plan, act, get flagged, fix and deliver — the street slows down while a flag is up |
+
+The pathway finder (idea 5) turns marks into an APS score (best six subjects, CAPS levels, no Life Orientation), reads interests from chips or a pasted CV, and says for each study route whether it is within reach, a stretch (with the exact mark to raise) or not yet. Requirements are indicative, not any institution's real rules.
+
 ## Status
-The five agents run end to end on a synthetic class of 32 learners in two subjects, with the full correction loop, re-planning, budgets and the live event log. Model calls currently go to an offline stand-in (`LLM_PROVIDER=mock`) that gets the same input a real model would; the Claude provider, email delivery with calendar invites, and the learner and lecturer screens are next. The past-paper entries in the resource catalogue are placeholders, not real papers yet. See [ROADMAP.md](ROADMAP.md).
+The five agents run end to end on a synthetic class of 32 learners in two subjects, with the full correction loop, re-planning, budgets and the live event log. Model calls currently go to an offline stand-in (`LLM_PROVIDER=mock`) that gets the same input a real model would; the Claude provider and email delivery with calendar invites are next. The past-paper entries in the resource catalogue are placeholders, not real papers yet. See [ROADMAP.md](ROADMAP.md).
 
 ## Tech
 TypeScript (strict) · Next.js · Zod · Vitest. The engine in `src/core` is framework-free. Project rules are in [CLAUDE.md](CLAUDE.md); the design direction is in [docs/DESIGN.md](docs/DESIGN.md).

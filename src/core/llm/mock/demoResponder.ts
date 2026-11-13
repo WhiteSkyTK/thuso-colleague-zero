@@ -35,7 +35,11 @@ function plan(input: unknown): PlanDraft {
     throw new StepFailedError('the class has no subjects to plan for');
   }
   const allowPartialData = issue?.includes('missing') ?? false;
-  const step = (id: string, target: [PlanDraft['steps'][number]['agent'], string], dependsOn: string[]) => ({
+  const step = (
+    id: string,
+    target: [PlanDraft['steps'][number]['agent'], string],
+    dependsOn: string[],
+  ) => ({
     id,
     agent: target[0],
     action: target[1],
@@ -64,7 +68,8 @@ const ExplainInputSchema = z.object({
 });
 
 const ROOT_CAUSE: Record<RiskCause, string> = {
-  attendance: 'Marks fell after the absences began, so missed lessons — not ability — are the root cause',
+  attendance:
+    'Marks fell after the absences began, so missed lessons — not ability — are the root cause',
   homework: 'Too little practice between lessons, so new work is not sticking',
   'assessment-trend':
     'Results slid as topics built on each other, which points to an early gap that was never closed',

@@ -77,7 +77,10 @@ export class CoachAgent extends Agent<StepRequest, StepResult> implements StepAg
       tokens: asked.tokens,
       ms: asked.ms,
     });
-    return { kind: 'outputs', outputs: [{ subjectId: source.subjectId, payload: plan, changeNote }] };
+    return {
+      kind: 'outputs',
+      outputs: [{ subjectId: source.subjectId, payload: plan, changeNote }],
+    };
   }
 
   /** Only the resources for the learner's weak topics go to the model. */
@@ -102,7 +105,8 @@ export class CoachAgent extends Agent<StepRequest, StepResult> implements StepAg
 
   /** Every fix is logged with its reason (CLAUDE.md §7.5). */
   private describeFix(plan: CatchUpPlan, fix: FixRequest): string {
-    const evidence = fix.verdict.issues.map((issue) => issue.evidence).join('; ') || 'reviewer feedback';
+    const evidence =
+      fix.verdict.issues.map((issue) => issue.evidence).join('; ') || 'reviewer feedback';
     return `${plan.learnerId}: plan rewritten — reviewer evidence: ${evidence}. Now: ${plan.summary}`;
   }
 }

@@ -63,7 +63,13 @@ export function createTestRun(options: TestRunOptions = {}): TestRun {
       constraints: { riskThreshold: 40, maxHoursPerWeek: 4 },
       createdAt: '2026-11-13T09:00:00.000Z',
     },
-    limits: { maxAttempts: 3, maxSteps: 25, callTimeoutMs: 1_000, concurrency: 2, ...options.limits },
+    limits: {
+      maxAttempts: 3,
+      maxSteps: 25,
+      callTimeoutMs: 1_000,
+      concurrency: 2,
+      ...options.limits,
+    },
     budget,
     bus,
     clock,
@@ -102,7 +108,9 @@ export const PASS: ReviewVerdict = { status: 'pass', issues: [] };
 
 export const failWith = (evidence: string): ReviewVerdict => ({
   status: 'fail',
-  issues: [{ checkId: 'test-check', passed: false, severity: 'error', evidence, fixHint: 'fix it' }],
+  issues: [
+    { checkId: 'test-check', passed: false, severity: 'error', evidence, fixHint: 'fix it' },
+  ],
   fixInstructions: 'fix it',
 });
 
@@ -118,7 +126,10 @@ export class FakeAgent implements StepAgent {
     private readonly handlers: Record<string, { scope: ActionSpec['scope']; handle: FakeHandler }>,
   ) {
     this.actions = Object.fromEntries(
-      Object.entries(handlers).map(([name, def]) => [name, { description: name, scope: def.scope }]),
+      Object.entries(handlers).map(([name, def]) => [
+        name,
+        { description: name, scope: def.scope },
+      ]),
     );
   }
 

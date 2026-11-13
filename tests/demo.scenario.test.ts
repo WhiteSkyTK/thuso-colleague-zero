@@ -49,35 +49,49 @@ describe('demo scenario — Mathematics', () => {
 
   it('re-plans when attendance records are missing instead of stopping', () => {
     expect(count(run.events, 'PL', 'PLAN')).toBe(2);
-    expect(run.lines.some((line) => line.includes('[SYS·WARN] Step failed, re-planning'))).toBe(true);
+    expect(run.lines.some((line) => line.includes('[SYS·WARN] Step failed, re-planning'))).toBe(
+      true,
+    );
     expect(run.lines.some((line) => line.includes('no attendance register for L-030'))).toBe(true);
   });
 
   it('catches the attendance cause for L-014 and logs the reason for the fix', () => {
     expect(
       run.lines.some((line) =>
-        line.includes('[RV·FLAG] L-014: plan targets topic-gap, but 9 absences in the last 6 weeks.'),
+        line.includes(
+          '[RV·FLAG] L-014: plan targets topic-gap, but 9 absences in the last 6 weeks.',
+        ),
       ),
     ).toBe(true);
     expect(run.lines.some((line) => line.includes('[CO·FIX] L-014: plan rewritten'))).toBe(true);
-    expect(run.lines.some((line) => line.includes('[RV·PASS] L-014: plan approved (attempt 2).'))).toBe(true);
+    expect(
+      run.lines.some((line) => line.includes('[RV·PASS] L-014: plan approved (attempt 2).')),
+    ).toBe(true);
   });
 
   it('rejects the invented resource for L-021 and tells the teacher about the catalogue gap', () => {
     expect(
-      run.lines.some((line) => line.includes('[RV·FLAG] L-021: R-099 is not in the resource catalogue.')),
+      run.lines.some((line) =>
+        line.includes('[RV·FLAG] L-021: R-099 is not in the resource catalogue.'),
+      ),
     ).toBe(true);
-    expect(run.summary.teacherNotes.some((note) => note.includes('nothing for statistics'))).toBe(true);
+    expect(run.summary.teacherNotes.some((note) => note.includes('nothing for statistics'))).toBe(
+      true,
+    );
   });
 
   it('flags the instruction in the L-027 reflection without obeying it', () => {
-    expect(run.lines.some((line) => line.includes('[RV·FLAG] L-027: the reflection contains'))).toBe(true);
+    expect(
+      run.lines.some((line) => line.includes('[RV·FLAG] L-027: the reflection contains')),
+    ).toBe(true);
     expect(run.lines.some((line) => line.includes('L-027: plan sent'))).toBe(true);
   });
 
   it('explains why the learner exactly on the threshold is included', () => {
     expect(
-      run.lines.some((line) => line.includes('L-009: risk 40') && line.includes('Exactly on the threshold')),
+      run.lines.some(
+        (line) => line.includes('L-009: risk 40') && line.includes('Exactly on the threshold'),
+      ),
     ).toBe(true);
   });
 
@@ -85,7 +99,9 @@ describe('demo scenario — Mathematics', () => {
     const { sent } = run.colleague.outbox;
     expect(sent).toHaveLength(AT_RISK_IN_MATHS.length * 2 + 1);
     expect(sent.every((message) => message.to.endsWith('.example.org'))).toBe(true);
-    const learners = sent.filter((message) => message.audience === 'learner').map((message) => message.subjectId);
+    const learners = sent
+      .filter((message) => message.audience === 'learner')
+      .map((message) => message.subjectId);
     expect(learners.sort()).toEqual(AT_RISK_IN_MATHS);
     const summary = sent.find((message) => message.audience === 'teacher');
     expect(summary?.body).toContain('7 plans delivered · 2 fixed after review · 0 escalated');

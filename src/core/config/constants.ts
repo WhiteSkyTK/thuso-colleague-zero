@@ -16,12 +16,42 @@ const ON_LIGHT = '--c-ink-900';
 
 /** Single source of truth for how each agent is named and shown. */
 export const AGENT_META = {
-  PL: { code: 'PL', name: 'Planner', colorToken: '--c-jacaranda-500', textToken: ON_DARK, sign: 'PLAN' },
-  AN: { code: 'AN', name: 'Analyst', colorToken: '--c-teal-500', textToken: ON_LIGHT, sign: 'FIND' },
+  PL: {
+    code: 'PL',
+    name: 'Planner',
+    colorToken: '--c-jacaranda-500',
+    textToken: ON_DARK,
+    sign: 'PLAN',
+  },
+  AN: {
+    code: 'AN',
+    name: 'Analyst',
+    colorToken: '--c-teal-500',
+    textToken: ON_LIGHT,
+    sign: 'FIND',
+  },
   CO: { code: 'CO', name: 'Coach', colorToken: '--c-sun-400', textToken: ON_LIGHT, sign: 'TEACH' },
-  RV: { code: 'RV', name: 'Reviewer', colorToken: '--c-ember-500', textToken: ON_LIGHT, sign: 'CHECK' },
-  MS: { code: 'MS', name: 'Messenger', colorToken: '--c-leaf-500', textToken: ON_LIGHT, sign: 'SEND' },
-  SYS: { code: 'SYS', name: 'Orchestrator', colorToken: '--c-ink-900', textToken: ON_DARK, sign: 'RUN' },
+  RV: {
+    code: 'RV',
+    name: 'Reviewer',
+    colorToken: '--c-ember-500',
+    textToken: ON_LIGHT,
+    sign: 'CHECK',
+  },
+  MS: {
+    code: 'MS',
+    name: 'Messenger',
+    colorToken: '--c-leaf-500',
+    textToken: ON_LIGHT,
+    sign: 'SEND',
+  },
+  SYS: {
+    code: 'SYS',
+    name: 'Orchestrator',
+    colorToken: '--c-ink-900',
+    textToken: ON_DARK,
+    sign: 'RUN',
+  },
 } as const satisfies Record<AgentCode, AgentMeta>;
 
 /** The five agents that do the work, in hand-off order (the Orchestrator is not shown as a worker). */

@@ -1,15 +1,40 @@
 import Link from 'next/link';
 import { Marquee } from '@/components/home/Marquee';
 import { ParallaxScene } from '@/components/parallax/ParallaxScene';
+import { SiteNav } from '@/components/ui/SiteNav';
 import { AGENT_META, WORKER_AGENTS } from '@/core/config/constants';
 
 const LOOP = [
-  { stage: 'Goal', agent: AGENT_META.SYS, text: 'The lecturer types one goal in plain words, for any subject.' },
-  { stage: 'Plan', agent: AGENT_META.PL, text: 'The Planner turns the goal and the class data into steps, and re-plans when something changes.' },
-  { stage: 'Act', agent: AGENT_META.AN, text: 'The Analyst finds who is at risk and the root cause: attendance, homework, falling marks or one weak topic.' },
-  { stage: 'Check', agent: AGENT_META.RV, text: 'The Reviewer runs eight checks on every plan: cause addressed, format fit, workload, privacy and more.' },
-  { stage: 'Correct', agent: AGENT_META.CO, text: 'The Coach fixes what the Reviewer flagged, and the fix is checked again.' },
-  { stage: 'Deliver', agent: AGENT_META.MS, text: 'The Messenger sends each plan, books a support session and briefs the lecturer.' },
+  {
+    stage: 'Goal',
+    agent: AGENT_META.SYS,
+    text: 'The lecturer types one goal in plain words, for any subject.',
+  },
+  {
+    stage: 'Plan',
+    agent: AGENT_META.PL,
+    text: 'The Planner turns the goal and the class data into steps, and re-plans when something changes.',
+  },
+  {
+    stage: 'Act',
+    agent: AGENT_META.AN,
+    text: 'The Analyst finds who is at risk and the root cause: attendance, homework, falling marks or one weak topic.',
+  },
+  {
+    stage: 'Check',
+    agent: AGENT_META.RV,
+    text: 'The Reviewer runs eight checks on every plan: cause addressed, format fit, workload, privacy and more.',
+  },
+  {
+    stage: 'Correct',
+    agent: AGENT_META.CO,
+    text: 'The Coach fixes what the Reviewer flagged, and the fix is checked again.',
+  },
+  {
+    stage: 'Deliver',
+    agent: AGENT_META.MS,
+    text: 'The Messenger sends each plan, books a support session and briefs the lecturer.',
+  },
 ] as const;
 
 const FORMATS = [
@@ -23,12 +48,7 @@ const FORMATS = [
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col">
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <span className="font-display text-2xl font-extrabold uppercase tracking-wide">Thuso</span>
-        <Link href="/run" className="font-semibold underline underline-offset-4">
-          Live run
-        </Link>
-      </header>
+      <SiteNav />
 
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-6 pt-4 sm:px-6">
         <p className="font-mono text-sm uppercase tracking-widest text-jacaranda-700">
@@ -39,11 +59,15 @@ export default function HomePage() {
           <span className="block font-extralight text-jacaranda-500">Your newest colleague.</span>
         </h1>
         <p className="max-w-2xl text-xl">
-          Give Thuso one goal. Five AI agents find the learners at risk, work out <em>why</em>, write each one a
-          catch-up plan in the way they learn best, check their own work and deliver it.
+          Give Thuso one goal. Five AI agents find the learners at risk, work out <em>why</em>,
+          write each one a catch-up plan in the way they learn best, check their own work and
+          deliver it.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/run" className="rounded-full bg-ember-700 px-8 py-3 text-lg font-bold text-white shadow-card">
+          <Link
+            href="/run"
+            className="rounded-full bg-ember-700 px-8 py-3 text-lg font-bold text-white shadow-card"
+          >
             Watch it work
           </Link>
           <a href="#how" className="rounded-full border-2 border-ink px-8 py-3 text-lg font-bold">
@@ -56,7 +80,9 @@ export default function HomePage() {
       <Marquee />
 
       <section id="how" className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
-        <h2 className="font-display text-5xl font-extrabold uppercase">Goal → Deliver, with no human in the loop</h2>
+        <h2 className="font-display text-5xl font-extrabold uppercase">
+          Goal → Deliver, with no human in the loop
+        </h2>
         <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {LOOP.map(({ stage, agent, text }, index) => (
             <li key={stage} className="flex flex-col gap-2 rounded-card bg-white p-5 shadow-card">
@@ -66,7 +92,10 @@ export default function HomePage() {
                 </span>
                 <span
                   className="rounded-full px-3 py-0.5 font-mono text-xs font-semibold"
-                  style={{ backgroundColor: `var(${agent.colorToken})`, color: `var(${agent.textToken})` }}
+                  style={{
+                    backgroundColor: `var(${agent.colorToken})`,
+                    color: `var(${agent.textToken})`,
+                  }}
                 >
                   {agent.code} · {agent.name}
                 </span>
@@ -79,10 +108,13 @@ export default function HomePage() {
 
       <section className="bg-ink py-12 text-paper">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-          <h2 className="font-display text-5xl font-extrabold uppercase">Every learner learns differently</h2>
+          <h2 className="font-display text-5xl font-extrabold uppercase">
+            Every learner learns differently
+          </h2>
           <p className="mt-2 max-w-3xl text-lg">
-            Thuso reads each learner&apos;s reflections and results, then builds every topic up a scaffold ladder on the
-            CAPS scale in the format that works for them. The Reviewer rejects a plan that ignores it.
+            Thuso reads each learner&apos;s reflections and results, then builds every topic up a
+            scaffold ladder on the CAPS scale in the format that works for them. The Reviewer
+            rejects a plan that ignores it.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {FORMATS.map((format) => (
@@ -105,19 +137,26 @@ export default function HomePage() {
             <li
               key={agent.code}
               className="rounded-full px-4 py-1 font-display text-lg font-extrabold uppercase"
-              style={{ backgroundColor: `var(${agent.colorToken})`, color: `var(${agent.textToken})` }}
+              style={{
+                backgroundColor: `var(${agent.colorToken})`,
+                color: `var(${agent.textToken})`,
+              }}
             >
               {agent.sign} · {agent.name}
             </li>
           ))}
         </ul>
-        <Link href="/run" className="rounded-full bg-ember-700 px-8 py-3 text-lg font-bold text-white shadow-card">
+        <Link
+          href="/run"
+          className="rounded-full bg-ember-700 px-8 py-3 text-lg font-bold text-white shadow-card"
+        >
           Watch it work
         </Link>
       </section>
 
       <footer className="mt-auto border-t border-ink/10 px-4 py-6 text-center text-sm">
-        Synthetic class data only · built at Melsoft Colleague Zero, Johannesburg, November 2026 — jacaranda season.
+        Synthetic class data only · built at Melsoft Colleague Zero, Johannesburg, November 2026 —
+        jacaranda season.
       </footer>
     </main>
   );

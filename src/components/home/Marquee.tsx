@@ -25,7 +25,10 @@ function Row() {
 export function Marquee() {
   return (
     <section aria-label="What a run does" className="marquee overflow-hidden bg-blush py-3">
-      <div className="scene-strip font-display text-2xl font-extrabold uppercase" style={{ animationDuration: '40s' }}>
+      <div
+        className="scene-strip font-display text-2xl font-extrabold uppercase"
+        style={{ animationDuration: '40s' }}
+      >
         <Row />
         <div aria-hidden="true">
           <Row />

@@ -86,7 +86,10 @@ export class AnalystAgent extends Agent<StepRequest, StepResult> implements Step
     }
     return {
       kind: 'outputs',
-      outputs: diagnoses.map((diagnosis) => ({ subjectId: diagnosis.learnerId, payload: diagnosis })),
+      outputs: diagnoses.map((diagnosis) => ({
+        subjectId: diagnosis.learnerId,
+        payload: diagnosis,
+      })),
     };
   }
 

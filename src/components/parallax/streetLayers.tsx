@@ -13,9 +13,18 @@ const TILE_CLASS = 'scene-tile';
 
 /** [x, width, height] of each far building; tops sit at 400 − height. */
 const BUILDINGS = [
-  [60, 90, 150], [160, 60, 210], [230, 110, 130], [360, 70, 250], [440, 110, 170],
-  [1050, 80, 200], [1140, 60, 260], [1210, 120, 150], [1340, 70, 220], [1420, 90, 140],
-  [1760, 90, 190], [1860, 70, 240],
+  [60, 90, 150],
+  [160, 60, 210],
+  [230, 110, 130],
+  [360, 70, 250],
+  [440, 110, 170],
+  [1050, 80, 200],
+  [1140, 60, 260],
+  [1210, 120, 150],
+  [1340, 70, 220],
+  [1420, 90, 140],
+  [1760, 90, 190],
+  [1860, 70, 240],
 ] as const;
 
 function SkylineTile() {
@@ -24,7 +33,14 @@ function SkylineTile() {
       <polygon points="560,400 640,300 860,300 940,400" className="fill-sun/45" />
       <polygon points="1520,400 1590,320 1700,320 1760,400" className="fill-sun/45" />
       {BUILDINGS.map(([x, width, height]) => (
-        <rect key={x} x={x} y={400 - height} width={width} height={height} className="fill-jacaranda-300/60" />
+        <rect
+          key={x}
+          x={x}
+          y={400 - height}
+          width={width}
+          height={height}
+          className="fill-jacaranda-300/60"
+        />
       ))}
       {/* A tall telecoms tower on the skyline — a generic shape, not a real landmark's artwork. */}
       <rect x={968} y={70} width={24} height={330} className="fill-jacaranda-300/70" />
@@ -35,14 +51,22 @@ function SkylineTile() {
 }
 
 const TREES = [
-  { x: 130, size: 1 }, { x: 390, size: 0.8 }, { x: 650, size: 1.1 }, { x: 990, size: 0.9 },
-  { x: 1250, size: 1 }, { x: 1560, size: 1.15 }, { x: 1840, size: 0.85 },
+  { x: 130, size: 1 },
+  { x: 390, size: 0.8 },
+  { x: 650, size: 1.1 },
+  { x: 990, size: 0.9 },
+  { x: 1250, size: 1 },
+  { x: 1560, size: 1.15 },
+  { x: 1840, size: 0.85 },
 ] as const;
 
 function JacarandaTree({ x, size }: Readonly<{ x: number; size: number }>) {
   return (
     <g transform={`translate(${x} 400) scale(${size})`}>
-      <path d="M-7 0 L-5 -120 L-40 -170 L-32 -176 L0 -132 L30 -180 L38 -174 L6 -118 L7 0 Z" className="fill-jacaranda-700" />
+      <path
+        d="M-7 0 L-5 -120 L-40 -170 L-32 -176 L0 -132 L30 -180 L38 -174 L6 -118 L7 0 Z"
+        className="fill-jacaranda-700"
+      />
       <circle cx={-48} cy={-170} r={46} className="fill-jacaranda-500" />
       <circle cx={34} cy={-182} r={54} className="fill-jacaranda-500" />
       <circle cx={-4} cy={-214} r={50} className="fill-jacaranda-300" />
@@ -78,7 +102,12 @@ function SchoolTile() {
       <rect x={900} y={218} width={200} height={54} rx={6} className="fill-sun" />
       <rect x={968} y={278} width={64} height={42} className="fill-jacaranda-700" />
       <rect x={880} y={150} width={240} height={30} rx={6} className="fill-ink" />
-      <text x={1000} y={171} textAnchor="middle" className="fill-paper font-display text-[20px] font-extrabold tracking-widest">
+      <text
+        x={1000}
+        y={171}
+        textAnchor="middle"
+        className="fill-paper font-display text-[20px] font-extrabold tracking-widest"
+      >
         JACARANDA HIGH
       </text>
       {FENCE_POSTS.filter((x) => x < 940 || x > 1060).map((x) => (

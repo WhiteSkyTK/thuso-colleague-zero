@@ -22,7 +22,10 @@ function LayerStrip({ layer }: Readonly<{ layer: SceneLayer }>) {
   const { Tile } = layer;
   return (
     <div className="absolute inset-0">
-      <div className="scene-strip" style={{ animationDuration: `${BASE_LOOP_SECONDS / layer.speed}s` }}>
+      <div
+        className="scene-strip"
+        style={{ animationDuration: `${BASE_LOOP_SECONDS / layer.speed}s` }}
+      >
         <Tile />
         <Tile />
       </div>
@@ -30,10 +33,15 @@ function LayerStrip({ layer }: Readonly<{ layer: SceneLayer }>) {
   );
 }
 
-const prefersReducedMotion = () => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+const prefersReducedMotion = () =>
+  globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
 /** The Jacaranda Street: parallax layers, drifting petals and the five agents walking with their signs. */
-export function ParallaxScene({ worldSpeed = 1, activeAgent = null, className = '' }: ParallaxSceneProps) {
+export function ParallaxScene({
+  worldSpeed = 1,
+  activeAgent = null,
+  className = '',
+}: ParallaxSceneProps) {
   const sceneRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
 

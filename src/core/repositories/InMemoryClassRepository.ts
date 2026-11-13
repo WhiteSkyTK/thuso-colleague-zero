@@ -33,7 +33,9 @@ export class InMemoryClassRepository
         .filter((record) => record.subjectId === subjectId)
         .map((record) => [record.learnerId, record]),
     );
-    const reflections = new Map(this.data.reflections.map((entry) => [entry.learnerId, entry.text]));
+    const reflections = new Map(
+      this.data.reflections.map((entry) => [entry.learnerId, entry.text]),
+    );
 
     return this.data.learners
       .filter((learner) => results.has(learner.id))
