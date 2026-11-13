@@ -30,6 +30,27 @@ export class NoteRepository {
     );
   }
 
+  /** The learner's own notes for one lesson (empty when none yet). */
+  async lessonNote(learnerId: string, resourceId: string): Promise<string> {
+    const [row] = await this.db.query<{ text: string }>(
+      'SELECT text FROM lesson_notes WHERE learner_id = $1 AND resource_id = $2',
+      [learnerId, resourceId],
+    );
+    return row?.text ?? '';
+  }
+
+  async saveLessonNote(note: {
+    learnerId: string;
+    resourceId: string;
+    text: string;
+  }): Promise<void> {
+    await this.db.query(
+      `INSERT INTO lesson_notes (learner_id, resource_id, text) VALUES ($1, $2, $3)
+       ON CONFLICT (learner_id, resource_id) DO UPDATE SET text = EXCLUDED.text, updated_at = now()`,
+      [note.learnerId, note.resourceId, note.text],
+    );
+  }
+
   /** True when the learner already answered a check-in today (South African time). */
   async answeredToday(learnerId: string): Promise<boolean> {
     const [row] = await this.db.query<{ count: number }>(

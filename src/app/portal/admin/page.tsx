@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { CreateAccountSection } from '@/components/admin/CreateAccountSection';
 import { PortalMascot } from '@/components/mascot/PortalMascot';
 import { WatchButton } from '@/components/mascot/WatchButton';
 import { requireUser } from '@/lib/auth';
@@ -8,7 +9,7 @@ import { school } from '@/lib/school';
 
 export const metadata: Metadata = { title: 'Admin — Thuso' };
 
-/** Who is in the school and how big each grade is. Accounts are created by the seed for the demo. */
+/** Who is in the school, how big each grade is, and opening new learner and teacher accounts. */
 export default async function AdminPage() {
   const user = await requireUser(['admin']);
   const { users, data } = await school();
@@ -54,6 +55,7 @@ export default async function AdminPage() {
         </section>
       </div>
       <WatchButton onWatch={runWatchAction} />
+      <CreateAccountSection user={user} />
       <PortalMascot
         user={user}
         tips={['Every school morning I check every grade on my own and alert the right teachers.']}

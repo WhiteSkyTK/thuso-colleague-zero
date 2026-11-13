@@ -123,6 +123,11 @@ const SCHEMA = [
     id text PRIMARY KEY, learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
     question text NOT NULL, answer text NOT NULL, created_at timestamptz NOT NULL DEFAULT now()
   )`,
+  `CREATE TABLE IF NOT EXISTS lesson_notes (
+    learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE, resource_id text NOT NULL,
+    text text NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (learner_id, resource_id)
+  )`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

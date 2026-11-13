@@ -102,10 +102,10 @@ export class UserRepository {
 
   /** Check-ins teach Thuso how a learner learns; their preferred formats follow. */
   async updateFormats(learnerId: string, formats: readonly string[]): Promise<void> {
-    await this.db.query("UPDATE users SET preferred_formats = $2 WHERE id = $1 AND role = 'learner'", [
-      learnerId,
-      [...formats],
-    ]);
+    await this.db.query(
+      "UPDATE users SET preferred_formats = $2 WHERE id = $1 AND role = 'learner'",
+      [learnerId, [...formats]],
+    );
   }
 
   async listStaff(): Promise<SchoolUser[]> {

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SubjectInsightCard } from '@/components/lecturer/SubjectInsightCard';
+import { CreateAccountSection } from '@/components/admin/CreateAccountSection';
 import { PortalMascot } from '@/components/mascot/PortalMascot';
 import { WatchButton } from '@/components/mascot/WatchButton';
 import { runWatchAction } from '../teacher/actions';
@@ -96,6 +97,7 @@ export default async function PrincipalPage({
           </div>
         </section>
       )}
+      <CreateAccountSection user={user} />
       <PortalMascot user={user} tips={principalTips(byGrade)} runGrade={open?.grade ?? 10} />
     </>
   );

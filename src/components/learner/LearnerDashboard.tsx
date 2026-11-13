@@ -3,7 +3,9 @@ import type { LearnerCategory } from '@/core/insights/learnerCategory';
 import type { LearnerProfile } from '@/core/insights/learnerProfile';
 import type { LearnerNote } from '@/core/school/NoteRepository';
 import { DBE_PAST_PAPERS_URL, FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
+import { buildStudyPlan } from '@/core/lessons/studyPlan';
 import { PathwayFinder } from './PathwayFinder';
+import { StudyPlan } from './StudyPlan';
 import { SubjectStandingCard } from './SubjectStandingCard';
 
 const KIND_LABEL = { homework: 'Homework', test: 'Test', 'past-paper': 'Past paper' } as const;
@@ -101,9 +103,11 @@ export function LearnerDashboard({
         </div>
       </section>
 
+      <StudyPlan days={buildStudyPlan(profile)} grade={learner.grade} isOwnPage={isOwnPage} />
+
       <div className="grid gap-4 lg:grid-cols-2">
         {subjects.map((standing) => (
-          <SubjectStandingCard key={standing.subjectId} standing={standing} />
+          <SubjectStandingCard key={standing.subjectId} standing={standing} grade={learner.grade} />
         ))}
       </div>
 

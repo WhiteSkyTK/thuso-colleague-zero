@@ -10,6 +10,7 @@ import type { ClassData } from '@/core/domain/classData';
 import { loadSeedClass } from '@/core/repositories/loadSeedClass';
 import { FileRepository } from '@/core/school/FileRepository';
 import { MessageRepository } from '@/core/school/MessageRepository';
+import { AccountRepository } from '@/core/school/AccountRepository';
 import { NoteRepository } from '@/core/school/NoteRepository';
 import { PracticeRepository } from '@/core/school/PracticeRepository';
 import { NotificationRepository } from '@/core/school/NotificationRepository';
@@ -32,6 +33,7 @@ export interface School {
   files: FileRepository;
   practice: PracticeRepository;
   notes: NoteRepository;
+  accounts: AccountRepository;
   riskThreshold: number;
   delivery: AppConfig['delivery'];
   /** Only when SMTP is configured. */
@@ -68,6 +70,7 @@ async function open(): Promise<School> {
     files: new FileRepository(db),
     practice: new PracticeRepository(db),
     notes: new NoteRepository(db),
+    accounts: new AccountRepository(db),
     riskThreshold: config.rules.riskThreshold,
     delivery: config.delivery,
     transport: config.delivery.smtp ? new SmtpTransport(config.delivery.smtp) : undefined,

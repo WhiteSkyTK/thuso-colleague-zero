@@ -4,10 +4,11 @@ import { randomUUID } from 'node:crypto';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import type { AssistantAnswer } from '@/core/assistant/answerQuestion';
-import { CHECK_INS, isFormat, updatedFormats } from '@/core/assistant/checkIns';
+import { CHECK_INS, isFormat } from '@/core/assistant/checkIns';
 import { askThuso } from '@/lib/askThuso';
 import { requireUser } from '@/lib/auth';
-import { classFor, forgetClass, school } from '@/lib/school';
+import { rememberFormat } from '@/lib/rememberFormat';
+import { school } from '@/lib/school';
 
 const QUESTION_MAX = 300;
 const QuestionSchema = z.string().trim().min(2).max(QUESTION_MAX);
@@ -52,7 +53,7 @@ export async function answerCheckInAction(input: unknown): Promise<{ message: st
   if (!checkIn || !option) {
     return { message: 'Pick one of the answers.' };
   }
-  const { notes, users, data } = await school();
+  const { notes } = await school();
   await notes.add({
     id: randomUUID(),
     learnerId: user.id,
@@ -60,11 +61,7 @@ export async function answerCheckInAction(input: unknown): Promise<{ message: st
     answer: option.label,
   });
   if (isFormat(option.value) && user.grade !== null) {
-    const learner = (await classFor(user.grade)).learners.find((l) => l.id === user.id);
-    const current = learner?.preferredFormats ?? [];
-    await users.updateFormats(user.id, updatedFormats(current, option.value));
-    await data.touch(user.grade);
-    forgetClass(user.grade);
+    await rememberFormat(user.id, user.grade, option.value);
   }
   revalidatePath('/portal/learner');
   return { message: 'Thanks — noted. I’ll use that.' };

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { SubjectStanding } from '@/core/insights/learnerProfile';
 import { CAUSE_FOR_LEARNER, FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
 
@@ -9,7 +10,10 @@ const RUNG_LABEL = {
 } as const;
 
 /** One subject for the learner: marks per topic, what is holding them back, and what to study next. */
-export function SubjectStandingCard({ standing }: Readonly<{ standing: SubjectStanding }>) {
+export function SubjectStandingCard({
+  standing,
+  grade,
+}: Readonly<{ standing: SubjectStanding; grade: number }>) {
   return (
     <article className="flex flex-col gap-4 rounded-card bg-white p-5 shadow-card">
       <header className="flex flex-wrap items-baseline justify-between gap-2">
@@ -52,21 +56,26 @@ export function SubjectStandingCard({ standing }: Readonly<{ standing: SubjectSt
           <h3 className="font-semibold">Study next — in the way you learn best</h3>
           <ul className="mt-2 flex flex-col gap-2">
             {standing.suggestions.map((resource) => (
-              <li
-                key={resource.id}
-                className="flex items-start gap-3 rounded-lg bg-jacaranda-50 p-3 text-sm"
-              >
-                <span aria-hidden="true" className="text-2xl leading-none">
-                  {FORMAT_ICON[resource.format]}
-                </span>
-                <span>
-                  <strong>{resource.title}</strong>
-                  <span className="block">
-                    {FORMAT_LABEL[resource.format]} · {RUNG_LABEL[resource.rung]} ·{' '}
-                    {resource.minutes} min
-                    {resource.origin === 'past-paper' && ' · past paper'}
+              <li key={resource.id}>
+                <Link
+                  href={`/portal/lesson/${resource.id}?grade=${grade}`}
+                  className="flex items-start gap-3 rounded-card bg-jacaranda-50 p-3 text-sm hover:shadow-card focus-visible:shadow-card"
+                >
+                  <span aria-hidden="true" className="text-2xl leading-none">
+                    {FORMAT_ICON[resource.format]}
                   </span>
-                </span>
+                  <span>
+                    <strong>{resource.title}</strong>
+                    <span className="block">
+                      {FORMAT_LABEL[resource.format]} · {RUNG_LABEL[resource.rung]} ·{' '}
+                      {resource.minutes} min
+                      {resource.origin === 'past-paper' && ' · past paper'}
+                    </span>
+                    <span className="mt-1 block font-semibold text-jacaranda-700">
+                      Start the lesson →
+                    </span>
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
