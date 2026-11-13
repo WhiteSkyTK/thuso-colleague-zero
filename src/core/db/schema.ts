@@ -1,0 +1,73 @@
+import type { Database } from './Database';
+
+/**
+ * The school's tables. Idempotent (IF NOT EXISTS), so running it on every cold start is safe and
+ * costs one round trip. Subjects, tasks and resources are scoped by grade; ids are unique per grade.
+ */
+const SCHEMA = [
+  `CREATE TABLE IF NOT EXISTS users (
+    id text PRIMARY KEY,
+    role text NOT NULL CHECK (role IN ('learner', 'teacher', 'principal', 'admin')),
+    email text NOT NULL UNIQUE,
+    first_name text NOT NULL,
+    last_name text NOT NULL,
+    password_hash text NOT NULL,
+    grade int CHECK (grade BETWEEN 10 AND 12),
+    preferred_formats text[] NOT NULL DEFAULT '{}',
+    guardian_name text,
+    guardian_email text,
+    created_at timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS users_grade ON users (grade) WHERE role = 'learner'`,
+  `CREATE TABLE IF NOT EXISTS sessions (
+    token_hash text PRIMARY KEY,
+    user_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    expires_at timestamptz NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS subjects (
+    grade int NOT NULL, id text NOT NULL, name text NOT NULL, topics text[] NOT NULL,
+    PRIMARY KEY (grade, id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS teaching (
+    teacher_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    grade int NOT NULL, subject_id text NOT NULL,
+    PRIMARY KEY (teacher_id, grade, subject_id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS tasks (
+    grade int NOT NULL, id text NOT NULL, subject_id text NOT NULL, title text NOT NULL,
+    kind text NOT NULL, week int NOT NULL, topics text[] NOT NULL,
+    created_by text, created_at timestamptz NOT NULL DEFAULT now(),
+    PRIMARY KEY (grade, id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS results (
+    learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    grade int NOT NULL, task_id text NOT NULL, subject_id text NOT NULL,
+    week int NOT NULL, topic text NOT NULL, score_pct real NOT NULL CHECK (score_pct BETWEEN 0 AND 100),
+    PRIMARY KEY (learner_id, subject_id, task_id, topic)
+  )`,
+  `CREATE INDEX IF NOT EXISTS results_grade_subject ON results (grade, subject_id)`,
+  `CREATE TABLE IF NOT EXISTS attendance (
+    learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    week int NOT NULL, absences int NOT NULL CHECK (absences BETWEEN 0 AND 5),
+    PRIMARY KEY (learner_id, week)
+  )`,
+  `CREATE TABLE IF NOT EXISTS homework (
+    learner_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    subject_id text NOT NULL, assigned int NOT NULL, submitted int NOT NULL,
+    PRIMARY KEY (learner_id, subject_id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS reflections (
+    learner_id text PRIMARY KEY REFERENCES users (id) ON DELETE CASCADE,
+    text text NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS resources (
+    grade int NOT NULL, id text NOT NULL, subject_id text NOT NULL, title text NOT NULL,
+    topic text NOT NULL, minutes int NOT NULL, format text NOT NULL, rung text NOT NULL, origin text NOT NULL,
+    PRIMARY KEY (grade, id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
+] as const;
+
+export async function migrate(db: Database): Promise<void> {
+  await db.batch(SCHEMA.map((text) => ({ text })));
+}
