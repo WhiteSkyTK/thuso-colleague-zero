@@ -2,6 +2,8 @@
 
 > Built for **Colleague Zero**, Melsoft Academy's 24-hour hackathon on multi-agent workflows for education (13–14 November 2026). *Thuso* is Sesotho and Setswana for "help".
 
+**Live demo: <https://thuso-colleague-zero.vercel.app>** — open the school portal and click **Learner**, **Teacher** or **Principal** (synthetic data, no sign-up). Press **Run** on `/run` to watch the five agents work.
+
 ## The problem
 A Grade 10 Mathematics teacher in South Africa can have 40 or more learners in one class. By the time a term report shows that a learner is failing, it is too late to fix. The marks are visible — what the teacher does not have is the time to work out **why** each learner is slipping and to build a plan for each one.
 

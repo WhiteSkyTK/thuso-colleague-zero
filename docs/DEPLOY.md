@@ -2,10 +2,18 @@
 
 About 15 minutes. You do the sign-ups and paste the secrets yourself; nothing secret goes in git.
 
+**Live now:** <https://thuso-colleague-zero.vercel.app> (Vercel project `whiteskytk/thuso-colleague-zero`, connected to GitHub, so every push to `main` deploys).
+
 ## 1. Database — Neon (free)
-1. Go to <https://neon.tech>, sign in with GitHub, create a project (region: closest to South Africa, e.g. Frankfurt).
-2. Copy the **connection string** (starts with `postgresql://`, ends with `?sslmode=require`).
-3. Locally: put it in `.env.local` as `DATABASE_URL=...`, then `npm run dev`. The first page load creates the tables and seeds the demo school (Grades 10–12, 96 synthetic learners, staff). Nothing else to run.
+- **Production (Vercel)** gets `DATABASE_URL` from the Neon–Vercel integration on the project.
+- **Local** is linked to Neon project `shiny-unit-78806510` (branch `production`) through `neon.ts` and the git-ignored `.neon` file:
+  ```bash
+  npm i -g neon     # the Neon CLI
+  neon login        # browser sign-in, once
+  neon env pull     # writes DATABASE_URL (pooled) and DATABASE_URL_UNPOOLED into .env.local
+  ```
+  `neon env pull` removes keys it did not produce (for example `NEON_AI_GATEWAY_TOKEN`), so back up `.env.local` first.
+- Either way, the first page load creates the tables and seeds the demo school (Grades 10–12, 96 synthetic learners, staff). Nothing else to run.
 
 ## 2. AI — Claude
 In `.env.local` (and later in Vercel):
@@ -25,11 +33,15 @@ DEMO_PASSWORD=<optional; default thuso-demo-2026>     # learners, teachers, prin
 The admin is only created when the database is first seeded, so set `ADMIN_PASSWORD` before step 1's first page load (or in Vercel before the first visit).
 
 ## 4. Hosting — Vercel (free)
-1. <https://vercel.com> → sign in with GitHub → **Add New… → Project** → import `WhiteSkyTK/thuso-colleague-zero`.
-2. Framework: Next.js (detected). Node.js: 24 (from `package.json`).
-3. **Environment Variables**: add every value from steps 1–3.
-4. **Deploy**. Every push to `main` deploys again.
-5. Open the URL → **Open the school portal** → click **Learner**, **Teacher** or **Principal**.
+Done for this repo with the CLI:
+```bash
+npm i -g vercel
+vercel login                 # device sign-in in the browser
+vercel link --yes --project thuso-colleague-zero
+vercel env add NAME production   # value on stdin; repeat for the variables in steps 2–3
+vercel deploy --prod
+```
+Node.js 24 comes from `package.json`. `.vercelignore` keeps `.env*` and build folders out of uploads. To switch the live agents to Claude once the account has credit: in Vercel → Settings → Environment Variables set `LLM_PROVIDER=anthropic`, then redeploy. Gemini (`OPENAI_COMPAT_*`) is then the automatic fallback.
 
 ## Checks after deploying
 - `/login` → Teacher → change a mark → "Saved … marks".

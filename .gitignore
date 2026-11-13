@@ -28,3 +28,6 @@ docs/design/refs/*
 Thumbs.db
 npm-debug.log*
 .neon
+
+# Vercel CLI link (project and org ids)
+.vercel
