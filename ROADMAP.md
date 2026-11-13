@@ -75,7 +75,7 @@ Switching concept? Keep the engine; swap the workers (Marking → Marker · Curr
 ## Phase 2 — Make it real (Fri 13:00–17:00)
 - [x] S1-01 Synthetic data generator + seed files (learners, assessments, attendance, reflections, resources, school calendar) including the hard cases
 - [x] S1-02 JSON repositories + tools (narrow repository interfaces per agent instead of Tool classes); `computeRisk` deterministic and tested
-- [ ] S1-03 `AnthropicProvider` (structured output, timeout, retry with backoff) + `LlmCache`
+- [x] S1-03 `AnthropicProvider` (structured output, timeout, retry with backoff) — `LlmCache` still to do
 - [~] S1-04 Real Planner, Analyst and Coach with prompts in `src/core/prompts/`
 - [x] S1-05 Reviewer + checks: coverage of every at-risk learner, resource IDs exist, workload ≤ `PLAN_MAX_HOURS_PER_WEEK`, plan matches the diagnosed cause, session dates valid, no other learner mentioned, injection
 - [x] S1-06 Correction loop: attempts, logged reasons, escalation, re-plan triggers
@@ -92,7 +92,7 @@ The judges asked: does it work for every subject, does it find the real root cau
 - [x] F-04 Scaffold ladder per topic (foundation → guided → independent → exam); `scaffoldCheck` stops plans that start too high or step back
 - [x] F-05 Lecturer value in every run: class-wide weakest topic, missing registers and catalogue gaps go into the teacher summary
 - [~] F-06 Lecturer tasks: tasks and per-topic results are in the data model; still to do — a screen to add a task and capture marks
-- [ ] F-07 Learner view: "what I am missing" — my topics by CAPS level, my next rung, my plan
+- [x] F-07 Learner view: "what I am missing" — my topics by CAPS level, my next rung, my plan
 - [ ] F-08 Real past papers: link Department of Basic Education past exam papers per topic (the catalogue has `origin: past-paper` placeholders)
 - [ ] F-09 Measure which format works: compare marks before and after per format and switch when a format does not help
 - [ ] F-10 Presentation deck for Saturday 12:00
@@ -100,7 +100,7 @@ The judges asked: does it work for every subject, does it find the real root cau
 ## Phase 3 — Execute and delight (Fri 18:00 → Sat 00:00)
 - [ ] S2-01 Messenger: emails (sandbox or redirect), `.ics` session invites, teacher summary
 - [ ] S2-02 Results: learner cards with badges, print-friendly plan page, review history with before/after and the reason
-- [ ] S2-03 Parallax street hero + agent characters (DESIGN.md §5.1, §4)
+- [x] S2-03 Parallax street hero + agent characters (DESIGN.md §5.1, §4)
 - [ ] S2-04 Event-driven relay scene in the run view (DESIGN.md §5.3)
 - [ ] S2-05 Run summary card (steps, fixes, escalations, time, estimated cost)
 - [ ] S2-06 Coverage ≥ 80% on `src/core`; quality gate green
@@ -170,3 +170,12 @@ Prepare a 3-minute and a 5-minute version. Fallbacks in order: live run → repl
 
 ## What we'd build next (pitch slide)
 LMS integrations (Moodle, Google Classroom) · WhatsApp delivery · plans in more SA languages (e.g. isiZulu, Sesotho, Afrikaans) · teacher approval mode · term-on-term tracking · consent flows built for POPIA · school and district dashboards
+
+### Phase 2c — school portal (added Fri 13 Nov evening)
+- [x] P2c-01 Neon Postgres school database (Grades 10–12, roles, marks, tasks), seeded on first use; PGlite offline
+- [x] P2c-02 Sign-in (scrypt, hashed session tokens, rate limit) with one-click demo Learner / Teacher / Principal
+- [x] P2c-03 Learner, teacher (mark sheet, set a task), principal and admin portals
+- [x] P2c-04 Thuso mascot: role tips on every portal page, live narration of the run
+- [x] P2c-05 Pathway finder (idea 5): APS from marks, interests from chips or a CV, within reach / stretch / not yet
+- [x] P2c-06 Runs stream from the request that starts them (Vercel-safe); CI on Node 24
+- [ ] P2c-07 Deploy on Vercel with Neon and the Claude key (docs/DEPLOY.md)
