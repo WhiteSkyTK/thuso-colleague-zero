@@ -4,319 +4,385 @@
     "firstName": "Thabo",
     "lastName": "Zulu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l001@learners.example.org",
     "guardianName": "Guardian of L-001",
-    "guardianEmail": "guardian.l001@families.example.org"
+    "guardianEmail": "guardian.l001@families.example.org",
+    "preferredFormats": [
+      "visual-story"
+    ]
   },
   {
     "id": "L-002",
     "firstName": "Lerato",
     "lastName": "Tshabalala",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l002@learners.example.org",
     "guardianName": "Guardian of L-002",
-    "guardianEmail": "guardian.l002@families.example.org"
+    "guardianEmail": "guardian.l002@families.example.org",
+    "preferredFormats": [
+      "audio"
+    ]
   },
   {
     "id": "L-003",
     "firstName": "Sipho",
     "lastName": "Ngcobo",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l003@learners.example.org",
     "guardianName": "Guardian of L-003",
-    "guardianEmail": "guardian.l003@families.example.org"
+    "guardianEmail": "guardian.l003@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-004",
     "firstName": "Naledi",
     "lastName": "Molefe",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l004@learners.example.org",
     "guardianName": "Guardian of L-004",
-    "guardianEmail": "guardian.l004@families.example.org"
+    "guardianEmail": "guardian.l004@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-005",
     "firstName": "Kagiso",
     "lastName": "Mabena",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l005@learners.example.org",
     "guardianName": "Guardian of L-005",
-    "guardianEmail": "guardian.l005@families.example.org"
+    "guardianEmail": "guardian.l005@families.example.org",
+    "preferredFormats": [
+      "patterns"
+    ]
   },
   {
     "id": "L-006",
     "firstName": "Zanele",
     "lastName": "Mthembu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l006@learners.example.org",
     "guardianName": "Guardian of L-006",
-    "guardianEmail": "guardian.l006@families.example.org"
+    "guardianEmail": "guardian.l006@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-007",
     "firstName": "Bongani",
     "lastName": "Khumalo",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l007@learners.example.org",
     "guardianName": "Guardian of L-007",
-    "guardianEmail": "guardian.l007@families.example.org"
+    "guardianEmail": "guardian.l007@families.example.org",
+    "preferredFormats": [
+      "audio"
+    ]
   },
   {
     "id": "L-008",
     "firstName": "Palesa",
     "lastName": "Ndlovu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l008@learners.example.org",
     "guardianName": "Guardian of L-008",
-    "guardianEmail": "guardian.l008@families.example.org"
+    "guardianEmail": "guardian.l008@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   },
   {
     "id": "L-009",
     "firstName": "Mpho",
     "lastName": "Phiri",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l009@learners.example.org",
     "guardianName": "Guardian of L-009",
-    "guardianEmail": "guardian.l009@families.example.org"
+    "guardianEmail": "guardian.l009@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   },
   {
     "id": "L-010",
     "firstName": "Ayanda",
     "lastName": "Nkosi",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l010@learners.example.org",
     "guardianName": "Guardian of L-010",
-    "guardianEmail": "guardian.l010@families.example.org"
+    "guardianEmail": "guardian.l010@families.example.org",
+    "preferredFormats": [
+      "patterns"
+    ]
   },
   {
     "id": "L-011",
     "firstName": "Tshepo",
     "lastName": "Sithole",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l011@learners.example.org",
     "guardianName": "Guardian of L-011",
-    "guardianEmail": "guardian.l011@families.example.org"
+    "guardianEmail": "guardian.l011@families.example.org",
+    "preferredFormats": [
+      "audio"
+    ]
   },
   {
     "id": "L-012",
     "firstName": "Nomsa",
     "lastName": "Maseko",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l012@learners.example.org",
     "guardianName": "Guardian of L-012",
-    "guardianEmail": "guardian.l012@families.example.org"
+    "guardianEmail": "guardian.l012@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   },
   {
     "id": "L-013",
     "firstName": "Lwazi",
     "lastName": "Dlamini",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l013@learners.example.org",
     "guardianName": "Guardian of L-013",
-    "guardianEmail": "guardian.l013@families.example.org"
+    "guardianEmail": "guardian.l013@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-014",
     "firstName": "Refilwe",
     "lastName": "Mahlangu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l014@learners.example.org",
     "guardianName": "Guardian of L-014",
-    "guardianEmail": "guardian.l014@families.example.org"
+    "guardianEmail": "guardian.l014@families.example.org",
+    "preferredFormats": [
+      "visual-story",
+      "worked-examples"
+    ]
   },
   {
     "id": "L-015",
     "firstName": "Sizwe",
     "lastName": "Radebe",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l015@learners.example.org",
     "guardianName": "Guardian of L-015",
-    "guardianEmail": "guardian.l015@families.example.org"
+    "guardianEmail": "guardian.l015@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-016",
     "firstName": "Thandiwe",
     "lastName": "Mokoena",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l016@learners.example.org",
     "guardianName": "Guardian of L-016",
-    "guardianEmail": "guardian.l016@families.example.org"
+    "guardianEmail": "guardian.l016@families.example.org",
+    "preferredFormats": [
+      "audio"
+    ]
   },
   {
     "id": "L-017",
     "firstName": "Katlego",
     "lastName": "Zulu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l017@learners.example.org",
     "guardianName": "Guardian of L-017",
-    "guardianEmail": "guardian.l017@families.example.org"
+    "guardianEmail": "guardian.l017@families.example.org",
+    "preferredFormats": [
+      "visual-story"
+    ]
   },
   {
     "id": "L-018",
     "firstName": "Busisiwe",
     "lastName": "Tshabalala",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l018@learners.example.org",
     "guardianName": "Guardian of L-018",
-    "guardianEmail": "guardian.l018@families.example.org"
+    "guardianEmail": "guardian.l018@families.example.org",
+    "preferredFormats": [
+      "patterns"
+    ]
   },
   {
     "id": "L-019",
     "firstName": "Neo",
     "lastName": "Ngcobo",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l019@learners.example.org",
     "guardianName": "Guardian of L-019",
-    "guardianEmail": "guardian.l019@families.example.org"
+    "guardianEmail": "guardian.l019@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-020",
     "firstName": "Lindiwe",
     "lastName": "Molefe",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l020@learners.example.org",
     "guardianName": "Guardian of L-020",
-    "guardianEmail": "guardian.l020@families.example.org"
+    "guardianEmail": "guardian.l020@families.example.org",
+    "preferredFormats": [
+      "visual-story"
+    ]
   },
   {
     "id": "L-021",
     "firstName": "Andile",
     "lastName": "Mabena",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l021@learners.example.org",
     "guardianName": "Guardian of L-021",
-    "guardianEmail": "guardian.l021@families.example.org"
+    "guardianEmail": "guardian.l021@families.example.org",
+    "preferredFormats": [
+      "visual-story"
+    ]
   },
   {
     "id": "L-022",
     "firstName": "Dineo",
     "lastName": "Mthembu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l022@learners.example.org",
     "guardianName": "Guardian of L-022",
-    "guardianEmail": "guardian.l022@families.example.org"
+    "guardianEmail": "guardian.l022@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-023",
     "firstName": "Sibusiso",
     "lastName": "Khumalo",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l023@learners.example.org",
     "guardianName": "Guardian of L-023",
-    "guardianEmail": "guardian.l023@families.example.org"
+    "guardianEmail": "guardian.l023@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-024",
     "firstName": "Karabo",
     "lastName": "Ndlovu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l024@learners.example.org",
     "guardianName": "Guardian of L-024",
-    "guardianEmail": "guardian.l024@families.example.org"
+    "guardianEmail": "guardian.l024@families.example.org",
+    "preferredFormats": [
+      "visual-story"
+    ]
   },
   {
     "id": "L-025",
     "firstName": "Themba",
     "lastName": "Phiri",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l025@learners.example.org",
     "guardianName": "Guardian of L-025",
-    "guardianEmail": "guardian.l025@families.example.org"
+    "guardianEmail": "guardian.l025@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-026",
     "firstName": "Nokuthula",
     "lastName": "Nkosi",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l026@learners.example.org",
     "guardianName": "Guardian of L-026",
-    "guardianEmail": "guardian.l026@families.example.org"
+    "guardianEmail": "guardian.l026@families.example.org",
+    "preferredFormats": [
+      "worked-examples"
+    ]
   },
   {
     "id": "L-027",
     "firstName": "Tumelo",
     "lastName": "Sithole",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l027@learners.example.org",
     "guardianName": "Guardian of L-027",
-    "guardianEmail": "guardian.l027@families.example.org"
+    "guardianEmail": "guardian.l027@families.example.org",
+    "preferredFormats": [
+      "audio"
+    ]
   },
   {
     "id": "L-028",
     "firstName": "Zodwa",
     "lastName": "Maseko",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l028@learners.example.org",
     "guardianName": "Guardian of L-028",
-    "guardianEmail": "guardian.l028@families.example.org"
+    "guardianEmail": "guardian.l028@families.example.org",
+    "preferredFormats": [
+      "patterns"
+    ]
   },
   {
     "id": "L-029",
     "firstName": "Vusi",
     "lastName": "Dlamini",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l029@learners.example.org",
     "guardianName": "Guardian of L-029",
-    "guardianEmail": "guardian.l029@families.example.org"
+    "guardianEmail": "guardian.l029@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   },
   {
     "id": "L-030",
     "firstName": "Masego",
     "lastName": "Mahlangu",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l030@learners.example.org",
     "guardianName": "Guardian of L-030",
-    "guardianEmail": "guardian.l030@families.example.org"
+    "guardianEmail": "guardian.l030@families.example.org",
+    "preferredFormats": [
+      "worked-examples",
+      "patterns"
+    ]
   },
   {
     "id": "L-031",
     "firstName": "Jabu",
     "lastName": "Radebe",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l031@learners.example.org",
     "guardianName": "Guardian of L-031",
-    "guardianEmail": "guardian.l031@families.example.org"
+    "guardianEmail": "guardian.l031@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   },
   {
     "id": "L-032",
     "firstName": "Khanyi",
     "lastName": "Mokoena",
     "grade": 10,
-    "subject": "Mathematics",
     "learnerEmail": "l032@learners.example.org",
     "guardianName": "Guardian of L-032",
-    "guardianEmail": "guardian.l032@families.example.org"
+    "guardianEmail": "guardian.l032@families.example.org",
+    "preferredFormats": [
+      "practice"
+    ]
   }
 ]

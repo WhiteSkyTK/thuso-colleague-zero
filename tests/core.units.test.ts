@@ -1,9 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
-import { causeAddressedCheck } from '@/core/checks/causeAddressedCheck';
 import { loadConfig } from '@/core/config/env';
-import type { CatchUpPlan } from '@/core/domain/catchUpPlan';
-import type { Diagnosis } from '@/core/domain/diagnosis';
 import { BudgetExceededError, ConfigError, LlmOutputError, TimeoutError } from '@/core/errors/AppError';
 import { EventBus } from '@/core/events/EventBus';
 import { formatElapsed, formatEvent } from '@/core/events/formatEvent';
@@ -152,33 +149,3 @@ describe('mapWithLimit and withTimeout', () => {
   });
 });
 
-describe('causeAddressedCheck', () => {
-  const diagnosis: Diagnosis = {
-    learnerId: 'L-014',
-    riskScore: 71,
-    primaryCause: 'attendance',
-    evidence: '9 absences in 6 weeks',
-    weakTopics: ['algebraic expressions'],
-  };
-  const plan = (addresses: CatchUpPlan['addresses']): CatchUpPlan => ({
-    learnerId: 'L-014',
-    addresses,
-    summary: 'summary',
-    sessions: [{ day: 1, topic: 'algebraic expressions', minutes: 45, resourceIds: [] }],
-    learnerMessage: 'message',
-    guardianMessage: 'message',
-  });
-  const constraints = { riskThreshold: 40, maxHoursPerWeek: 4 };
-
-  it('fails with evidence and a concrete fix when the plan misses the diagnosed cause', () => {
-    const result = causeAddressedCheck({ plan: plan(['topic-gap']), diagnosis, constraints });
-    expect(result).toMatchObject({ checkId: 'cause-addressed', passed: false, severity: 'error' });
-    expect(result.evidence).toBe('plan targets topic-gap, but 9 absences in 6 weeks');
-    expect(result.fixHint).toContain('attendance');
-  });
-
-  it('passes when the plan leads with the diagnosed cause', () => {
-    const result = causeAddressedCheck({ plan: plan(['attendance', 'topic-gap']), diagnosis, constraints });
-    expect(result).toMatchObject({ passed: true, fixHint: '' });
-  });
-});

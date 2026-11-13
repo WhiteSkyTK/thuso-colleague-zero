@@ -1,7 +1,7 @@
 import type { AppConfig } from '../config/env';
 import { ConfigError } from '../errors/AppError';
 import type { LlmProvider } from './LlmProvider';
-import { skeletonResponder } from './mock/skeletonResponder';
+import { demoResponder } from './mock/demoResponder';
 import { MockProvider } from './MockProvider';
 
 type ProviderName = AppConfig['llm']['provider'];
@@ -15,7 +15,7 @@ const notBuiltYet = (name: ProviderName): ProviderFactory => {
 
 /** Strategy lookup: a new provider is one more entry here. */
 const FACTORIES: Record<ProviderName, ProviderFactory> = {
-  mock: (config) => new MockProvider(skeletonResponder, config.llm.mockLatencyMs),
+  mock: (config) => new MockProvider(demoResponder, config.llm.mockLatencyMs),
   anthropic: notBuiltYet('anthropic'),
   'openai-compatible': notBuiltYet('openai-compatible'),
 };

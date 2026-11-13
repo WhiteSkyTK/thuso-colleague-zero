@@ -62,7 +62,7 @@ Switching concept? Keep the engine; swap the workers (Marking → Marker · Curr
 
 ## Phase 1 — Foundation (Fri 11:00–13:00)
 - [x] S0-01 Create the public GitHub repo; add CLAUDE.md, ROADMAP.md, docs/ and .claude/; first commit; invite the team
-- [~] S0-02 Scaffold Next.js + TS strict + Tailwind + ESLint (sonarjs) + Prettier + Vitest + Husky/lint-staged; add the scripts in CLAUDE.md §12
+- [x] S0-02 Scaffold Next.js + TS strict + Tailwind + ESLint (sonarjs) + Prettier + Vitest + Husky/lint-staged; add the scripts in CLAUDE.md §12
 - [~] S0-03 CI workflow + SonarQube Cloud project (Automatic Analysis OFF) + `SONAR_TOKEN` + badge; Dependabot; turn on CodeQL, secret scanning and push protection; protect `main` (CI required)
 - [x] S0-04 `config/env.ts` (Zod) + `.env.example`
 - [x] S0-05 Domain types + Zod schemas; `AGENT_META`
@@ -74,15 +74,28 @@ Switching concept? Keep the engine; swap the workers (Marking → Marker · Curr
 
 ## Phase 2 — Make it real (Fri 13:00–17:00)
 - [x] S1-01 Synthetic data generator + seed files (learners, assessments, attendance, reflections, resources, school calendar) including the hard cases
-- [ ] S1-02 JSON repositories + tools; `computeRisk` deterministic and tested
+- [x] S1-02 JSON repositories + tools (narrow repository interfaces per agent instead of Tool classes); `computeRisk` deterministic and tested
 - [ ] S1-03 `AnthropicProvider` (structured output, timeout, retry with backoff) + `LlmCache`
-- [ ] S1-04 Real Planner, Analyst and Coach with prompts in `src/core/prompts/`
-- [ ] S1-05 Reviewer + checks: coverage of every at-risk learner, resource IDs exist, workload ≤ `PLAN_MAX_HOURS_PER_WEEK`, plan matches the diagnosed cause, session dates valid, no other learner mentioned, injection
-- [ ] S1-06 Correction loop: attempts, logged reasons, escalation, re-plan triggers
-- [ ] S1-07 `POST /api/runs` + `GET /api/runs/[id]/stream` (SSE)
-- [ ] S1-08 Live run page v1: goal box, agent chips, streaming console, "Step x of y", "Human interventions: 0"
+- [~] S1-04 Real Planner, Analyst and Coach with prompts in `src/core/prompts/`
+- [x] S1-05 Reviewer + checks: coverage of every at-risk learner, resource IDs exist, workload ≤ `PLAN_MAX_HOURS_PER_WEEK`, plan matches the diagnosed cause, session dates valid, no other learner mentioned, injection
+- [x] S1-06 Correction loop: attempts, logged reasons, escalation, re-plan triggers
+- [~] S1-07 `POST /api/runs` + `GET /api/runs/[id]/stream` (SSE)
+- [~] S1-08 Live run page v1: goal box, agent chips, streaming console, "Step x of y", "Human interventions: 0"
 
 **M2 (16:30):** a real run in the browser with at least one genuine self-correction.
+
+## Phase 2b — Judges' feedback from the idea pitch (Fri 14:00)
+The judges asked: does it work for every subject, does it find the real root cause, does it teach each learner the way they learn, and does it help the lecturer too?
+- [x] F-01 Any subject: subjects, topics and tasks are data (`data/seed/subjects.json`); the goal names the subject; Physical Sciences seeded as a second subject
+- [x] F-02 Root cause worked out in code from four signals (attendance, homework, marks trend, topic gap), with the evidence; topics placed on the CAPS seven-level scale
+- [x] F-03 Learning formats: each learner's preferred formats (worked examples, patterns, visual story, audio, practice); plans teach in that format; `formatFitCheck`
+- [x] F-04 Scaffold ladder per topic (foundation → guided → independent → exam); `scaffoldCheck` stops plans that start too high or step back
+- [x] F-05 Lecturer value in every run: class-wide weakest topic, missing registers and catalogue gaps go into the teacher summary
+- [~] F-06 Lecturer tasks: tasks and per-topic results are in the data model; still to do — a screen to add a task and capture marks
+- [ ] F-07 Learner view: "what I am missing" — my topics by CAPS level, my next rung, my plan
+- [ ] F-08 Real past papers: link Department of Basic Education past exam papers per topic (the catalogue has `origin: past-paper` placeholders)
+- [ ] F-09 Measure which format works: compare marks before and after per format and switch when a format does not help
+- [ ] F-10 Presentation deck for Saturday 12:00
 
 ## Phase 3 — Execute and delight (Fri 18:00 → Sat 00:00)
 - [ ] S2-01 Messenger: emails (sandbox or redirect), `.ics` session invites, teacher summary
@@ -95,7 +108,7 @@ Switching concept? Keep the engine; swap the workers (Marking → Marker · Curr
 **M3 (00:00):** the full demo flow works and looks like DESIGN.md.
 
 ## Phase 4 — Harden (Sat 00:00–06:00) — sleep in shifts, at least 3 hours each
-- [ ] S3-01 Injection test + visible `[RV·FLAG]` in the demo
+- [x] S3-01 Injection test + visible `[RV·FLAG]` in the demo
 - [ ] S3-02 Budgets, timeouts, rate limit, friendly error states
 - [ ] S3-03 `TraceRecorder` + replay mode (labelled REPLAY); commit the golden demo trace
 - [ ] S3-04 Accessibility pass: keyboard, focus, contrast, reduced motion, pause button

@@ -12,6 +12,7 @@ export function buildSummary(ctx: RunContext, stopReason?: string): RunSummary {
     itemsDelivered: ctx.deliveredCount,
     fixes: ctx.fixes,
     escalations: [...ctx.escalations],
+    teacherNotes: ctx.teacherNotes,
     humanInterventions: ctx.escalations.length,
     durationMs: ctx.elapsedMs,
     tokens: ctx.budget.totalTokens,

@@ -1,6 +1,5 @@
 import type { Agent } from '../agents/Agent';
 import type { PlanRequest } from '../agents/PlannerAgent';
-import type { StepAgent } from '../agents/StepAgent';
 import { AGENT_META, MAX_REPLANS, PLAN_ATTEMPTS } from '../config/constants';
 import type { Plan, PlanStep } from '../domain/plan';
 import type { RunSummary } from '../domain/runSummary';
@@ -111,23 +110,22 @@ export class Orchestrator {
   }
 
   private async runStep(step: PlanStep, ctx: RunContext): Promise<WorkItem[]> {
-    const agent = this.deps.registry.get(step.agent);
     const upstream = step.dependsOn.flatMap((dependencyId) => ctx.outputsOf(dependencyId));
     if (this.deps.registry.specFor(step)?.scope !== 'each') {
-      return this.runOnce(step, agent, upstream, ctx);
+      return this.runOnce(step, upstream, ctx);
     }
     const perItem = await mapWithLimit(upstream, ctx.limits.concurrency, (item) =>
-      this.runForItem(step, agent, item, ctx),
+      this.runForItem(step, item, ctx),
     );
     return perItem.flat();
   }
 
   private async runOnce(
     step: PlanStep,
-    agent: StepAgent,
     upstream: readonly WorkItem[],
     ctx: RunContext,
   ): Promise<WorkItem[]> {
+    const agent = this.deps.registry.get(step.agent);
     const result = await agent.execute({ step, items: upstream }, ctx);
     if (result.kind !== 'outputs') {
       throw new StepFailedError(`step ${step.id}: a review action must run once per item`);
@@ -136,13 +134,9 @@ export class Orchestrator {
   }
 
   /** One item's failure never sinks the run: it is escalated and the others carry on. */
-  private async runForItem(
-    step: PlanStep,
-    agent: StepAgent,
-    item: WorkItem,
-    ctx: RunContext,
-  ): Promise<WorkItem[]> {
+  private async runForItem(step: PlanStep, item: WorkItem, ctx: RunContext): Promise<WorkItem[]> {
     try {
+      const agent = this.deps.registry.get(step.agent);
       const result = await agent.execute({ step, items: [item] }, ctx);
       if (result.kind === 'outputs') {
         return result.outputs.map((output) => createWorkItem(step, output));

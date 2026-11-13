@@ -26,10 +26,10 @@ const outputs = (ids: string[], payload: unknown = 'draft'): StepResult => ({
 });
 
 const STANDARD_PLAN = planOf(
-  step('s1', 'AN', 'find'),
-  step('s2', 'CO', 'draft', ['s1']),
-  step('s3', 'RV', 'review', ['s2']),
-  step('s4', 'MS', 'deliver', ['s3']),
+  step('s1', 'AN:find'),
+  step('s2', 'CO:draft', ['s1']),
+  step('s3', 'RV:review', ['s2']),
+  step('s4', 'MS:deliver', ['s3']),
 );
 
 /** A planner that returns the given plans in order, repeating the last one. */
@@ -197,7 +197,7 @@ describe('Orchestrator', () => {
   });
 
   it('rejects a plan with unknown actions or forward dependencies, then stops', async () => {
-    const badPlan = planOf(step('s1', 'CO', 'draft', ['s2']), step('s2', 'AN', 'dance'));
+    const badPlan = planOf(step('s1', 'CO:draft', ['s2']), step('s2', 'AN:dance'));
     const { orchestrator, ctx, plannerRequests } = setUp({ plans: [badPlan] });
 
     const summary = await orchestrator.run(ctx);

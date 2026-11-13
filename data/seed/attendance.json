@@ -47,7 +47,7 @@
   {
     "learnerId": "L-001",
     "week": 10,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-002",
@@ -212,7 +212,7 @@
   {
     "learnerId": "L-005",
     "week": 3,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-005",
@@ -277,27 +277,27 @@
   {
     "learnerId": "L-006",
     "week": 6,
-    "absences": 0
-  },
-  {
-    "learnerId": "L-006",
-    "week": 7,
-    "absences": 0
-  },
-  {
-    "learnerId": "L-006",
-    "week": 8,
     "absences": 1
   },
   {
     "learnerId": "L-006",
+    "week": 7,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
+    "week": 8,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-006",
     "week": 9,
     "absences": 0
   },
   {
     "learnerId": "L-006",
     "week": 10,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-007",
@@ -337,7 +337,7 @@
   {
     "learnerId": "L-007",
     "week": 8,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-007",
@@ -367,7 +367,7 @@
   {
     "learnerId": "L-008",
     "week": 4,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-008",
@@ -427,7 +427,7 @@
   {
     "learnerId": "L-009",
     "week": 6,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-009",
@@ -447,7 +447,7 @@
   {
     "learnerId": "L-009",
     "week": 10,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-010",
@@ -462,7 +462,7 @@
   {
     "learnerId": "L-010",
     "week": 3,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-010",
@@ -492,7 +492,7 @@
   {
     "learnerId": "L-010",
     "week": 9,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-010",
@@ -542,7 +542,7 @@
   {
     "learnerId": "L-011",
     "week": 9,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-011",
@@ -567,7 +567,7 @@
   {
     "learnerId": "L-012",
     "week": 4,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-012",
@@ -577,7 +577,7 @@
   {
     "learnerId": "L-012",
     "week": 6,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-012",
@@ -712,15 +712,15 @@
   {
     "learnerId": "L-015",
     "week": 3,
-    "absences": 0
-  },
-  {
-    "learnerId": "L-015",
-    "week": 4,
     "absences": 1
   },
   {
     "learnerId": "L-015",
+    "week": 4,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-015",
     "week": 5,
     "absences": 0
   },
@@ -802,15 +802,15 @@
   {
     "learnerId": "L-017",
     "week": 1,
-    "absences": 1
-  },
-  {
-    "learnerId": "L-017",
-    "week": 2,
     "absences": 0
   },
   {
     "learnerId": "L-017",
+    "week": 2,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-017",
     "week": 3,
     "absences": 0
   },
@@ -827,15 +827,15 @@
   {
     "learnerId": "L-017",
     "week": 6,
-    "absences": 1
-  },
-  {
-    "learnerId": "L-017",
-    "week": 7,
     "absences": 0
   },
   {
     "learnerId": "L-017",
+    "week": 7,
+    "absences": 1
+  },
+  {
+    "learnerId": "L-017",
     "week": 8,
     "absences": 0
   },
@@ -907,15 +907,15 @@
   {
     "learnerId": "L-019",
     "week": 2,
-    "absences": 1
-  },
-  {
-    "learnerId": "L-019",
-    "week": 3,
     "absences": 0
   },
   {
     "learnerId": "L-019",
+    "week": 3,
+    "absences": 0
+  },
+  {
+    "learnerId": "L-019",
     "week": 4,
     "absences": 0
   },
@@ -947,7 +947,7 @@
   {
     "learnerId": "L-019",
     "week": 10,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-020",
@@ -962,12 +962,12 @@
   {
     "learnerId": "L-020",
     "week": 3,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-020",
     "week": 4,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-020",
@@ -982,7 +982,7 @@
   {
     "learnerId": "L-020",
     "week": 7,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-020",
@@ -1102,7 +1102,7 @@
   {
     "learnerId": "L-023",
     "week": 1,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-023",
@@ -1162,7 +1162,7 @@
   {
     "learnerId": "L-024",
     "week": 3,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-024",
@@ -1172,7 +1172,7 @@
   {
     "learnerId": "L-024",
     "week": 5,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-024",
@@ -1182,7 +1182,7 @@
   {
     "learnerId": "L-024",
     "week": 7,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-024",
@@ -1192,7 +1192,7 @@
   {
     "learnerId": "L-024",
     "week": 9,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-024",
@@ -1202,7 +1202,7 @@
   {
     "learnerId": "L-025",
     "week": 1,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-025",
@@ -1267,12 +1267,12 @@
   {
     "learnerId": "L-026",
     "week": 4,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-026",
     "week": 5,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-026",
@@ -1387,17 +1387,17 @@
   {
     "learnerId": "L-028",
     "week": 8,
-    "absences": 1
-  },
-  {
-    "learnerId": "L-028",
-    "week": 9,
     "absences": 0
   },
   {
     "learnerId": "L-028",
-    "week": 10,
+    "week": 9,
     "absences": 1
+  },
+  {
+    "learnerId": "L-028",
+    "week": 10,
+    "absences": 0
   },
   {
     "learnerId": "L-029",
@@ -1417,7 +1417,7 @@
   {
     "learnerId": "L-029",
     "week": 4,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-029",
@@ -1482,7 +1482,7 @@
   {
     "learnerId": "L-031",
     "week": 7,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-031",
@@ -1537,12 +1537,12 @@
   {
     "learnerId": "L-032",
     "week": 8,
-    "absences": 1
+    "absences": 0
   },
   {
     "learnerId": "L-032",
     "week": 9,
-    "absences": 0
+    "absences": 1
   },
   {
     "learnerId": "L-032",

@@ -1,7 +1,9 @@
 import type { ActionSpec, StepAgent } from '@/core/agents/StepAgent';
 import { loadConfig, type AppConfig } from '@/core/config/env';
 import type { AgentEvent } from '@/core/domain/agentEvent';
-import type { AgentCode } from '@/core/domain/codes';
+import type { ClassData } from '@/core/domain/classData';
+import { AgentCodeSchema, type AgentCode } from '@/core/domain/codes';
+import { loadSeedClass } from '@/core/repositories/loadSeedClass';
 import type { Plan, PlanStep } from '@/core/domain/plan';
 import type { ReviewVerdict } from '@/core/domain/review';
 import type { StepRequest, StepResult } from '@/core/domain/step';
@@ -24,7 +26,7 @@ export class ManualClock implements Clock {
 }
 
 export const mockConfig = (overrides: Record<string, string> = {}): AppConfig =>
-  loadConfig({ LLM_PROVIDER: 'mock', ...overrides });
+  loadConfig({ LLM_PROVIDER: 'mock', MOCK_LATENCY_MS: '0', ...overrides });
 
 export interface TestRun {
   ctx: RunContext;
@@ -69,12 +71,26 @@ export function createTestRun(options: TestRunOptions = {}): TestRun {
   return { ctx, events, clock };
 }
 
-export const step = (
-  id: string,
-  agent: AgentCode,
-  action: string,
-  dependsOn: string[] = [],
-): PlanStep => ({ id, agent, action, input: {}, successCriteria: [], dependsOn });
+/** `target` is `AGENT:action`, e.g. `CO:draft`. */
+export const step = (id: string, target: string, dependsOn: string[] = []): PlanStep => {
+  const [agent, action = ''] = target.split(':');
+  return {
+    id,
+    agent: AgentCodeSchema.parse(agent),
+    action,
+    input: {},
+    successCriteria: [],
+    dependsOn,
+  };
+};
+
+let seedClass: ClassData | undefined;
+
+/** The real seed class from data/seed (read once). */
+export function seedClassData(): ClassData {
+  seedClass ??= loadSeedClass();
+  return seedClass;
+}
 
 export const planOf = (...steps: PlanStep[]): Plan => ({
   goalId: 'goal-test',

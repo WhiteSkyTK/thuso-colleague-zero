@@ -19,6 +19,8 @@ export const RunSummarySchema = z.object({
   itemsDelivered: z.number().int().nonnegative(),
   fixes: z.number().int().nonnegative(),
   escalations: z.array(EscalationSchema),
+  /** Things the teacher should know: data gaps, catalogue gaps, class-wide weak topics. */
+  teacherNotes: z.array(z.string()),
   /** Every escalation needs a person, so it counts as one intervention. */
   humanInterventions: z.number().int().nonnegative(),
   durationMs: z.number().nonnegative(),

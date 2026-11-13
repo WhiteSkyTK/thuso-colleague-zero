@@ -10,6 +10,8 @@ const DEFAULTS = {
   concurrency: 4,
   riskThreshold: 40,
   maxHoursPerWeek: 4,
+  /** Per-call delay of the offline provider, so a run can be watched as it happens. */
+  mockLatencyMs: 700,
 } as const;
 
 /** `.env` files give empty strings for unset keys; treat those as "not set". */
@@ -39,7 +41,7 @@ const EnvSchema = z.object({
   LLM_CACHE: choice(['on', 'off'] as const, 'on'),
   LLM_COST_INPUT_PER_MTOK: amount(0),
   LLM_COST_OUTPUT_PER_MTOK: amount(0),
-  MOCK_LATENCY_MS: amount(0),
+  MOCK_LATENCY_MS: amount(DEFAULTS.mockLatencyMs),
   RISK_THRESHOLD: amount(DEFAULTS.riskThreshold),
   PLAN_MAX_HOURS_PER_WEEK: amount(DEFAULTS.maxHoursPerWeek),
   DELIVERY_MODE: choice(['sandbox', 'redirect', 'live'] as const, 'sandbox'),

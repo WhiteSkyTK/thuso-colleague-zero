@@ -1,162 +1,386 @@
 [
   {
     "learnerId": "L-001",
-    "assigned": 25,
-    "submitted": 21
-  },
-  {
-    "learnerId": "L-002",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 25
   },
   {
-    "learnerId": "L-003",
-    "assigned": 25,
-    "submitted": 8
-  },
-  {
-    "learnerId": "L-004",
-    "assigned": 25,
-    "submitted": 23
-  },
-  {
-    "learnerId": "L-005",
+    "learnerId": "L-001",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 24
   },
   {
-    "learnerId": "L-006",
+    "learnerId": "L-002",
+    "subjectId": "MATH",
     "assigned": 25,
-    "submitted": 25
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-002",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 23
+  },
+  {
+    "learnerId": "L-003",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 6
+  },
+  {
+    "learnerId": "L-003",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-004",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 23
+  },
+  {
+    "learnerId": "L-004",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-005",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-005",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 15
+  },
+  {
+    "learnerId": "L-006",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-006",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 23
   },
   {
     "learnerId": "L-007",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-007",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 24
   },
   {
     "learnerId": "L-008",
-    "assigned": 25,
-    "submitted": 23
-  },
-  {
-    "learnerId": "L-009",
-    "assigned": 25,
-    "submitted": 19
-  },
-  {
-    "learnerId": "L-010",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 25
   },
   {
+    "learnerId": "L-008",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-009",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 11
+  },
+  {
+    "learnerId": "L-009",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-010",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 25
+  },
+  {
+    "learnerId": "L-010",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 21
+  },
+  {
     "learnerId": "L-011",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 21
+  },
+  {
+    "learnerId": "L-011",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 25
   },
   {
     "learnerId": "L-012",
+    "subjectId": "MATH",
     "assigned": 25,
-    "submitted": 21
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-012",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 24
   },
   {
     "learnerId": "L-013",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 25
+  },
+  {
+    "learnerId": "L-013",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 23
   },
   {
     "learnerId": "L-014",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 14
   },
   {
+    "learnerId": "L-014",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 15
+  },
+  {
     "learnerId": "L-015",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-015",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 21
+  },
+  {
+    "learnerId": "L-016",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 22
   },
   {
     "learnerId": "L-016",
+    "subjectId": "PHSC",
     "assigned": 25,
-    "submitted": 22
+    "submitted": 21
   },
   {
     "learnerId": "L-017",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-017",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 21
   },
   {
     "learnerId": "L-018",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 21
   },
   {
+    "learnerId": "L-018",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
     "learnerId": "L-019",
+    "subjectId": "MATH",
     "assigned": 25,
-    "submitted": 22
+    "submitted": 23
   },
   {
-    "learnerId": "L-020",
-    "assigned": 25,
-    "submitted": 22
-  },
-  {
-    "learnerId": "L-021",
-    "assigned": 25,
-    "submitted": 20
-  },
-  {
-    "learnerId": "L-022",
+    "learnerId": "L-019",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 24
   },
   {
+    "learnerId": "L-020",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-020",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 25
+  },
+  {
+    "learnerId": "L-021",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 17
+  },
+  {
+    "learnerId": "L-021",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-022",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-022",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 20
+  },
+  {
     "learnerId": "L-023",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 21
   },
   {
+    "learnerId": "L-023",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 25
+  },
+  {
     "learnerId": "L-024",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-024",
+    "subjectId": "PHSC",
     "assigned": 25,
     "submitted": 25
   },
   {
     "learnerId": "L-025",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-025",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 23
+  },
+  {
+    "learnerId": "L-026",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 21
   },
   {
     "learnerId": "L-026",
+    "subjectId": "PHSC",
     "assigned": 25,
-    "submitted": 22
+    "submitted": 24
   },
   {
     "learnerId": "L-027",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 12
   },
   {
-    "learnerId": "L-028",
+    "learnerId": "L-027",
+    "subjectId": "PHSC",
     "assigned": 25,
-    "submitted": 25
+    "submitted": 23
+  },
+  {
+    "learnerId": "L-028",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 23
+  },
+  {
+    "learnerId": "L-028",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 23
   },
   {
     "learnerId": "L-029",
+    "subjectId": "MATH",
     "assigned": 25,
-    "submitted": 25
+    "submitted": 22
+  },
+  {
+    "learnerId": "L-029",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 23
   },
   {
     "learnerId": "L-030",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 18
   },
   {
+    "learnerId": "L-030",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 21
+  },
+  {
     "learnerId": "L-031",
+    "subjectId": "MATH",
+    "assigned": 25,
+    "submitted": 24
+  },
+  {
+    "learnerId": "L-031",
+    "subjectId": "PHSC",
+    "assigned": 25,
+    "submitted": 21
+  },
+  {
+    "learnerId": "L-032",
+    "subjectId": "MATH",
     "assigned": 25,
     "submitted": 25
   },
   {
     "learnerId": "L-032",
+    "subjectId": "PHSC",
     "assigned": 25,
-    "submitted": 21
+    "submitted": 22
   }
 ]

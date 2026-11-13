@@ -1,0 +1,108 @@
+[
+  {
+    "id": "T-01",
+    "subjectId": "MATH",
+    "title": "Mathematics: Baseline test",
+    "kind": "test",
+    "week": 2,
+    "topics": [
+      "algebraic expressions"
+    ]
+  },
+  {
+    "id": "T-02",
+    "subjectId": "MATH",
+    "title": "Mathematics: Assignment",
+    "kind": "homework",
+    "week": 4,
+    "topics": [
+      "equations and inequalities"
+    ]
+  },
+  {
+    "id": "T-03",
+    "subjectId": "MATH",
+    "title": "Mathematics: Mid-term test",
+    "kind": "test",
+    "week": 6,
+    "topics": [
+      "functions",
+      "trigonometry"
+    ]
+  },
+  {
+    "id": "T-04",
+    "subjectId": "MATH",
+    "title": "Mathematics: Project",
+    "kind": "homework",
+    "week": 8,
+    "topics": [
+      "euclidean geometry",
+      "statistics"
+    ]
+  },
+  {
+    "id": "T-05",
+    "subjectId": "MATH",
+    "title": "Mathematics: Past exam paper practice",
+    "kind": "past-paper",
+    "week": 10,
+    "topics": [
+      "probability",
+      "finance and growth"
+    ]
+  },
+  {
+    "id": "T-06",
+    "subjectId": "PHSC",
+    "title": "Physical Sciences: Baseline test",
+    "kind": "test",
+    "week": 2,
+    "topics": [
+      "matter and materials"
+    ]
+  },
+  {
+    "id": "T-07",
+    "subjectId": "PHSC",
+    "title": "Physical Sciences: Assignment",
+    "kind": "homework",
+    "week": 4,
+    "topics": [
+      "atomic structure"
+    ]
+  },
+  {
+    "id": "T-08",
+    "subjectId": "PHSC",
+    "title": "Physical Sciences: Mid-term test",
+    "kind": "test",
+    "week": 6,
+    "topics": [
+      "chemical bonding",
+      "waves and sound"
+    ]
+  },
+  {
+    "id": "T-09",
+    "subjectId": "PHSC",
+    "title": "Physical Sciences: Project",
+    "kind": "homework",
+    "week": 8,
+    "topics": [
+      "electricity",
+      "mechanics"
+    ]
+  },
+  {
+    "id": "T-10",
+    "subjectId": "PHSC",
+    "title": "Physical Sciences: Past exam paper practice",
+    "kind": "past-paper",
+    "week": 10,
+    "topics": [
+      "energy",
+      "chemical change"
+    ]
+  }
+]

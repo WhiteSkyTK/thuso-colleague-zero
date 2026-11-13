@@ -1,142 +1,302 @@
 [
   {
     "id": "R-001",
-    "title": "Factorising trinomials step by step",
+    "subjectId": "MATH",
+    "title": "Factorising trinomials: a comic-strip walkthrough",
     "topic": "algebraic expressions",
     "minutes": 20,
-    "kind": "video"
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-002",
-    "title": "Products and factors worksheet",
+    "subjectId": "MATH",
+    "title": "Products and factors: worked examples",
     "topic": "algebraic expressions",
     "minutes": 40,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-003",
-    "title": "Simplifying algebraic fractions",
+    "subjectId": "MATH",
+    "title": "Spot the pattern: difference of two squares",
     "topic": "algebraic expressions",
-    "minutes": 30,
-    "kind": "practice"
+    "minutes": 25,
+    "format": "patterns",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-004",
-    "title": "Solving linear equations",
+    "subjectId": "MATH",
+    "title": "Solving linear equations: audio lesson",
     "topic": "equations and inequalities",
     "minutes": 15,
-    "kind": "video"
+    "format": "audio",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-005",
-    "title": "Quadratic equations by factorising",
+    "subjectId": "MATH",
+    "title": "Quadratic equations: worked examples",
     "topic": "equations and inequalities",
     "minutes": 35,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-006",
-    "title": "Inequalities on a number line",
+    "subjectId": "MATH",
+    "title": "Past exam questions: equations and inequalities",
     "topic": "equations and inequalities",
-    "minutes": 25,
-    "kind": "practice"
+    "minutes": 30,
+    "format": "practice",
+    "rung": "exam",
+    "origin": "past-paper"
   },
   {
     "id": "R-007",
-    "title": "Straight-line graphs: gradient and intercept",
+    "subjectId": "MATH",
+    "title": "Straight-line graphs: the story of gradient",
     "topic": "functions",
     "minutes": 20,
-    "kind": "video"
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-008",
-    "title": "Sketching parabolas",
+    "subjectId": "MATH",
+    "title": "Sketching parabolas: worked examples",
     "topic": "functions",
     "minutes": 40,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-009",
-    "title": "Reading graphs: domain and range",
+    "subjectId": "MATH",
+    "title": "Past exam questions: functions",
     "topic": "functions",
     "minutes": 30,
-    "kind": "practice"
+    "format": "practice",
+    "rung": "exam",
+    "origin": "past-paper"
   },
   {
     "id": "R-010",
-    "title": "Sin, cos and tan in right-angled triangles",
+    "subjectId": "MATH",
+    "title": "SOH-CAH-TOA: a memory pattern",
     "topic": "trigonometry",
     "minutes": 20,
-    "kind": "video"
+    "format": "patterns",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-011",
-    "title": "Special angles drill",
+    "subjectId": "MATH",
+    "title": "Special angles: audio drill",
     "topic": "trigonometry",
     "minutes": 25,
-    "kind": "practice"
+    "format": "audio",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-012",
-    "title": "Solving triangles worksheet",
+    "subjectId": "MATH",
+    "title": "Solving triangles: worked examples",
     "topic": "trigonometry",
     "minutes": 40,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "independent",
+    "origin": "school"
   },
   {
     "id": "R-013",
-    "title": "Properties of quadrilaterals",
+    "subjectId": "MATH",
+    "title": "Quadrilaterals: a picture story",
     "topic": "euclidean geometry",
     "minutes": 20,
-    "kind": "video"
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-014",
-    "title": "Proving triangles congruent",
+    "subjectId": "MATH",
+    "title": "Congruent triangles: worked examples",
     "topic": "euclidean geometry",
     "minutes": 40,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-015",
-    "title": "Midpoint theorem practice",
+    "subjectId": "MATH",
+    "title": "Past exam questions: Euclidean geometry",
     "topic": "euclidean geometry",
     "minutes": 30,
-    "kind": "practice"
+    "format": "practice",
+    "rung": "exam",
+    "origin": "past-paper"
   },
   {
     "id": "R-016",
-    "title": "Venn diagrams and probability",
+    "subjectId": "MATH",
+    "title": "Venn diagrams: a picture story",
     "topic": "probability",
     "minutes": 20,
-    "kind": "video"
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-017",
-    "title": "Mutually exclusive events worksheet",
+    "subjectId": "MATH",
+    "title": "Mutually exclusive events: worked examples",
     "topic": "probability",
     "minutes": 35,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-018",
-    "title": "Simple and compound interest",
+    "subjectId": "MATH",
+    "title": "Simple and compound interest: the pattern",
     "topic": "finance and growth",
     "minutes": 20,
-    "kind": "video"
+    "format": "patterns",
+    "rung": "foundation",
+    "origin": "school"
   },
   {
     "id": "R-019",
-    "title": "Hire purchase and inflation problems",
+    "subjectId": "MATH",
+    "title": "Hire purchase and inflation: worked examples",
     "topic": "finance and growth",
     "minutes": 40,
-    "kind": "worksheet"
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
   },
   {
     "id": "R-020",
-    "title": "Exchange rates practice",
+    "subjectId": "MATH",
+    "title": "Past exam questions: finance and growth",
     "topic": "finance and growth",
     "minutes": 25,
-    "kind": "practice"
+    "format": "practice",
+    "rung": "exam",
+    "origin": "past-paper"
+  },
+  {
+    "id": "R-021",
+    "subjectId": "PHSC",
+    "title": "States of matter: a picture story",
+    "topic": "matter and materials",
+    "minutes": 20,
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
+  },
+  {
+    "id": "R-022",
+    "subjectId": "PHSC",
+    "title": "Building atoms: worked examples",
+    "topic": "atomic structure",
+    "minutes": 30,
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
+  },
+  {
+    "id": "R-023",
+    "subjectId": "PHSC",
+    "title": "Bonding: the pattern in the periodic table",
+    "topic": "chemical bonding",
+    "minutes": 25,
+    "format": "patterns",
+    "rung": "foundation",
+    "origin": "school"
+  },
+  {
+    "id": "R-024",
+    "subjectId": "PHSC",
+    "title": "Waves: audio lesson",
+    "topic": "waves and sound",
+    "minutes": 20,
+    "format": "audio",
+    "rung": "foundation",
+    "origin": "school"
+  },
+  {
+    "id": "R-025",
+    "subjectId": "PHSC",
+    "title": "Circuits: a picture story",
+    "topic": "electricity",
+    "minutes": 20,
+    "format": "visual-story",
+    "rung": "foundation",
+    "origin": "school"
+  },
+  {
+    "id": "R-026",
+    "subjectId": "PHSC",
+    "title": "Ohm's law: worked examples",
+    "topic": "electricity",
+    "minutes": 35,
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
+  },
+  {
+    "id": "R-027",
+    "subjectId": "PHSC",
+    "title": "Past exam questions: electric circuits",
+    "topic": "electricity",
+    "minutes": 30,
+    "format": "practice",
+    "rung": "exam",
+    "origin": "past-paper"
+  },
+  {
+    "id": "R-028",
+    "subjectId": "PHSC",
+    "title": "Motion graphs: worked examples",
+    "topic": "mechanics",
+    "minutes": 40,
+    "format": "worked-examples",
+    "rung": "guided",
+    "origin": "school"
+  },
+  {
+    "id": "R-029",
+    "subjectId": "PHSC",
+    "title": "Mechanical energy: the pattern",
+    "topic": "energy",
+    "minutes": 25,
+    "format": "patterns",
+    "rung": "guided",
+    "origin": "school"
+  },
+  {
+    "id": "R-030",
+    "subjectId": "PHSC",
+    "title": "Balancing equations: worked examples",
+    "topic": "chemical change",
+    "minutes": 30,
+    "format": "worked-examples",
+    "rung": "foundation",
+    "origin": "school"
   }
 ]

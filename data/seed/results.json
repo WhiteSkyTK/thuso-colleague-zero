@@ -1,0 +1,4098 @@
+[
+  {
+    "learnerId": "L-001",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-001",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 92
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 92
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 91
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-002",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 52
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 47
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 45
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 49
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 45
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 43
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-003",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 61
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-004",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 54
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 52
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 15
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-005",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 87
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-006",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-007",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-008",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 55
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 53
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 51
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 49
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 52
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-009",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-010",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-011",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 87
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 90
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 89
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-012",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 59
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 57
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 61
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-013",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 38
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 44
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 35
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 33
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 44
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 40
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 36
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 34
+  },
+  {
+    "learnerId": "L-014",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 30
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 91
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 91
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 91
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 87
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-015",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 61
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-016",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 59
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 59
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 59
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-017",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 58
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 54
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 42
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 39
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 36
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-018",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 87
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-019",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-020",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 55
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 53
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 49
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 20
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 47
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-021",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 56
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 52
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 42
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 39
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 36
+  },
+  {
+    "learnerId": "L-022",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 33
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-023",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 56
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 57
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 56
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 59
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 60
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-024",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-025",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 90
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 67
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 68
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 64
+  },
+  {
+    "learnerId": "L-026",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 50
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 48
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 45
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 44
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 46
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 45
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 42
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 44
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-027",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 86
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 61
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 80
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-028",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 70
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 77
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-029",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 52
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 47
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 41
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 37
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 35
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 37
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 33
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 32
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 83
+  },
+  {
+    "learnerId": "L-030",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 63
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 65
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 66
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 62
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 71
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 75
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 69
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 72
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 74
+  },
+  {
+    "learnerId": "L-031",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 73
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-01",
+    "subjectId": "MATH",
+    "week": 2,
+    "topic": "algebraic expressions",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-02",
+    "subjectId": "MATH",
+    "week": 4,
+    "topic": "equations and inequalities",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "functions",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-03",
+    "subjectId": "MATH",
+    "week": 6,
+    "topic": "trigonometry",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "euclidean geometry",
+    "scorePct": 81
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-04",
+    "subjectId": "MATH",
+    "week": 8,
+    "topic": "statistics",
+    "scorePct": 76
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "probability",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-05",
+    "subjectId": "MATH",
+    "week": 10,
+    "topic": "finance and growth",
+    "scorePct": 78
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-06",
+    "subjectId": "PHSC",
+    "week": 2,
+    "topic": "matter and materials",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-07",
+    "subjectId": "PHSC",
+    "week": 4,
+    "topic": "atomic structure",
+    "scorePct": 84
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "chemical bonding",
+    "scorePct": 85
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-08",
+    "subjectId": "PHSC",
+    "week": 6,
+    "topic": "waves and sound",
+    "scorePct": 82
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "electricity",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-09",
+    "subjectId": "PHSC",
+    "week": 8,
+    "topic": "mechanics",
+    "scorePct": 88
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "energy",
+    "scorePct": 79
+  },
+  {
+    "learnerId": "L-032",
+    "taskId": "T-10",
+    "subjectId": "PHSC",
+    "week": 10,
+    "topic": "chemical change",
+    "scorePct": 90
+  }
+]

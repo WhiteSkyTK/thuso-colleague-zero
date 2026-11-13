@@ -40,6 +40,7 @@ export class RunContext {
   private readonly startedAt: number;
   private readonly outputs = new Map<string, readonly WorkItem[]>();
   private readonly delivered = new Set<string>();
+  private readonly notes = new Set<string>();
   private seq = 0;
   private fixCount = 0;
 
@@ -109,6 +110,15 @@ export class RunContext {
       itemId: item.subjectId,
       message: `${item.subjectId}: needs a human — ${reason}`,
     });
+  }
+
+  /** Something the teacher should know (a data gap, a catalogue gap); goes into the summary. */
+  note(text: string): void {
+    this.notes.add(text);
+  }
+
+  get teacherNotes(): string[] {
+    return [...this.notes];
   }
 
   recordFix(): void {

@@ -5,18 +5,23 @@ export interface AgentMeta {
   readonly name: string;
   /** CSS variable from docs/DESIGN.md §3. */
   readonly colorToken: string;
+  /** Text colour that passes contrast on colorToken. */
+  readonly textToken: string;
   /** Text on the sign the agent's character carries (DESIGN.md §4). */
   readonly sign: string;
 }
 
+const ON_DARK = '--c-paper';
+const ON_LIGHT = '--c-ink-900';
+
 /** Single source of truth for how each agent is named and shown. */
 export const AGENT_META = {
-  PL: { code: 'PL', name: 'Planner', colorToken: '--c-jacaranda-500', sign: 'PLAN' },
-  AN: { code: 'AN', name: 'Analyst', colorToken: '--c-teal-500', sign: 'FIND' },
-  CO: { code: 'CO', name: 'Coach', colorToken: '--c-sun-400', sign: 'TEACH' },
-  RV: { code: 'RV', name: 'Reviewer', colorToken: '--c-ember-500', sign: 'CHECK' },
-  MS: { code: 'MS', name: 'Messenger', colorToken: '--c-leaf-500', sign: 'SEND' },
-  SYS: { code: 'SYS', name: 'Orchestrator', colorToken: '--c-ink-900', sign: 'RUN' },
+  PL: { code: 'PL', name: 'Planner', colorToken: '--c-jacaranda-500', textToken: ON_DARK, sign: 'PLAN' },
+  AN: { code: 'AN', name: 'Analyst', colorToken: '--c-teal-500', textToken: ON_LIGHT, sign: 'FIND' },
+  CO: { code: 'CO', name: 'Coach', colorToken: '--c-sun-400', textToken: ON_LIGHT, sign: 'TEACH' },
+  RV: { code: 'RV', name: 'Reviewer', colorToken: '--c-ember-500', textToken: ON_LIGHT, sign: 'CHECK' },
+  MS: { code: 'MS', name: 'Messenger', colorToken: '--c-leaf-500', textToken: ON_LIGHT, sign: 'SEND' },
+  SYS: { code: 'SYS', name: 'Orchestrator', colorToken: '--c-ink-900', textToken: ON_DARK, sign: 'RUN' },
 } as const satisfies Record<AgentCode, AgentMeta>;
 
 export const DEMO_GOAL_TEXT =

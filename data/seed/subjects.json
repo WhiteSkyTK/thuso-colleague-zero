@@ -1,0 +1,32 @@
+[
+  {
+    "id": "MATH",
+    "name": "Mathematics",
+    "grade": 10,
+    "topics": [
+      "algebraic expressions",
+      "equations and inequalities",
+      "functions",
+      "trigonometry",
+      "euclidean geometry",
+      "statistics",
+      "probability",
+      "finance and growth"
+    ]
+  },
+  {
+    "id": "PHSC",
+    "name": "Physical Sciences",
+    "grade": 10,
+    "topics": [
+      "matter and materials",
+      "atomic structure",
+      "chemical bonding",
+      "waves and sound",
+      "electricity",
+      "mechanics",
+      "energy",
+      "chemical change"
+    ]
+  }
+]

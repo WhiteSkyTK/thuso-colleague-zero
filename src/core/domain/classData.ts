@@ -1,19 +1,17 @@
 import { z } from 'zod';
-import { LearnerIdSchema } from './diagnosis';
+import { LearnerIdSchema, LearningFormatSchema, RungSchema } from './vocab';
 
-/** Grade 10 Mathematics topics (CAPS), in the order the term teaches them. */
-export const TOPICS = [
-  'algebraic expressions',
-  'equations and inequalities',
-  'functions',
-  'trigonometry',
-  'euclidean geometry',
-  'statistics',
-  'probability',
-  'finance and growth',
-] as const;
-export const TopicSchema = z.enum(TOPICS);
-export type Topic = z.infer<typeof TopicSchema>;
+const SubjectId = z.string().regex(/^[A-Z]{3,6}$/);
+const Week = z.number().int().positive();
+
+/** A subject is data, not code: adding one means adding rows, never changing the engine. */
+export const SubjectSchema = z.object({
+  id: SubjectId,
+  name: z.string().min(1),
+  grade: z.number().int(),
+  topics: z.array(z.string().min(1)).min(1),
+});
+export type Subject = z.infer<typeof SubjectSchema>;
 
 /** Synthetic only — every address is on example.org (POPIA: no real learner data). */
 export const LearnerSchema = z.object({
@@ -21,50 +19,65 @@ export const LearnerSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   grade: z.number().int(),
-  subject: z.string().min(1),
-  learnerEmail: z.string().email(),
+  learnerEmail: z.email(),
   guardianName: z.string().min(1),
-  guardianEmail: z.string().email(),
+  guardianEmail: z.email(),
+  /** How the learner says they like to learn — one or two formats. */
+  preferredFormats: z.array(LearningFormatSchema).min(1).max(2),
 });
 export type Learner = z.infer<typeof LearnerSchema>;
 
-/** One topic mark from one assessment. */
-export const AssessmentResultSchema = z.object({
+/** Work the lecturer sets: a test, homework or past-paper practice. Marks come back as results. */
+export const TaskSchema = z.object({
+  id: z.string().regex(/^T-\d{2}$/),
+  subjectId: SubjectId,
+  title: z.string().min(1),
+  kind: z.enum(['test', 'homework', 'past-paper']),
+  week: Week,
+  topics: z.array(z.string().min(1)).min(1),
+});
+export type Task = z.infer<typeof TaskSchema>;
+
+/** One topic mark a learner earned on one task. */
+export const TaskResultSchema = z.object({
   learnerId: LearnerIdSchema,
-  assessmentId: z.string().min(1),
-  week: z.number().int().positive(),
-  topic: TopicSchema,
+  taskId: z.string().min(1),
+  subjectId: SubjectId,
+  week: Week,
+  topic: z.string().min(1),
   scorePct: z.number().min(0).max(100),
 });
-export type AssessmentResult = z.infer<typeof AssessmentResultSchema>;
+export type TaskResult = z.infer<typeof TaskResultSchema>;
 
 export const AttendanceWeekSchema = z.object({
   learnerId: LearnerIdSchema,
-  week: z.number().int().positive(),
+  week: Week,
   absences: z.number().int().min(0).max(5),
 });
 export type AttendanceWeek = z.infer<typeof AttendanceWeekSchema>;
 
 export const HomeworkRecordSchema = z.object({
   learnerId: LearnerIdSchema,
+  subjectId: SubjectId,
   assigned: z.number().int().positive(),
   submitted: z.number().int().nonnegative(),
 });
 export type HomeworkRecord = z.infer<typeof HomeworkRecordSchema>;
 
 /** Free text written by a learner — data, never instructions. */
-export const ReflectionSchema = z.object({
-  learnerId: LearnerIdSchema,
-  text: z.string(),
-});
+export const ReflectionSchema = z.object({ learnerId: LearnerIdSchema, text: z.string() });
 export type Reflection = z.infer<typeof ReflectionSchema>;
 
 export const ResourceSchema = z.object({
   id: z.string().regex(/^R-\d{3}$/),
+  subjectId: SubjectId,
   title: z.string().min(1),
-  topic: TopicSchema,
+  topic: z.string().min(1),
   minutes: z.number().int().positive(),
-  kind: z.enum(['video', 'worksheet', 'practice']),
+  format: LearningFormatSchema,
+  rung: RungSchema,
+  /** `past-paper`: exam questions from previous years. */
+  origin: z.enum(['school', 'past-paper']),
 });
 export type Resource = z.infer<typeof ResourceSchema>;
 
@@ -76,10 +89,16 @@ export const SchoolDaySchema = z.object({
 });
 export type SchoolDay = z.infer<typeof SchoolDaySchema>;
 
+export const TeacherSchema = z.object({ name: z.string().min(1), email: z.email() });
+export type Teacher = z.infer<typeof TeacherSchema>;
+
 /** Everything the colleague knows about one class. */
 export const ClassDataSchema = z.object({
+  teacher: TeacherSchema,
+  subjects: z.array(SubjectSchema).min(1),
   learners: z.array(LearnerSchema),
-  assessments: z.array(AssessmentResultSchema),
+  tasks: z.array(TaskSchema),
+  results: z.array(TaskResultSchema),
   attendance: z.array(AttendanceWeekSchema),
   homework: z.array(HomeworkRecordSchema),
   reflections: z.array(ReflectionSchema),

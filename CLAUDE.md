@@ -22,6 +22,7 @@ A **digital colleague for education**: a team of AI agents that takes a goal, **
 | Users | Teacher/facilitator (sets the goal, gets the summary) · learners and guardians (get the plans) |
 | Example goal | "Find every Grade 10 learner at risk of failing Mathematics this term, work out why, and send each one a personalised 2-week catch-up plan with a booked support session." |
 | Done when | Every at-risk learner has a reviewed plan delivered, the teacher has a summary, and **human interventions = 0** (escalations are listed, never hidden) |
+| Scope added after the pitch (Fri 13 Nov) | Works for **any subject** (subjects, topics and lecturer tasks are data) · finds the **root cause** in code from four signals · teaches in the learner's **preferred format** (worked examples, patterns, visual story, audio, practice) · builds each topic up a **scaffold ladder** on the CAPS scale · tells the **lecturer** what the whole class needs. See ROADMAP §Phase 2b |
 
 If the concept changes, update this card and the roster in §6 first. The engine (§5) stays the same.
 
@@ -122,7 +123,7 @@ Log line format (mirrors the organisers' demo): `00:06:51 [RV·FLAG] L-014: plan
 |---|---|---|
 | `abstract class Agent<I, O>` | Template Method | `execute()` handles timing, budget, errors and events; subclasses implement only `protected run(input, ctx)` |
 | `Orchestrator` | Mediator | Owns routing, retries, parallelism, budgets and re-planning. Agents never call each other |
-| `Tool<I, O>` + `ToolRegistry` | Command + Registry | `name`, `description`, `inputSchema`, `execute()`. Each agent gets only the tools it needs |
+| Agent actions + narrow repositories | Command + Interface segregation | Each agent declares its actions in an `ActionTable` and is injected only the repository interface it needs (`LearnerRecords`, `ResourceCatalog`, `SchoolCalendar`, `ContactDirectory`) |
 | `LlmProvider` | Strategy | `complete()` and `completeStructured<T>(schema, …)`; chosen by `LLM_PROVIDER` |
 | `EventBus` | Observer | Agents publish; the SSE route and `TraceRecorder` subscribe |
 | Repositories | Repository | `LearnerRepository`, `AssessmentRepository`, `AttendanceRepository`, `ResourceCatalog` interfaces + JSON implementations |
@@ -135,7 +136,7 @@ Adding an agent or tool = add a class and register it. Never grow a `switch` in 
 | Code | Agent | Job | Tools | Model tier |
 |---|---|---|---|---|
 | PL | Planner | Goal + data overview → `Plan`; re-plans on failure or missing data | `getClassOverview` | reasoning |
-| AN | Analyst | Computes risk in code, then explains *why* per learner with evidence | `getLearnerRecords`, `computeRisk` | reasoning |
+| AN | Analyst | Computes risk and the root cause in code (`assessRisk`), then explains *why* per learner with evidence | `LearnerRecords` | reasoning |
 | CO | Coach | Writes the 2-week catch-up plan and messages per at-risk learner | `getResources`, `getSchoolCalendar` | reasoning |
 | RV | Reviewer | Runs `checks/*` first, then an LLM rubric review; returns `ReviewVerdict` | read-only access to outputs | reasoning, temperature 0 |
 | MS | Messenger | Sends learner and guardian messages, books sessions (.ics), sends the teacher summary | `sendEmail`, `createInvite` | fast |

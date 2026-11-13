@@ -5,6 +5,7 @@
 import { DEMO_GOAL_TEXT } from '../src/core/config/constants';
 import { loadConfig } from '../src/core/config/env';
 import { createColleague } from '../src/core/createColleague';
+import { loadSeedClass } from '../src/core/repositories/loadSeedClass';
 import { formatEvent } from '../src/core/events/formatEvent';
 
 const print = (line: string): void => {
@@ -13,7 +14,7 @@ const print = (line: string): void => {
 
 async function main(): Promise<number> {
   const config = loadConfig({ ...process.env, LLM_PROVIDER: 'mock' });
-  const colleague = createColleague({ config });
+  const colleague = createColleague({ config, classData: loadSeedClass() });
   colleague.events.subscribe((event) => {
     print(formatEvent(event));
   });
