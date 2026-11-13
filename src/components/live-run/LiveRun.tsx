@@ -2,9 +2,11 @@
 
 import { LearnerCards } from '@/components/learners/LearnerCards';
 import { ParallaxScene } from '@/components/parallax/ParallaxScene';
+import { demoGoalFor } from '@/core/config/constants';
 import { useRunStream } from '@/hooks/useRunStream';
 import type { RunStatus } from '@/lib/runView';
-import { worldSpeedFor } from '@/lib/worldSpeed';
+import { narrationFor, worldSpeedFor } from '@/lib/worldSpeed';
+import { ThusoMascot } from '@/components/mascot/ThusoMascot';
 import { AgentChips } from './AgentChips';
 import { GoalForm } from './GoalForm';
 import { RunConsole } from './RunConsole';
@@ -18,8 +20,8 @@ const STATUS_LABEL: Record<RunStatus, string> = {
 };
 
 /** The run screen: state a goal, watch the agents work, see the result. */
-export function LiveRun() {
-  const { view, start } = useRunStream();
+export function LiveRun({ grade }: Readonly<{ grade: number }>) {
+  const { view, start } = useRunStream(grade);
 
   return (
     <section className="flex flex-col gap-6">
@@ -29,6 +31,8 @@ export function LiveRun() {
         activeAgent={view.activeAgent}
       />
       <GoalForm
+        key={grade}
+        initialGoal={demoGoalFor(grade)}
         isRunning={view.status === 'running'}
         onRun={(goal) => {
           void start(goal);
@@ -74,6 +78,13 @@ export function LiveRun() {
         </section>
       )}
       {view.learners.length > 0 && <LearnerCards cards={view.learners} />}
+      <ThusoMascot
+        tips={[
+          'Press Run and watch my five agents plan, check and fix their own work.',
+          'Watch for the red flag: the Reviewer catches a mistake and the street slows down.',
+        ]}
+        live={narrationFor(view.events)}
+      />
       <p className="sr-only" aria-live="polite">
         {view.announcement}
       </p>

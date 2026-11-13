@@ -73,14 +73,25 @@ npm run seed      # regenerate the synthetic class in data/seed
 | Page | For | What it shows |
 |---|---|---|
 | `/` | Everyone | The Jacaranda Street scene with the five agents, how the loop works, learning formats |
-| `/lecturer` | Lecturer | Every subject: class average, the topics to reteach, who is at risk, the root cause and how each learns best · set a task |
-| `/learner` → `/learner/L-014` | Learner | My marks per topic, what is holding me back, what to study next in my format, my tasks, DBE past papers, and **where my marks can take me** (APS and study/career pathways) |
-| `/run` | Demo | Type a goal, press Run, watch the agents plan, act, get flagged, fix and deliver — the street slows down while a flag is up |
+| `/login` | Everyone | Sign in, or one click into the demo school as a **Learner**, **Teacher** or **Principal** |
+| `/portal/learner` | Learner | My marks per topic, what is holding me back, what to study next in my format, my tasks, DBE past papers, and **where my marks can take me** (APS and study/career pathways) |
+| `/portal/teacher` | Teacher | Per grade: who is at risk and why, the topics to reteach, a **mark sheet** that saves to the database, set a task, and one button to let Thuso write the plans |
+| `/portal/principal` | Principal, admin | Grades 10, 11 and 12 side by side, then every subject and learner in a grade |
+| `/portal/learners/L-014` | Staff | Any learner's full picture |
+| `/run?grade=11` | Demo | Type a goal, press Run, watch the agents plan, act, get flagged, fix and deliver — on that grade's class from the database |
+
+**Thuso the mascot** sits in the corner of every portal page and the live run: it tells each person the one thing that matters next, and narrates the agents during a run.
 
 The pathway finder (idea 5) turns marks into an APS score (best six subjects, CAPS levels, no Life Orientation), reads interests from chips or a pasted CV, and says for each study route whether it is within reach, a stretch (with the exact mark to raise) or not yet. Requirements are indicative, not any institution's real rules.
 
+## Data, sign-in and hosting
+- **Neon Postgres** holds the school: users with roles, sessions, subjects per grade, tasks, marks, attendance, homework, reflections and resources. On first use the app creates the tables and seeds the demo school (Grades 10 to 12, 96 synthetic learners, staff). Without `DATABASE_URL` it runs the same SQL on an in-process Postgres (PGlite), so it also works offline.
+- **Sign-in**: passwords hashed with scrypt; the session cookie is HttpOnly and only its SHA-256 is stored; five tries per minute; each role sees only its own pages, and teachers write only to the subjects they teach.
+- **Efficient**: one HTTP round trip per query or transaction (Neon serverless driver), bulk inserts as one statement per table, a grade's class read in parallel and cached for a minute (cleared after any write).
+- **Hosting on Vercel**: import the GitHub repo, then set `DATABASE_URL`, `ADMIN_PASSWORD`, and for real AI `LLM_PROVIDER=anthropic`, `ANTHROPIC_API_KEY`, `LLM_MODEL_REASONING`, `LLM_MODEL_FAST` in the project's environment variables.
+
 ## Status
-The five agents run end to end on a synthetic class of 32 learners in two subjects, with the full correction loop, re-planning, budgets and the live event log. Model calls currently go to an offline stand-in (`LLM_PROVIDER=mock`) that gets the same input a real model would; the Claude provider and email delivery with calendar invites are next. The past-paper entries in the resource catalogue are placeholders, not real papers yet. See [ROADMAP.md](ROADMAP.md).
+The five agents run end to end on a synthetic school of 96 learners in Grades 10 to 12 (two subjects each), read from Postgres, with the full correction loop, re-planning, budgets and the live event log. Model calls go to Claude when `LLM_PROVIDER=anthropic` and a key is set, and to an offline stand-in (`LLM_PROVIDER=mock`) otherwise. Email delivery with calendar invites is next. The past-paper entries in the resource catalogue are placeholders, not real papers yet. See [ROADMAP.md](ROADMAP.md).
 
 ## Tech
 TypeScript (strict) · Next.js · Zod · Vitest. The engine in `src/core` is framework-free. Project rules are in [CLAUDE.md](CLAUDE.md); the design direction is in [docs/DESIGN.md](docs/DESIGN.md).

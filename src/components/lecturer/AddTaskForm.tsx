@@ -1,12 +1,18 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState, type FormEvent } from 'react';
+import { useState, useTransition, type FormEvent } from 'react';
+import type { ActionResult } from '@/app/portal/teacher/actions';
 
 interface SubjectOption {
   id: string;
   name: string;
   topics: readonly string[];
+}
+
+interface AddTaskFormProps {
+  readonly grade: number;
+  readonly subjects: readonly SubjectOption[];
+  readonly onAdd: (input: unknown) => Promise<ActionResult>;
 }
 
 const KINDS = [
@@ -18,46 +24,30 @@ const KINDS = [
 const FIELD = 'rounded-lg border-2 border-ink/20 bg-white px-3 py-2';
 const DEFAULT_WEEK = 8;
 
-/** The lecturer sets work in four fields; learners see it on their own page straight away. */
-export function AddTaskForm({ subjects }: Readonly<{ subjects: readonly SubjectOption[] }>) {
-  const router = useRouter();
+/** The teacher sets work in four fields; learners see it on their page straight away. */
+export function AddTaskForm({ grade, subjects, onAdd }: AddTaskFormProps) {
   const [subjectId, setSubjectId] = useState(subjects[0]?.id ?? '');
-  const [message, setMessage] = useState('');
+  const [result, setResult] = useState<ActionResult>({});
+  const [isPending, startTransition] = useTransition();
   const topics = subjects.find((subject) => subject.id === subjectId)?.topics ?? [];
 
-  async function submit(event: FormEvent<HTMLFormElement>) {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const response = await fetch('/api/tasks', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        subjectId,
-        title: form.get('title'),
-        kind: form.get('kind'),
-        week: Number(form.get('week')),
-        topics: form.getAll('topics'),
-      }),
-    });
-    const result: unknown = await response.json().catch(() => null);
-    const error =
-      typeof result === 'object' && result !== null && 'error' in result
-        ? String(result.error)
-        : '';
-    setMessage(
-      response.ok ? 'Task added — learners can see it now.' : error || 'Could not add the task.',
-    );
-    if (response.ok) {
-      router.refresh();
-    }
-  }
+    const payload = {
+      grade,
+      subjectId,
+      title: form.get('title'),
+      kind: form.get('kind'),
+      week: Number(form.get('week')),
+      topics: form.getAll('topics'),
+    };
+    startTransition(async () => setResult(await onAdd(payload)));
+  };
 
   return (
-    <form
-      onSubmit={(event) => void submit(event)}
-      className="flex flex-col gap-3 rounded-card bg-white p-5 shadow-card"
-    >
-      <h3 className="font-display text-2xl font-extrabold uppercase">Set a task</h3>
+    <form onSubmit={submit} className="flex flex-col gap-3 rounded-card bg-white p-5 shadow-card">
+      <h3 className="font-display text-2xl font-extrabold uppercase">Set a task · Grade {grade}</h3>
       <label className="flex flex-col gap-1 font-medium">
         Title
         <input
@@ -122,12 +112,13 @@ export function AddTaskForm({ subjects }: Readonly<{ subjects: readonly SubjectO
       </fieldset>
       <button
         type="submit"
-        className="self-start rounded-full bg-jacaranda-500 px-6 py-2 font-bold text-white"
+        disabled={isPending}
+        className="self-start rounded-full bg-jacaranda-500 px-6 py-2 font-bold text-white disabled:opacity-60"
       >
-        Add task
+        {isPending ? 'Adding…' : 'Add task'}
       </button>
       <p role="status" className="text-sm">
-        {message}
+        {result.error ?? result.message}
       </p>
     </form>
   );

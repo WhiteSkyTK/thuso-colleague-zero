@@ -17,7 +17,10 @@ async function readError(response: Response): Promise<string> {
 }
 
 /** Starts a run and follows its event stream. All screen state comes from the reducer. */
-export function useRunStream(): { view: RunView; start: (goal: string) => Promise<void> } {
+export function useRunStream(grade: number): {
+  view: RunView;
+  start: (goal: string) => Promise<void>;
+} {
   const [view, dispatch] = useReducer(runViewReducer, INITIAL_RUN_VIEW);
   const sourceRef = useRef<EventSource | null>(null);
 
@@ -48,7 +51,7 @@ export function useRunStream(): { view: RunView; start: (goal: string) => Promis
         const response = await fetch('/api/runs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ goal }),
+          body: JSON.stringify({ goal, grade }),
         });
         if (!response.ok) {
           dispatch({ type: 'failed', message: await readError(response) });
@@ -59,7 +62,7 @@ export function useRunStream(): { view: RunView; start: (goal: string) => Promis
         dispatch({ type: 'failed', message: FALLBACK_ERROR });
       }
     },
-    [follow],
+    [follow, grade],
   );
 
   useEffect(() => () => sourceRef.current?.close(), []);

@@ -70,6 +70,12 @@ export default function HomePage() {
           >
             Watch it work
           </Link>
+          <Link
+            href="/login"
+            className="rounded-full bg-jacaranda-500 px-8 py-3 text-lg font-bold text-white shadow-card"
+          >
+            Open the school portal
+          </Link>
           <a href="#how" className="rounded-full border-2 border-ink px-8 py-3 text-lg font-bold">
             How it works
           </a>

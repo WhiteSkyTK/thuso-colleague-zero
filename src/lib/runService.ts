@@ -2,13 +2,15 @@ import { randomUUID } from 'node:crypto';
 import { loadConfig } from '@/core/config/env';
 import { createColleague, type Colleague } from '@/core/createColleague';
 import type { EventListener } from '@/core/events/EventBus';
-import { loadSeedClass } from '@/core/repositories/loadSeedClass';
+import { classFor } from './school';
 
 /** One run at a time: protects the token budget and keeps the demo readable. */
 const MAX_ACTIVE_RUNS = 1;
+/** Finished runs kept for late viewers and replays; the oldest is dropped first. */
+const MAX_KEPT_RUNS = 20;
 
 interface RunStore {
-  colleague: Colleague;
+  runs: Map<string, Colleague>;
   active: Set<string>;
 }
 
@@ -16,36 +18,48 @@ interface RunStore {
 const holder = globalThis as typeof globalThis & { thusoRunStore?: RunStore };
 
 function store(): RunStore {
-  holder.thusoRunStore ??= {
-    colleague: createColleague({ config: loadConfig(), classData: loadSeedClass() }),
-    active: new Set<string>(),
-  };
+  holder.thusoRunStore ??= { runs: new Map(), active: new Set() };
   return holder.thusoRunStore;
+}
+
+function keep(runs: Map<string, Colleague>, runId: string, colleague: Colleague): void {
+  runs.set(runId, colleague);
+  const oldest = runs.keys().next().value;
+  if (runs.size > MAX_KEPT_RUNS && oldest !== undefined) {
+    runs.delete(oldest);
+  }
 }
 
 export type StartResult = { runId: string } | { busy: true };
 
-/** Starts a run in the background and returns its id straight away. */
-export function startRun(goalText: string): StartResult {
-  const { colleague, active } = store();
+/** Starts a run on that grade's class (read from the database) and returns its id straight away. */
+export async function startRun(goalText: string, grade: number): Promise<StartResult> {
+  const { runs, active } = store();
   if (active.size >= MAX_ACTIVE_RUNS) {
     return { busy: true };
   }
   const runId = randomUUID();
   active.add(runId);
-  // The orchestrator always resolves with a summary; `finally` only frees the slot.
-  void colleague.run(goalText, runId).finally(() => {
+  try {
+    const colleague = createColleague({ config: loadConfig(), classData: await classFor(grade) });
+    keep(runs, runId, colleague);
+    // The orchestrator always resolves with a summary; `finally` only frees the slot.
+    void colleague.run(goalText, runId).finally(() => {
+      active.delete(runId);
+    });
+    return { runId };
+  } catch (error) {
     active.delete(runId);
-  });
-  return { runId };
+    throw error;
+  }
 }
 
 export function hasRun(runId: string): boolean {
-  const { colleague, active } = store();
-  return active.has(runId) || colleague.trace.eventsOf(runId).length > 0;
+  return store().runs.has(runId);
 }
 
 /** Replays the run's log so far, then follows it live. */
 export function followRun(runId: string, listener: EventListener): () => void {
-  return store().colleague.trace.follow(runId, listener);
+  const colleague = store().runs.get(runId);
+  return colleague ? colleague.trace.follow(runId, listener) : () => undefined;
 }

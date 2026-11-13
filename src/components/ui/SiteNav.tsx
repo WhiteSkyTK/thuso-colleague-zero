@@ -1,12 +1,11 @@
 import Link from 'next/link';
 
 const LINKS = [
-  { href: '/lecturer', label: 'Lecturer' },
-  { href: '/learner', label: 'Learners' },
   { href: '/run', label: 'Live run' },
+  { href: '/login', label: 'Sign in' },
 ] as const;
 
-/** The same simple header on every page: three places to go. */
+/** The same simple header on every page: the live demo and the portal sign-in. */
 export function SiteNav() {
   return (
     <header className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">

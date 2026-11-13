@@ -132,6 +132,10 @@ body {
   animation: bob 0.6s ease-in-out infinite;
 }
 
+.mascot-bob {
+  animation: bob 2.4s ease-in-out infinite;
+}
+
 .agent-leg {
   animation: stride 0.6s ease-in-out infinite alternate;
 }
@@ -149,6 +153,7 @@ body {
 /* Reduced motion (DESIGN.md §8): everything starts still; the viewer can opt in with "Play motion". */
 @media (prefers-reduced-motion: reduce) {
   .scene *,
+  .mascot-bob,
   .marquee .scene-strip {
     animation-play-state: paused;
   }

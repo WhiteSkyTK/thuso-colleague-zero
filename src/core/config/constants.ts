@@ -67,6 +67,10 @@ export const DEMO_GOAL_TEXT =
   'Find every Grade 10 learner at risk of failing Mathematics this term, work out why, ' +
   'and send each one a personalised 2-week catch-up plan with a booked support session.';
 
+/** The demo goal, for any grade. */
+export const demoGoalFor = (grade: number): string =>
+  DEMO_GOAL_TEXT.replace('Grade 10', `Grade ${grade}`);
+
 export const GOAL_MAX_CHARS = 500;
 
 /** How many times the Planner may be asked for a new plan after a step fails. */

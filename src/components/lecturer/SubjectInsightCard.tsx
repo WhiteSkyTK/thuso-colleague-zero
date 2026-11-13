@@ -64,7 +64,7 @@ export function SubjectInsightCard({ insight }: Readonly<{ insight: SubjectInsig
                 <tr key={learner.learnerId} className="border-b border-ink/5 align-top">
                   <td className="py-2 pr-2">
                     <Link
-                      href={`/learner/${learner.learnerId}`}
+                      href={`/portal/learners/${learner.learnerId}`}
                       className="font-semibold underline"
                     >
                       {learner.name}

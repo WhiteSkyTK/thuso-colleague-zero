@@ -3,7 +3,7 @@ import type { AgentEvent } from '@/core/domain/agentEvent';
 import { EventBus } from '@/core/events/EventBus';
 import { isFinalEvent, TraceRecorder } from '@/core/events/TraceRecorder';
 import { INITIAL_RUN_VIEW, runViewReducer, type RunView } from '@/lib/runView';
-import { WORLD_SPEED, worldSpeedFor } from '@/lib/worldSpeed';
+import { narrationFor, WORLD_SPEED, worldSpeedFor } from '@/lib/worldSpeed';
 
 const event = (seq: number, overrides: Partial<AgentEvent> = {}): AgentEvent => ({
   runId: 'run-1',
@@ -123,5 +123,20 @@ describe('worldSpeedFor', () => {
 
   it('speeds up when the run is done', () => {
     expect(worldSpeedFor([event(0), DONE])).toBe(WORLD_SPEED.celebrating);
+  });
+});
+
+describe('narrationFor', () => {
+  it('says nothing before a step worth explaining, then names who did what', () => {
+    expect(narrationFor([event(0)])).toBeUndefined();
+    const flagged = event(1, {
+      agent: 'RV',
+      level: 'FLAG',
+      itemId: 'L-014',
+      message: 'plan ignores 9 absences.',
+    });
+    expect(narrationFor([event(0), flagged])).toBe(
+      'The Reviewer (L-014): plan ignores 9 absences.',
+    );
   });
 });

@@ -46,6 +46,9 @@ const EnvSchema = z.object({
   PLAN_MAX_HOURS_PER_WEEK: amount(DEFAULTS.maxHoursPerWeek),
   DELIVERY_MODE: choice(['sandbox', 'redirect', 'live'] as const, 'sandbox'),
   DEMO_RECIPIENT: text,
+  DATABASE_URL: text,
+  DEMO_PASSWORD: z.preprocess(blankToUndefined, z.string().min(8).default('thuso-demo-2026')),
+  ADMIN_PASSWORD: z.preprocess(blankToUndefined, z.string().min(12).optional()),
 });
 type Env = z.infer<typeof EnvSchema>;
 
@@ -72,6 +75,8 @@ export interface AppConfig {
   run: { maxAttempts: number; maxSteps: number; timeoutMs: number; tokenBudget: number };
   rules: { riskThreshold: number; maxHoursPerWeek: number };
   delivery: { mode: Env['DELIVERY_MODE']; demoRecipient?: string };
+  /** No DATABASE_URL → an in-process Postgres, seeded on first use (tests and offline demos). */
+  school: { databaseUrl?: string; demoPassword: string; adminPassword?: string };
 }
 
 function toConfig(env: Env): AppConfig {
@@ -100,6 +105,11 @@ function toConfig(env: Env): AppConfig {
     },
     rules: { riskThreshold: env.RISK_THRESHOLD, maxHoursPerWeek: env.PLAN_MAX_HOURS_PER_WEEK },
     delivery: { mode: env.DELIVERY_MODE, demoRecipient: env.DEMO_RECIPIENT },
+    school: {
+      databaseUrl: env.DATABASE_URL,
+      demoPassword: env.DEMO_PASSWORD,
+      adminPassword: env.ADMIN_PASSWORD,
+    },
   };
 }
 

@@ -1,16 +1,17 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { DEMO_GOAL_TEXT, GOAL_MAX_CHARS } from '@/core/config/constants';
+import { GOAL_MAX_CHARS } from '@/core/config/constants';
 
 interface GoalFormProps {
   isRunning: boolean;
+  initialGoal: string;
   onRun: (goal: string) => void;
 }
 
 /** The teacher states an outcome, not steps. Pre-filled with the demo goal. */
-export function GoalForm({ isRunning, onRun }: Readonly<GoalFormProps>) {
-  const [goal, setGoal] = useState(DEMO_GOAL_TEXT);
+export function GoalForm({ isRunning, initialGoal, onRun }: Readonly<GoalFormProps>) {
+  const [goal, setGoal] = useState(initialGoal);
 
   const submit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();

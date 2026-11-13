@@ -5,7 +5,10 @@ import { startRun } from '@/lib/runService';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const BodySchema = z.object({ goal: z.string().trim().min(1).max(GOAL_MAX_CHARS) });
+const BodySchema = z.object({
+  goal: z.string().trim().min(1).max(GOAL_MAX_CHARS),
+  grade: z.number().int().min(10).max(12).default(10),
+});
 
 const HTTP_ACCEPTED = 202;
 const HTTP_BAD_REQUEST = 400;
@@ -23,7 +26,7 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
   try {
-    const started = startRun(parsed.data.goal);
+    const started = await startRun(parsed.data.goal, parsed.data.grade);
     if ('busy' in started) {
       return Response.json(
         { error: 'A run is already in progress. Wait for it to finish.' },
