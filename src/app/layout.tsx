@@ -4,7 +4,13 @@ import type { ReactNode } from 'react';
 import './globals.css';
 
 // DESIGN.md §3: open-licence Google Fonts, self-hosted by next/font. Variables feed --ff-* in globals.css.
-const display = Big_Shoulders({ subsets: ['latin'], axes: ['opsz'], variable: '--ff-display' });
+const display = Big_Shoulders({
+  subsets: ['latin'],
+  axes: ['opsz'],
+  variable: '--ff-display',
+  // next/font has no metric overrides for this family yet; skip the generated fallback.
+  adjustFontFallback: false,
+});
 const body = DM_Sans({ subsets: ['latin'], variable: '--ff-body' });
 const code = JetBrains_Mono({ subsets: ['latin'], variable: '--ff-code' });
 
