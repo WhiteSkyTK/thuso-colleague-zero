@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { AddTaskForm } from '@/components/lecturer/AddTaskForm';
 import { MarkSheetForm } from '@/components/lecturer/MarkSheetForm';
 import { SubjectInsightCard } from '@/components/lecturer/SubjectInsightCard';
-import { ThusoMascot } from '@/components/mascot/ThusoMascot';
+import { PortalMascot } from '@/components/mascot/PortalMascot';
+import { WatchButton } from '@/components/mascot/WatchButton';
 import { MessageList } from '@/components/messages/MessageList';
 import { buildClassInsights } from '@/core/insights/classInsights';
 import { requireUser } from '@/lib/auth';
 import { teacherTips } from '@/lib/mascotTips';
 import { classFor, school } from '@/lib/school';
-import { addTaskAction, saveMarksAction } from './actions';
+import { addTaskAction, runWatchAction, saveMarksAction } from './actions';
 
 export const metadata: Metadata = { title: 'My classes — Thuso' };
 
@@ -58,6 +59,7 @@ export default async function TeacherPage({
         </Link>
       </section>
 
+      <WatchButton onWatch={runWatchAction} />
       <nav aria-label="Grades" className="flex gap-2">
         {grades.map((g) => (
           <Link
@@ -117,7 +119,7 @@ export default async function TeacherPage({
           emptyText="Nothing sent yet for this grade. Press Let Thuso write the plans."
         />
       </section>
-      <ThusoMascot tips={teacherTips(insights, grade)} />
+      <PortalMascot user={user} tips={teacherTips(insights, grade)} runGrade={grade} />
     </>
   );
 }

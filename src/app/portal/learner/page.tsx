@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LearnerDashboard } from '@/components/learner/LearnerDashboard';
-import { ThusoMascot } from '@/components/mascot/ThusoMascot';
+import { PortalMascot } from '@/components/mascot/PortalMascot';
 import { MessageList } from '@/components/messages/MessageList';
 import { requireUser } from '@/lib/auth';
 import { learnerView } from '@/lib/learnerView';
@@ -33,7 +33,8 @@ export default async function MyPage() {
         />
       </section>
       <LearnerDashboard {...view} isOwnPage />
-      <ThusoMascot
+      <PortalMascot
+        user={user}
         tips={
           inbox[0]?.hasInvite
             ? [

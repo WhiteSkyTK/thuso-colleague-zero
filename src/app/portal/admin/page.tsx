@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PortalMascot } from '@/components/mascot/PortalMascot';
+import { WatchButton } from '@/components/mascot/WatchButton';
 import { requireUser } from '@/lib/auth';
+import { runWatchAction } from '../teacher/actions';
 import { school } from '@/lib/school';
 
 export const metadata: Metadata = { title: 'Admin — Thuso' };
 
 /** Who is in the school and how big each grade is. Accounts are created by the seed for the demo. */
 export default async function AdminPage() {
-  await requireUser(['admin']);
+  const user = await requireUser(['admin']);
   const { users, data } = await school();
   const [staff, grades] = await Promise.all([users.listStaff(), data.gradeSizes()]);
   return (
@@ -50,6 +53,12 @@ export default async function AdminPage() {
           </ul>
         </section>
       </div>
+      <WatchButton onWatch={runWatchAction} />
+      <PortalMascot
+        user={user}
+        tips={['Every school morning I check every grade on my own and alert the right teachers.']}
+        runGrade={10}
+      />
     </>
   );
 }

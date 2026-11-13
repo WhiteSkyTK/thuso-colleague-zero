@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Thuso</title>
+  <g fill="#a79be8">
+    <ellipse cx="50" cy="20" rx="11" ry="17"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(45 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(90 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(135 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(180 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(225 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(270 50 50)"/>
+    <ellipse cx="50" cy="20" rx="11" ry="17" transform="rotate(315 50 50)"/>
+  </g>
+  <circle cx="50" cy="50" r="27" fill="#6e5fd3"/>
+  <circle cx="40" cy="46" r="6" fill="#fbf6ee"/>
+  <circle cx="60" cy="46" r="6" fill="#fbf6ee"/>
+  <circle cx="41" cy="47" r="3" fill="#16152b"/>
+  <circle cx="61" cy="47" r="3" fill="#16152b"/>
+  <path d="M42 59 Q50 66 58 59" fill="none" stroke="#fbf6ee" stroke-width="3" stroke-linecap="round"/>
+  <path d="M38 26 Q50 14 62 26 Z" fill="#3baa5c"/>
+</svg>

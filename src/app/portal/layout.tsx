@@ -5,18 +5,27 @@ import { requireUser } from '@/lib/auth';
 import { signOut } from '../login/actions';
 
 const LINKS: Record<Role, readonly { href: string; label: string }[]> = {
-  learner: [{ href: '/portal/learner', label: 'My page' }],
+  learner: [
+    { href: '/portal/learner', label: 'My page' },
+    { href: '/portal/calendar', label: 'Calendar' },
+  ],
   teacher: [
     { href: '/portal/teacher', label: 'My classes' },
+    { href: '/portal/runs', label: 'History' },
+    { href: '/portal/calendar', label: 'Calendar' },
     { href: '/run', label: 'Live run' },
   ],
   principal: [
     { href: '/portal/principal', label: 'School' },
+    { href: '/portal/runs', label: 'History' },
+    { href: '/portal/calendar', label: 'Calendar' },
     { href: '/run', label: 'Live run' },
   ],
   admin: [
     { href: '/portal/admin', label: 'Admin' },
     { href: '/portal/principal', label: 'School' },
+    { href: '/portal/runs', label: 'History' },
+    { href: '/portal/calendar', label: 'Calendar' },
   ],
 };
 

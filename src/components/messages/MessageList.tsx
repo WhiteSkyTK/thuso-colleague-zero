@@ -1,4 +1,17 @@
+import { googleCalendarLink, inviteTime } from '@/core/delivery/inviteLinks';
 import type { StoredMessage } from '@/core/school/MessageRepository';
+
+const SESSION_FORMAT = new Intl.DateTimeFormat('en-ZA', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'Africa/Johannesburg',
+});
+
+/** "Monday 16 November at 14:30" in South African time. */
+export const formatSession = (start: string) => SESSION_FORMAT.format(inviteTime(start));
 
 const STATUS_LABEL: Record<StoredMessage['status'], string> = {
   portal: 'In the portal',
@@ -40,13 +53,30 @@ export function MessageList({ messages, showRecipient, emptyText }: MessageListP
             <p className="mt-3 whitespace-pre-wrap text-sm">{message.body}</p>
           </details>
           {message.hasInvite && (
-            <a
-              href={`/portal/messages/${message.id}/invite`}
-              download="support-session.ics"
-              className="mt-2 inline-block rounded-full bg-sun px-4 py-1 text-sm font-semibold text-ink"
-            >
-              📅 Add the support session to my calendar
-            </a>
+            <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+              {message.session && (
+                <>
+                  <p className="text-sm font-semibold">
+                    📅 Support session {formatSession(message.session.start)}
+                  </p>
+                  <a
+                    href={googleCalendarLink(message.session)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-sun px-4 py-1.5 text-center text-sm font-semibold text-ink"
+                  >
+                    Add to Google Calendar
+                  </a>
+                </>
+              )}
+              <a
+                href={`/portal/messages/${message.id}/invite`}
+                download="support-session.ics"
+                className="rounded-full border-2 border-ink/20 bg-white px-4 py-1.5 text-center text-sm font-semibold"
+              >
+                Outlook / Apple (.ics)
+              </a>
+            </div>
           )}
         </li>
       ))}

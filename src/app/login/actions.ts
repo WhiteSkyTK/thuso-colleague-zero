@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { verifyPassword } from '@/core/auth/passwords';
 import { loadConfig } from '@/core/config/env';
-import type { Role } from '@/core/domain/schoolUser';
+import { DEMO_ACCOUNTS } from '@/lib/demoAccounts';
 import { endSession, homeFor, startSession } from '@/lib/auth';
 import { school } from '@/lib/school';
 
@@ -33,13 +33,6 @@ function isRateLimited(email: string): boolean {
   return entry.count > MAX_TRIES;
 }
 
-/** Demo accounts behind the one-click buttons; the shared password never leaves the server. */
-const DEMO_EMAIL: Partial<Record<Role, string>> = {
-  learner: 'l014@learners.example.org',
-  teacher: 'maths.teacher@school.example.org',
-  principal: 'principal@school.example.org',
-};
-
 async function trySignIn(email: string, password: string): Promise<SignInState> {
   const { users } = await school();
   const found = await users.findForLogin(email);
@@ -66,12 +59,13 @@ export async function signIn(_previous: SignInState, form: FormData): Promise<Si
   return trySignIn(email, parsed.data.password);
 }
 
-export async function demoSignIn(role: Role): Promise<void> {
-  const email = DEMO_EMAIL[role];
-  if (!email) {
+/** One-click demo sign-in; only the listed demo accounts, and the password never leaves the server. */
+export async function demoSignIn(key: string): Promise<void> {
+  const account = DEMO_ACCOUNTS.find((candidate) => candidate.key === key);
+  if (!account) {
     redirect('/login');
   }
-  await trySignIn(email, loadConfig().school.demoPassword);
+  await trySignIn(account.email, loadConfig().school.demoPassword);
   // Only reached when the demo account is missing or its password was changed.
   redirect('/login?demo=unavailable');
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SubjectInsightCard } from '@/components/lecturer/SubjectInsightCard';
-import { ThusoMascot } from '@/components/mascot/ThusoMascot';
+import { PortalMascot } from '@/components/mascot/PortalMascot';
+import { WatchButton } from '@/components/mascot/WatchButton';
+import { runWatchAction } from '../teacher/actions';
 import { GRADES } from '@/core/domain/schoolUser';
 import type { RiskCause } from '@/core/domain/vocab';
 import { buildClassInsights } from '@/core/insights/classInsights';
@@ -15,7 +17,7 @@ export const metadata: Metadata = { title: 'School — Thuso' };
 export default async function PrincipalPage({
   searchParams,
 }: Readonly<{ searchParams: Promise<{ grade?: string }> }>) {
-  const [, query, { riskThreshold }] = await Promise.all([
+  const [user, query, { riskThreshold }] = await Promise.all([
     requireUser(['principal', 'admin']),
     searchParams,
     school(),
@@ -39,6 +41,7 @@ export default async function PrincipalPage({
         </h1>
       </section>
 
+      <WatchButton onWatch={runWatchAction} />
       <div className="grid gap-4 md:grid-cols-3">
         {byGrade.map(({ grade, insights }) => {
           const atRisk = insights.subjects.flatMap((s) => s.atRisk);
@@ -86,7 +89,7 @@ export default async function PrincipalPage({
           </div>
         </section>
       )}
-      <ThusoMascot tips={principalTips(byGrade)} />
+      <PortalMascot user={user} tips={principalTips(byGrade)} runGrade={open?.grade ?? 10} />
     </>
   );
 }

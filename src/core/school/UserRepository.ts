@@ -1,5 +1,5 @@
 import type { Database } from '../db/Database';
-import type { SchoolUser, TeachingAssignment } from '../domain/schoolUser';
+import type { Role, SchoolUser, TeachingAssignment } from '../domain/schoolUser';
 
 interface UserRow {
   id: string;
@@ -72,6 +72,32 @@ export class UserRepository {
       'SELECT grade, subject_id AS "subjectId" FROM teaching WHERE teacher_id = $1 ORDER BY grade, subject_id',
       [teacherId],
     );
+  }
+
+  /** Who teaches a subject in a grade (the people to tell about a learner). */
+  async teachersFor(grade: number, subjectId: string): Promise<string[]> {
+    const rows = await this.db.query<{ id: string }>(
+      'SELECT teacher_id AS id FROM teaching WHERE grade = $1 AND subject_id = $2 ORDER BY teacher_id',
+      [grade, subjectId],
+    );
+    return rows.map((row) => row.id);
+  }
+
+  /** Everyone teaching in a grade, in any subject. */
+  async teachersOfGrade(grade: number): Promise<string[]> {
+    const rows = await this.db.query<{ id: string }>(
+      'SELECT DISTINCT teacher_id AS id FROM teaching WHERE grade = $1 ORDER BY teacher_id',
+      [grade],
+    );
+    return rows.map((row) => row.id);
+  }
+
+  async idsWithRole(role: Role): Promise<string[]> {
+    const rows = await this.db.query<{ id: string }>(
+      'SELECT id FROM users WHERE role = $1 ORDER BY id',
+      [role],
+    );
+    return rows.map((row) => row.id);
   }
 
   async listStaff(): Promise<SchoolUser[]> {

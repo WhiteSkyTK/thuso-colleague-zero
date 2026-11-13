@@ -1,5 +1,7 @@
+import { after } from 'next/server';
 import { z } from 'zod';
 import { GOAL_MAX_CHARS } from '@/core/config/constants';
+import { currentUser } from '@/lib/auth';
 import { runEventStream } from '@/lib/runEventStream';
 import { startRun } from '@/lib/runService';
 
@@ -28,13 +30,16 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
   try {
-    const started = await startRun(parsed.data.goal, parsed.data.grade);
+    const user = await currentUser();
+    const started = await startRun(parsed.data.goal, parsed.data.grade, user?.id);
     if ('busy' in started) {
       return Response.json(
         { error: 'A run is already in progress. Wait for it to finish.' },
         { status: HTTP_TOO_MANY },
       );
     }
+    // Keep the server alive after the stream until the run is saved and people are notified.
+    after(() => started.done);
     return runEventStream(request, started.runId);
   } catch {
     // Configuration problems are logged by the server; the client gets no internals.

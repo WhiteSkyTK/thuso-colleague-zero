@@ -9,6 +9,8 @@ import { SmtpTransport } from '@/core/delivery/SmtpTransport';
 import type { ClassData } from '@/core/domain/classData';
 import { loadSeedClass } from '@/core/repositories/loadSeedClass';
 import { MessageRepository } from '@/core/school/MessageRepository';
+import { NotificationRepository } from '@/core/school/NotificationRepository';
+import { RunRepository } from '@/core/school/RunRepository';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
 import { UserRepository } from '@/core/school/UserRepository';
 import { isSeeded, seedSchool } from '@/core/seed/seedSchool';
@@ -18,6 +20,8 @@ export interface School {
   data: SchoolDataRepository;
   users: UserRepository;
   messages: MessageRepository;
+  runs: RunRepository;
+  notifications: NotificationRepository;
   riskThreshold: number;
   delivery: AppConfig['delivery'];
   /** Only when SMTP is configured. */
@@ -49,6 +53,8 @@ async function open(): Promise<School> {
     data: new SchoolDataRepository(db),
     users: new UserRepository(db),
     messages: new MessageRepository(db),
+    runs: new RunRepository(db),
+    notifications: new NotificationRepository(db),
     riskThreshold: config.rules.riskThreshold,
     delivery: config.delivery,
     transport: config.delivery.smtp ? new SmtpTransport(config.delivery.smtp) : undefined,

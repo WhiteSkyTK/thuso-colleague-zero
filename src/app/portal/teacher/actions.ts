@@ -3,6 +3,8 @@
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { TaskSchema } from '@/core/domain/classData';
+import { alertsForMarkChange } from '@/core/alerts/alertRules';
+import { notifyAlerts, runWatch } from '@/lib/alerts';
 import { requireUser } from '@/lib/auth';
 import { classFor, forgetClass, school } from '@/lib/school';
 
@@ -75,9 +77,41 @@ export async function saveMarksAction(input: unknown): Promise<ActionResult> {
   if (sheet.marks.some((mark) => !inClass.has(mark.learnerId))) {
     return { error: 'Some learners are not in this grade.' };
   }
-  const { data } = await school();
+  const { data, riskThreshold } = await school();
   await data.recordMarks({ ...sheet, subjectId: task.subjectId, week: task.week });
   forgetClass(sheet.grade);
+  // Thuso re-checks the class straight away and tells people about anyone who started slipping.
+  const alerts = alertsForMarkChange({
+    before: classData,
+    after: await classFor(sheet.grade),
+    subjectId: task.subjectId,
+    topic: sheet.topic,
+    marks: sheet.marks,
+    threshold: riskThreshold,
+  });
+  const notified = await notifyAlerts(sheet.grade, alerts);
   revalidatePath('/portal', 'layout');
-  return { message: `Saved ${sheet.marks.length} marks. Thuso has re-checked every learner.` };
+  const flagged =
+    alerts.length > 0 ? ` ${alerts.length} alerts raised, ${notified} people told.` : '';
+  return {
+    message: `Saved ${sheet.marks.length} marks. Thuso re-checked every learner.${flagged}`,
+  };
+}
+
+/** "Run the watch now": the same background check the daily schedule runs. */
+export async function runWatchAction(): Promise<ActionResult> {
+  await requireUser(['teacher', 'principal', 'admin']);
+  const result = await runWatch();
+  revalidatePath('/portal', 'layout');
+  return {
+    message: `Checked ${result.checked} learners: ${result.alerts} need support, ${result.notified} new alerts sent.`,
+  };
+}
+
+/** The bell: mark the signed-in person's alerts as read. */
+export async function markAlertsReadAction(): Promise<void> {
+  const user = await requireUser();
+  const { notifications } = await school();
+  await notifications.markAllRead(user.id);
+  revalidatePath('/portal', 'layout');
 }

@@ -73,6 +73,23 @@ const SCHEMA = [
   )`,
   `CREATE INDEX IF NOT EXISTS messages_about ON messages (about, created_at DESC)`,
   `CREATE INDEX IF NOT EXISTS messages_grade ON messages (grade, created_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS runs (
+    id text PRIMARY KEY, grade int NOT NULL, goal text NOT NULL, started_by text, provider text,
+    started_at timestamptz NOT NULL DEFAULT now(), finished_at timestamptz,
+    status text NOT NULL DEFAULT 'running',
+    delivered int NOT NULL DEFAULT 0, fixes int NOT NULL DEFAULT 0, flags int NOT NULL DEFAULT 0,
+    escalations int NOT NULL DEFAULT 0, human_interventions int NOT NULL DEFAULT 0,
+    duration_ms int NOT NULL DEFAULT 0, events jsonb NOT NULL DEFAULT '[]'
+  )`,
+  `CREATE INDEX IF NOT EXISTS runs_started ON runs (started_at DESC)`,
+  `CREATE TABLE IF NOT EXISTS notifications (
+    id text PRIMARY KEY,
+    user_id text NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    kind text NOT NULL, title text NOT NULL, body text NOT NULL,
+    learner_id text, grade int, link text,
+    created_at timestamptz NOT NULL DEFAULT now(), read_at timestamptz
+  )`,
+  `CREATE INDEX IF NOT EXISTS notifications_user ON notifications (user_id, created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 

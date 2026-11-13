@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildInvite, escapeText, foldLine, sastToUtc } from '@/core/delivery/IcsBuilder';
+import { googleCalendarLink, inviteTime, readInvite } from '@/core/delivery/inviteLinks';
 
 const DETAILS = {
   uid: 'run-1-L-014@thuso.example.org',
@@ -56,5 +57,23 @@ describe('IcsBuilder', () => {
     expect(unfolded).toContain('mailto:guardian.l014@families.example.org');
     expect(ics).toContain('TRIGGER:-PT30M');
     expect(buildInvite(DETAILS)).toBe(ics);
+  });
+});
+
+describe('invite links', () => {
+  it('reads the session back from an invite and builds a Google Calendar link in SAST', () => {
+    const session = readInvite(buildInvite(DETAILS));
+    expect(session).toMatchObject({
+      start: '20261116T123000Z',
+      end: '20261116T131500Z',
+      title: 'Catch-up session: finance, growth and decay',
+      location: 'Jacaranda High, staff room',
+    });
+    const link = new URL(googleCalendarLink(session!));
+    expect(link.hostname).toBe('calendar.google.com');
+    expect(link.searchParams.get('dates')).toBe('20261116T123000Z/20261116T131500Z');
+    expect(link.searchParams.get('ctz')).toBe('Africa/Johannesburg');
+    expect(inviteTime('20261116T123000Z').toISOString()).toBe('2026-11-16T12:30:00.000Z');
+    expect(readInvite('BEGIN:VCALENDAR\r\nEND:VCALENDAR')).toBeUndefined();
   });
 });
