@@ -1,10 +1,9 @@
 'use server';
 
 import { randomBytes } from 'node:crypto';
-import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { hashPassword } from '@/core/auth/passwords';
-import { LearningFormatSchema } from '@/core/domain/vocab';
+import { LEARNING_FORMATS, LearningFormatSchema } from '@/core/domain/vocab';
 import { defaultSubjectChoice } from '@/core/seed/extraSubjects';
 import { requireUser } from '@/lib/auth';
 import { classFor, forgetClass, school } from '@/lib/school';
@@ -23,7 +22,7 @@ const AccountSchema = z.discriminatedUnion('role', [
     lastName: Name,
     email: Email,
     grade: Grade,
-    formats: z.array(LearningFormatSchema).min(1).max(2),
+    formats: z.array(LearningFormatSchema).min(1).max(LEARNING_FORMATS.length),
     guardianName: Name,
     guardianEmail: Email,
   }),
@@ -99,8 +98,6 @@ export async function createAccountAction(input: unknown): Promise<AccountResult
   }
   const password = randomBytes(PASSWORD_BYTES).toString('base64url');
   const id = await save(account, await hashPassword(password));
-  revalidatePath('/portal/admin');
-  revalidatePath('/portal/principal');
   return {
     created: {
       id,

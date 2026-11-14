@@ -4,6 +4,8 @@ import { ACCOUNTING_LESSONS } from './accountingLessons';
 import { ACCOUNTING_SENIOR_LESSONS } from './accountingSeniorLessons';
 import { LIFE_SENIOR_LESSONS } from './lifeSeniorLessons';
 import { LO_LESSONS } from './loLessons';
+import { MATHS_SENIOR_LESSONS } from './mathsSeniorLessons';
+import { SCIENCE_SENIOR_LESSONS } from './scienceSeniorLessons';
 import { ENGLISH_LESSONS } from './englishLessons';
 import { LIFE_LESSONS } from './lifeLessons';
 import { MATHS_LESSONS } from './mathsLessons';
@@ -49,8 +51,8 @@ const ORDER: Record<LearningFormat, readonly BlockKind[]> = {
 };
 
 const LIBRARY: Readonly<Record<string, Readonly<Record<string, TopicLesson>>>> = {
-  MATH: MATHS_LESSONS,
-  PHSC: SCIENCE_LESSONS,
+  MATH: { ...MATHS_LESSONS, ...MATHS_SENIOR_LESSONS },
+  PHSC: { ...SCIENCE_LESSONS, ...SCIENCE_SENIOR_LESSONS },
   ACCN: { ...ACCOUNTING_LESSONS, ...ACCOUNTING_SENIOR_LESSONS },
   LIFE: { ...LIFE_LESSONS, ...LIFE_SENIOR_LESSONS },
   ENGL: ENGLISH_LESSONS,

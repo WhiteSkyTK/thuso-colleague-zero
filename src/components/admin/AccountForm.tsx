@@ -18,22 +18,58 @@ const FIELD = 'w-full rounded-lg border-2 border-ink/20 bg-white px-3 py-2';
 const LABEL = 'flex flex-col gap-1 text-sm font-medium';
 const CHIP = 'flex items-center gap-1 rounded-full bg-jacaranda-50 px-3 py-1 text-sm';
 
-function Created({ result }: Readonly<{ result: NonNullable<AccountResult['created']> }>) {
+type Created = NonNullable<AccountResult['created']>;
+
+const loginText = (account: Created) =>
+  [
+    'Thuso login',
+    `Name: ${account.name} (${account.role}, ${account.id})`,
+    `Sign in at: ${globalThis.location?.origin ?? ''}/login`,
+    `Email: ${account.email}`,
+    `Temporary password: ${account.password}`,
+  ].join('\n');
+
+const SMALL_BUTTON = 'rounded-full border-2 border-ink bg-white px-3 py-1 text-xs font-bold';
+
+/** The new login stays here until the person who made it has saved it and taps Done. */
+function CreatedCard({ account, onDone }: Readonly<{ account: Created; onDone: () => void }>) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    await navigator.clipboard.writeText(loginText(account));
+    setCopied(true);
+  };
+  const download = () => {
+    const url = URL.createObjectURL(new Blob([loginText(account)], { type: 'text/plain' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `thuso-login-${account.id}.txt`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
   return (
-    <div className="ask-reply rounded-card border-2 border-jacaranda-500 bg-jacaranda-50 p-4 text-sm">
+    <div className="ask-reply flex flex-col gap-1 rounded-card border-2 border-jacaranda-500 bg-jacaranda-50 p-4 text-sm">
       <p className="font-semibold">
-        ✓ {result.role === 'learner' ? 'Learner' : 'Teacher'} account ready: {result.name} (
-        {result.id})
+        ✓ {account.role === 'learner' ? 'Learner' : 'Teacher'} account ready: {account.name} (
+        {account.id})
       </p>
       <p>
-        Email: <span className="font-mono">{result.email}</span>
+        Email: <span className="font-mono">{account.email}</span>
       </p>
       <p>
-        Temporary password: <span className="font-mono font-bold">{result.password}</span>
+        Temporary password: <span className="font-mono font-bold">{account.password}</span>
       </p>
-      <p className="mt-1 opacity-80">
-        Give this to them now — it is shown only once and stored only as a hash.
-      </p>
+      <p className="opacity-80">Save it now — it is shown only here and stored only as a hash.</p>
+      <div className="mt-1 flex flex-wrap gap-2">
+        <button type="button" onClick={copy} className={SMALL_BUTTON}>
+          {copied ? '✓ Copied' : '📋 Copy login'}
+        </button>
+        <button type="button" onClick={download} className={SMALL_BUTTON}>
+          ⬇ Download (.txt)
+        </button>
+        <button type="button" onClick={onDone} className={`${SMALL_BUTTON} bg-ink text-paper`}>
+          Done
+        </button>
+      </div>
     </div>
   );
 }
@@ -42,6 +78,7 @@ function Created({ result }: Readonly<{ result: NonNullable<AccountResult['creat
 export function AccountForm({ subjects, onCreate }: AccountFormProps) {
   const [role, setRole] = useState<Role>('learner');
   const [result, setResult] = useState<AccountResult>({});
+  const [created, setCreated] = useState<Created[]>([]);
   const [isPending, startTransition] = useTransition();
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -71,7 +108,9 @@ export function AccountForm({ subjects, onCreate }: AccountFormProps) {
     startTransition(async () => {
       const outcome = await onCreate({ ...person, ...details });
       setResult(outcome);
-      if (outcome.created) {
+      const account = outcome.created;
+      if (account) {
+        setCreated((list) => [account, ...list]);
         formElement.reset();
       }
     });
@@ -131,7 +170,7 @@ export function AccountForm({ subjects, onCreate }: AccountFormProps) {
           </div>
           <fieldset className="flex flex-col gap-1">
             <legend className="text-sm font-medium">
-              How they say they learn best (pick one or two — Thuso keeps learning)
+              How they learn best — tick any or all; Thuso learns which works and puts it first
             </legend>
             <div className="flex flex-wrap gap-2">
               {LEARNING_FORMATS.map((format, at) => (
@@ -177,7 +216,13 @@ export function AccountForm({ subjects, onCreate }: AccountFormProps) {
           {result.error}
         </p>
       )}
-      {result.created && <Created result={result.created} />}
+      {created.map((account) => (
+        <CreatedCard
+          key={account.id}
+          account={account}
+          onDone={() => setCreated((list) => list.filter((a) => a.id !== account.id))}
+        />
+      ))}
     </form>
   );
 }

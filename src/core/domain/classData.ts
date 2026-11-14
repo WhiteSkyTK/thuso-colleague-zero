@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { LearnerIdSchema, LearningFormatSchema, RungSchema } from './vocab';
+import { LEARNING_FORMATS, LearnerIdSchema, LearningFormatSchema, RungSchema } from './vocab';
 
 const SubjectId = z.string().regex(/^[A-Z]{3,6}$/);
 const Week = z.number().int().positive();
@@ -22,8 +22,8 @@ export const LearnerSchema = z.object({
   learnerEmail: z.email(),
   guardianName: z.string().min(1),
   guardianEmail: z.email(),
-  /** How the learner says they like to learn — one or two formats. */
-  preferredFormats: z.array(LearningFormatSchema).min(1).max(2),
+  /** How the learner likes to learn — any of the formats, in the order Thuso has learned works best. */
+  preferredFormats: z.array(LearningFormatSchema).min(1).max(LEARNING_FORMATS.length),
 });
 export type Learner = z.infer<typeof LearnerSchema>;
 

@@ -10,6 +10,8 @@ export interface DemoAccount {
   /** Learners: their id, so the button can show their real name from the database. */
   learnerId?: string;
   className: string;
+  /** Not shown to the room; presenters open /login?staff=1. Uses the admin password, server-side. */
+  isHidden?: boolean;
 }
 
 /**
@@ -83,5 +85,14 @@ export const DEMO_ACCOUNTS: readonly DemoAccount[] = [
     label: 'Principal',
     detail: 'Mrs Molefe, whole school',
     className: 'bg-jacaranda-500 text-white',
+  },
+  {
+    key: 'admin',
+    role: 'admin',
+    email: 'admin@school.example.org',
+    label: 'Admin',
+    detail: 'School set-up and accounts',
+    className: 'bg-ink text-paper',
+    isHidden: true,
   },
 ];

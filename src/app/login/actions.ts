@@ -65,7 +65,11 @@ export async function demoSignIn(key: string): Promise<void> {
   if (!account) {
     redirect('/login');
   }
-  await trySignIn(account.email, loadConfig().school.demoPassword);
+  const { demoPassword, adminPassword } = loadConfig().school;
+  const password = account.role === 'admin' ? adminPassword : demoPassword;
+  if (password) {
+    await trySignIn(account.email, password);
+  }
   // Only reached when the demo account is missing or its password was changed.
   redirect('/login?demo=unavailable');
 }

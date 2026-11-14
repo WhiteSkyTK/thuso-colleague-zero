@@ -20,12 +20,14 @@ async function learnerNames(): Promise<Map<string, string>> {
 
 export default async function LoginPage({
   searchParams,
-}: Readonly<{ searchParams: Promise<{ demo?: string }> }>) {
+}: Readonly<{ searchParams: Promise<{ demo?: string; staff?: string }> }>) {
   const user = await currentUser();
   if (user) {
     redirect(homeFor(user.role));
   }
-  const [{ demo }, names] = await Promise.all([searchParams, learnerNames()]);
+  const [{ demo, staff }, names] = await Promise.all([searchParams, learnerNames()]);
+  // The admin demo stays out of sight for the room; presenters open /login?staff=1.
+  const accounts = DEMO_ACCOUNTS.filter((account) => !account.isHidden || staff === '1');
 
   return (
     <>
@@ -46,7 +48,7 @@ export default async function LoginPage({
         <section className="flex flex-col gap-5 rounded-card bg-white p-5 shadow-card sm:p-6">
           <h2 className="font-display text-3xl font-extrabold uppercase">Try the demo school</h2>
           <ul className="grid grid-cols-2 gap-2 lg:grid-cols-3">
-            {DEMO_ACCOUNTS.map((account) => {
+            {accounts.map((account) => {
               const name = account.learnerId ? names.get(account.learnerId) : undefined;
               return (
                 <li key={account.key}>

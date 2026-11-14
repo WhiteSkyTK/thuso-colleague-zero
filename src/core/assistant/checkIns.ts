@@ -56,12 +56,12 @@ const MS_PER_DAY = 86_400_000;
 export const checkInFor = (now: Date): CheckIn =>
   CHECK_INS[Math.floor(now.getTime() / MS_PER_DAY) % CHECK_INS.length] ?? CHECK_INS[0]!;
 
-/** A format answer moves that format to the front; the learner keeps at most two. */
+/** A format that works moves to the front; the order is what Thuso has learned about the learner. */
 export function updatedFormats(
   current: readonly LearningFormat[],
   chosen: LearningFormat,
 ): LearningFormat[] {
-  return [chosen, ...current.filter((format) => format !== chosen)].slice(0, 2);
+  return [chosen, ...current.filter((format) => format !== chosen)];
 }
 
 export const isFormat = (value: string): value is LearningFormat =>

@@ -17,30 +17,6 @@ import { seedClassData } from './helpers/testKit';
 const data = seedClassData();
 const resourceOn = (topic: string) => data.resources.find((r) => r.topic === topic)!;
 
-/** Grade 11–12 topics still taught with the general study method (being written next). */
-const KNOWN_GAPS: readonly string[] = [
-  'MATH: exponents and surds',
-  'MATH: number patterns',
-  'MATH: analytical geometry',
-  'PHSC: vectors in two dimensions',
-  "PHSC: Newton's laws",
-  'PHSC: intermolecular forces',
-  'PHSC: geometrical optics',
-  'PHSC: electrostatics',
-  'MATH: sequences and series',
-  'MATH: functions and inverses',
-  'MATH: exponential and logarithmic functions',
-  'MATH: polynomials',
-  'MATH: differential calculus',
-  'PHSC: momentum and impulse',
-  'PHSC: vertical projectile motion',
-  'PHSC: organic chemistry',
-  'PHSC: rates of reaction',
-  'PHSC: chemical equilibrium',
-  'PHSC: acids and bases',
-  'PHSC: electrochemistry',
-];
-
 describe('lessons in the learner’s format', () => {
   it('teaches the same topic in every format, each in its own order', () => {
     const resource = resourceOn('functions');
@@ -95,7 +71,7 @@ describe('lessons in the learner’s format', () => {
         }
       }
     }
-    expect([...new Set(missing)]).toEqual(KNOWN_GAPS);
+    expect([...new Set(missing)]).toEqual([]);
   });
 });
 

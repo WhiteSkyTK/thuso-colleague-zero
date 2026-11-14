@@ -70,10 +70,11 @@ describe('daily check-ins', () => {
     expect(new Set(ids).size).toBe(CHECK_INS.length);
   });
 
-  it('moves a chosen format to the front and keeps two', () => {
+  it('moves a format that works to the front and keeps every format the learner picked', () => {
     expect(updatedFormats(['visual-story', 'worked-examples'], 'audio')).toEqual([
       'audio',
       'visual-story',
+      'worked-examples',
     ]);
     expect(updatedFormats(['visual-story', 'audio'], 'audio')).toEqual(['audio', 'visual-story']);
     expect(isFormat('audio')).toBe(true);

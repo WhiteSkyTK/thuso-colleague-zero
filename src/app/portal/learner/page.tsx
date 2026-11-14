@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { LearnerDashboard } from '@/components/learner/LearnerDashboard';
+import { FormatPicker } from '@/components/learner/FormatPicker';
 import { StudyTeam } from '@/components/learner/StudyTeam';
 import { PortalMascot } from '@/components/mascot/PortalMascot';
 import { MessageList } from '@/components/messages/MessageList';
@@ -9,7 +10,7 @@ import { learnerView } from '@/lib/learnerView';
 import { learnerTips } from '@/lib/mascotTips';
 import { school } from '@/lib/school';
 import { savedPlanFor } from '@/lib/studyTeam';
-import { runStudyTeamAction } from './actions';
+import { runStudyTeamAction, saveFormatsAction } from './actions';
 
 export const metadata: Metadata = { title: 'My page — Thuso' };
 
@@ -39,6 +40,7 @@ export default async function MyPage() {
         />
       </section>
       <StudyTeam savedDays={savedDays} onRun={runStudyTeamAction} />
+      <FormatPicker current={view.profile.learner.preferredFormats} onSave={saveFormatsAction} />
       <LearnerDashboard {...view} isOwnPage />
       <PortalMascot
         user={user}
