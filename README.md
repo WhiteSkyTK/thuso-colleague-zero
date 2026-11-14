@@ -25,6 +25,18 @@ Thuso plans the work, does it, checks its own output, fixes what is wrong and de
 - **Principal and admin:** every grade side by side; create learners and teachers one at a time or **from a spreadsheet (CSV)**, with logins to copy or download; a daily background watch with alerts; run history and replay.
 - **Built for a full room:** up to 40 agent runs at once per server on the scripted model, per-account limits sized for shared demo accounts, friendly error and not-found pages.
 
+### Built on proven agent patterns
+Thuso follows the patterns in Anthropic’s [Building Effective AI Agents](https://www.anthropic.com/engineering/building-effective-agents), and keeps each one simple and visible in the live log:
+
+| Pattern | Where it is in Thuso |
+|---|---|
+| **Orchestrator–workers** | The Planner decides the steps at run time; the orchestrator hands typed work to the Analyst, Coach, Reviewer and Messenger. Agents never call each other. |
+| **Evaluator–optimizer** | The Reviewer evaluates every plan; the Coach rewrites it from the evidence and fix; checked again, at most 3 times, then escalated. The learner’s “Plan my week” team does the same. |
+| **Routing** | The Planner routes a question to a report and a goal to catch-up plans; Ask Thuso routes each message to live data, a lesson topic, or the model chain. |
+| **Parallelization** | Each learner’s plan is written and reviewed in parallel, with a concurrency limit. |
+| **Gates in a chain** | Code checks run before any model review; risk, causes, counts and dates are computed in code, and the model explains and writes. |
+| **Augmented model** | Tools (resource catalogue, calendar, delivery), retrieval of only real resources, and memory of each learner (check-ins, lesson feedback, saved plans). |
+
 ### Judges’ questions
 - **How does it decide what to do next?** The Planner builds the steps at run time from the goal and the live class data — change the grade, subject or threshold and the plan changes; a question gets a report instead of plans. Missing data or a failed step triggers a re-plan.
 - **How does it detect its own mistakes?** The Reviewer runs eight checks in code (real cause addressed, resources exist, format and workload fit, session booked, no other learner’s data, no injected instructions), then a model review. Failures go back to the Coach with evidence and a fix, are checked again (at most 3 times), and anything still failing is escalated to a human and listed — never hidden. Every fix is logged in the live run.

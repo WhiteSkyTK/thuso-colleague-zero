@@ -130,6 +130,13 @@ export function answerSmallTalk(
       links: [{ label: 'See a fix in the live log', href: '/run' }],
     };
   }
+  if (/ (pattern|patterns|architecture|how is it built|how are you built) /.test(text)) {
+    return {
+      answer:
+        'Thuso uses the patterns from Anthropic’s “Building Effective AI Agents”: orchestrator–workers (the Planner decides, the orchestrator hands work to the Analyst, Coach, Reviewer and Messenger), evaluator–optimizer (the Reviewer checks, the Coach fixes, checked again), routing, parallel work per learner, and code gates before any model review — all visible in the live log.',
+      links: [{ label: 'Watch the agents work', href: '/run' }],
+    };
+  }
   if (/ (who are you|what are you|what can you do|how do you work) /.test(text)) {
     return {
       answer: `I’m Thuso — “help” in Sesotho and Setswana. A team of agents that watches every learner, works out why someone is slipping and helps them catch up. Try ${tryThis}.`,

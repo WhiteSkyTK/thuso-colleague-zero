@@ -118,3 +118,12 @@ describe('Ask Thuso — loose words do not hijack questions', () => {
     expect(answerLearner('what should I study?', context).isFallback).toBeUndefined();
   });
 });
+
+describe('Ask Thuso — how it is built', () => {
+  it('names the agent patterns it uses', () => {
+    const staffContext = { classes: [{ grade: 10, data: seedClassData() }], riskThreshold: 40 };
+    expect(answerStaff('what agent patterns does Thuso use?', staffContext).answer).toMatch(
+      /orchestrator–workers.*evaluator–optimizer/,
+    );
+  });
+});
