@@ -72,7 +72,9 @@ function answerReport(
     if (!subject) {
       return [];
     }
-    const names = new Map(data.learners.map((l) => [l.id, `${l.firstName} ${l.lastName}`]));
+    const names = new Map<string, string>(
+      data.learners.map((l): [string, string] => [l.id, `${l.firstName} ${l.lastName}`]),
+    );
     const rows = classReport(
       new InMemoryClassRepository(data).recordsFor(subject.id),
       filter,

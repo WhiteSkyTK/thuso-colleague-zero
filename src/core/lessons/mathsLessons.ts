@@ -31,6 +31,17 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: 'x', count: 7 },
       ],
     },
+    gossip: [
+      ['t', 'Okay so in algebra, terms only hang out with their own kind 👀'],
+      ['y', 'What do you mean?'],
+      [
+        't',
+        '3x² and −x² are like terms — same letter, same power. They can combine: 2x². Same with 2x and 5x: 7x.',
+      ],
+      ['t', 'But x and x²? Different crowd. They do NOT mix. So 2x² + 7x is as simple as it gets.'],
+      ['y', 'People really add them?'],
+      ['t', 'All the time! “2x + 3x² = 5x³” is the most famous wrong answer in Grade 10 😭'],
+    ],
     mistake: '2x + 3x² is not 5x³ — x and x² are not like terms.',
     checks: [
       { question: 'Factorise x² + 5x + 6', answer: '(x + 2)(x + 3)' },
@@ -62,6 +73,23 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
         'You have R50 and a data bundle costs R12. How many bundles can you buy? Solve 12x ≤ 50.',
       answer: 'x ≤ 4.17, so 4 bundles',
     },
+    gossip: [
+      [
+        't',
+        'Equations are all about fairness: whatever you do to one side, you do to the other ⚖️',
+      ],
+      ['y', 'Like what?'],
+      [
+        't',
+        '3x − 7 = 11. Add 7 to BOTH sides: 3x = 18. Divide BOTH sides by 3: x = 6. Then check: 3(6) − 7 = 11 ✓',
+      ],
+      ['y', 'And inequalities are the same?'],
+      [
+        't',
+        'Almost… but here is the plot twist 😱 Multiply or divide by a NEGATIVE and the sign flips. −2x < 6 becomes x > −3.',
+      ],
+      ['t', 'Forget to flip and the whole answer is wrong. Every. Single. Time.'],
+    ],
     mistake: 'Forgetting to flip the sign after dividing by a negative.',
     checks: [
       { question: 'Solve x² − x − 12 = 0', answer: 'x = 4 or x = −3' },
@@ -93,6 +121,17 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
       answer: '−5t² + 20 = 0, so t² = 4 and t = 2 seconds',
     },
     diagram: { kind: 'parabola', a: 2, q: -8 },
+    gossip: [
+      ['t', 'Let me tell you about y = ax² + q, the drama queen of graphs 👑'],
+      ['y', 'Go on'],
+      ['t', 'If a is positive she smiles — the graph opens up. If a is negative she frowns 🙃'],
+      ['t', 'And q? q just moves her up or down. The turning point is always (0; q).'],
+      ['y', 'How do I find where she crosses the x-axis?'],
+      [
+        't',
+        'Make y = 0 and solve. For y = 2x² − 8 you get x = ±2. Want the y-intercept instead? Make x = 0. Mixing those two up is the classic mistake.',
+      ],
+    ],
     mistake: 'Mixing up intercepts: for the y-intercept set x = 0; for x-intercepts set y = 0.',
     checks: [
       { question: 'y-intercept of y = 3x − 6', answer: '(0; −6)' },
@@ -127,6 +166,20 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
       hypotenuse: '10 cm',
       angle: '30°',
     },
+    gossip: [
+      ['t', 'Trig is just three friends with very specific jobs: sin, cos and tan 📐'],
+      ['y', 'Which does what?'],
+      [
+        't',
+        'SOH CAH TOA. Sin = opposite ÷ hypotenuse. Cos = adjacent ÷ hypotenuse. Tan = opposite ÷ adjacent.',
+      ],
+      ['t', 'So hypotenuse 10, angle 30°, want the opposite? Opposite = 10 × sin 30° = 5.'],
+      ['y', 'My calculator gave me a weird answer though'],
+      [
+        't',
+        'Babe, it’s in RADIANS mode 😩 Switch it to degrees (D). That one setting has cost people whole exams.',
+      ],
+    ],
     mistake: 'A calculator in radians mode gives wrong answers — set it to degrees (D).',
     checks: [
       { question: 'tan θ = 1. Find θ (0° < θ < 90°)', answer: '45°' },
@@ -154,6 +207,26 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
         'A builder measures both diagonals of a door frame. Why does that prove it is a rectangle?',
       answer: 'A parallelogram with equal diagonals is a rectangle',
     },
+    gossip: [
+      [
+        't',
+        'In geometry, saying something is true is not enough. You need a reason, like an alibi 🕵️',
+      ],
+      ['y', 'An alibi?'],
+      [
+        't',
+        'x = 70°? Why? “Angles in a triangle add up to 180°.” THAT is the alibi, and it earns the mark.',
+      ],
+      [
+        't',
+        'Same with shapes: opposite angles of a parallelogram are equal, a line joining two midpoints is half the third side.',
+      ],
+      ['y', 'So I must write the theorem every time?'],
+      [
+        't',
+        'Every time. Statement without reason = suspect without alibi. The marker will not believe you 😂',
+      ],
+    ],
     mistake: 'Writing an answer without the reason — the reason earns the mark.',
     checks: [
       {
@@ -200,6 +273,23 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
       ],
       line: { value: 8, label: 'mean = 8' },
     },
+    gossip: [
+      ['t', 'Mean, median and mode are triplets, but they have VERY different personalities 👯‍♀️'],
+      ['y', 'Who’s who?'],
+      [
+        't',
+        'Mean is the fair one: add everything up and share it equally. 4, 7, 7, 9, 13 → 40 ÷ 5 = 8.',
+      ],
+      [
+        't',
+        'Median is the one in the middle — but only once the numbers are lined up in order. Mode is the popular one: the number that shows up most.',
+      ],
+      ['y', 'And range?'],
+      [
+        't',
+        'Biggest minus smallest. And please sort your numbers before finding the median. Unsorted median is a crime 🚨',
+      ],
+    ],
     mistake: 'Finding the median without sorting the numbers first.',
     checks: [
       { question: 'Median of 9, 2, 5, 7, 3', answer: '5' },
@@ -234,6 +324,23 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: 'blue', count: 5 },
       ],
     },
+    gossip: [
+      [
+        't',
+        'Probability is just: how many ways can the thing happen, out of everything that could happen? 🎲',
+      ],
+      ['y', 'Example?'],
+      ['t', 'A bag has 3 red and 5 blue sweets. P(red) = 3 out of 8 = 3/8.'],
+      [
+        't',
+        'And the chance of something NOT happening is 1 minus the chance it does. P(A) = 0.2? Then P(not A) = 0.8.',
+      ],
+      ['y', 'Can I always add probabilities?'],
+      [
+        't',
+        'Only if the events can’t happen at the same time — mutually exclusive. Otherwise you’re counting some outcomes twice 👀',
+      ],
+    ],
     mistake: 'Adding probabilities of events that can happen together (not mutually exclusive).',
     checks: [
       { question: 'Roll a die. P(even number)?', answer: '1/2' },
@@ -276,6 +383,26 @@ export const MATHS_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: 'yr 4', value: 1464 },
       ],
     },
+    gossip: [
+      [
+        't',
+        'Okay so simple interest and compound interest are NOT the same and the difference is juicy 💰',
+      ],
+      ['y', 'Spill'],
+      [
+        't',
+        'Simple interest: same amount every year. R1 000 at 10% gets R100 a year, always. A = P(1 + in).',
+      ],
+      [
+        't',
+        'Compound interest earns interest on the interest. R1 000 → R1 100 → R1 210 → R1 331. A = P(1 + i)ⁿ. It snowballs ❄️',
+      ],
+      ['y', 'So that’s why store credit is so expensive'],
+      [
+        't',
+        'EXACTLY. And in the formula, 10% is i = 0.1 — not 10. Put in 10 and you’ll be a billionaire on paper 😂',
+      ],
+    ],
     mistake: 'Using i = 10 instead of i = 0.1 for 10%.',
     checks: [
       { question: 'R2 000 at 5% compound interest for 2 years', answer: 'R2 205' },

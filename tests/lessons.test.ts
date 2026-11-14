@@ -9,6 +9,7 @@ import { buildStudyPlan } from '@/core/lessons/studyPlan';
 import { AccountRepository } from '@/core/school/AccountRepository';
 import { NoteRepository } from '@/core/school/NoteRepository';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
+import { withExtraSubjects } from '@/core/seed/extraSubjects';
 import { seedSchool } from '@/core/seed/seedSchool';
 import { seedClassData } from './helpers/testKit';
 
@@ -36,7 +37,30 @@ describe('lessons in the learner’s format', () => {
     const resource = { ...resourceOn('functions'), subjectId: 'HIST', topic: 'the cold war' };
     const lesson = buildLesson(resource, 'History', 'patterns');
     expect(lesson.hasTopicNotes).toBe(false);
-    expect(lesson.blocks.map((b) => b.kind)).toEqual(['pattern', 'idea', 'steps', 'questions']);
+    expect(lesson.blocks.map((b) => b.kind)).toEqual([
+      'pattern',
+      'idea',
+      'gossip',
+      'steps',
+      'questions',
+    ]);
+    const gossip = lesson.blocks.find((b) => b.kind === 'gossip');
+    expect(gossip?.kind === 'gossip' && gossip.lines.some(([who]) => who === 'y')).toBe(true);
+  });
+
+  it('has hand-written lessons with a gossip chat for every Grade 10 topic in five subjects', () => {
+    const covered = ['MATH', 'PHSC', 'ACCN', 'LIFE', 'ENGL'];
+    const topics = withExtraSubjects(data, 10).subjects.filter((s) => covered.includes(s.id));
+    expect(topics).toHaveLength(covered.length);
+    for (const subject of topics) {
+      for (const topic of subject.topics) {
+        const resource = { ...resourceOn('functions'), subjectId: subject.id, topic };
+        const lesson = buildLesson(resource, subject.name, 'audio');
+        expect(lesson.hasTopicNotes, `${subject.id}: ${topic}`).toBe(true);
+        const gossip = lesson.blocks.find((b) => b.kind === 'gossip');
+        expect(gossip?.kind === 'gossip' && gossip.lines.length >= 5).toBe(true);
+      }
+    }
   });
 });
 
@@ -51,6 +75,9 @@ describe('question makers', () => {
     const energy = makeQuestion(makerKey('PHSC', 'energy'), highest);
     expect(energy?.answer).toBe(1960);
     expect(makeQuestion('HIST:the cold war', lowest)).toBeUndefined();
+    expect(makeQuestion(makerKey('ACCN', 'VAT'), lowest)?.answer).toBe(15);
+    expect(makeQuestion(makerKey('ACCN', 'budgeting'), lowest)?.answer).toBe(0);
+    expect(makeQuestion(makerKey('LIFE', 'biosphere to ecosystems'), highest)?.answer).toBe(900);
   });
 
   it('accepts commas and small rounding differences, and rejects the rest', () => {

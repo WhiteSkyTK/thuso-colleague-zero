@@ -1,24 +1,9 @@
-/** A fresh question with new numbers; the answer and the working are computed, never guessed. */
-export interface MadeQuestion {
-  question: string;
-  answer: number;
-  unit: string;
-  working: readonly string[];
-}
+import { fromList, round2, type MadeQuestion, type Maker, type Pick } from './makerKit';
+import { SCHOOL_MAKERS } from './schoolMakers';
 
-/** Whole number in [min, max]. */
-export type Pick = (min: number, max: number) => number;
-type Maker = (pick: Pick) => MadeQuestion;
+export type { MadeQuestion, Pick } from './makerKit';
 
 const G = 9.8;
-const round2 = (value: number) => Math.round(value * 100) / 100;
-function fromList<T>(pick: Pick, list: readonly T[]): T {
-  const item = list[pick(0, list.length - 1)];
-  if (item === undefined) {
-    throw new RangeError('fromList needs a non-empty list');
-  }
-  return item;
-}
 const ELEMENTS = [
   ['carbon', 6, 12],
   ['oxygen', 8, 16],
@@ -35,7 +20,7 @@ const SINES = [
   [60, Math.sqrt(3) / 2],
 ] as const;
 
-const MAKERS: Readonly<Record<string, Maker>> = {
+const CORE_MAKERS: Readonly<Record<string, Maker>> = {
   'MATH:equations and inequalities': (pick) => {
     const [a, x, b] = [pick(2, 9), pick(-5, 9), pick(1, 15)];
     return {
@@ -174,6 +159,8 @@ const MAKERS: Readonly<Record<string, Maker>> = {
     };
   },
 };
+
+const MAKERS: Readonly<Record<string, Maker>> = { ...CORE_MAKERS, ...SCHOOL_MAKERS };
 
 export const makerKey = (subjectId: string, topic: string) => `${subjectId}:${topic.toLowerCase()}`;
 export const hasMaker = (key: string) => key in MAKERS;

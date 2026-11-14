@@ -161,11 +161,18 @@ body {
   }
 
   .scene[data-motion='on'] .agent-bob {
-    animation: bob 0.6s ease-in-out infinite;
+    animation-name: bob;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
   }
 
   .scene[data-motion='on'] .agent-leg {
-    animation: stride 0.6s ease-in-out infinite alternate;
+    animation-name: stride;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
   }
 
   .scene[data-motion='on'] .agent-leg-b {

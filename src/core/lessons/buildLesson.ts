@@ -1,9 +1,12 @@
 import type { Resource } from '../domain/classData';
 import type { LearningFormat } from '../domain/vocab';
+import { ACCOUNTING_LESSONS } from './accountingLessons';
+import { ENGLISH_LESSONS } from './englishLessons';
+import { LIFE_LESSONS } from './lifeLessons';
 import { MATHS_LESSONS } from './mathsLessons';
 import { hasMaker, makerKey } from './questionMakers';
 import { SCIENCE_LESSONS } from './scienceLessons';
-import type { Diagram, TopicLesson } from './TopicLesson';
+import type { Diagram, GossipLine, TopicLesson } from './TopicLesson';
 
 export type LessonBlock =
   | { kind: 'idea'; text: string }
@@ -11,7 +14,7 @@ export type LessonBlock =
   | { kind: 'story'; panels: readonly { icon: string; caption: string }[] }
   | { kind: 'pattern'; rows: readonly (readonly [string, string])[]; rule: string }
   | { kind: 'listen'; script: string }
-  | { kind: 'gossip'; messages: readonly string[] }
+  | { kind: 'gossip'; lines: readonly GossipLine[] }
   | { kind: 'realWorld'; question: string; answer: string }
   | { kind: 'diagram'; diagram: Diagram }
   | { kind: 'maker'; key: string }
@@ -35,16 +38,19 @@ export interface Lesson {
 
 /** The same lesson, ordered for the way the learner learns best. */
 const ORDER: Record<LearningFormat, readonly BlockKind[]> = {
-  'worked-examples': ['idea', 'steps', 'realWorld', 'mistake', 'maker', 'questions'],
-  patterns: ['pattern', 'diagram', 'idea', 'steps', 'maker', 'questions'],
+  'worked-examples': ['idea', 'steps', 'gossip', 'realWorld', 'mistake', 'maker', 'questions'],
+  patterns: ['pattern', 'diagram', 'idea', 'gossip', 'steps', 'maker', 'questions'],
   'visual-story': ['diagram', 'story', 'gossip', 'realWorld', 'questions'],
   audio: ['listen', 'gossip', 'realWorld', 'questions'],
-  practice: ['maker', 'questions', 'realWorld', 'steps', 'mistake'],
+  practice: ['maker', 'questions', 'gossip', 'realWorld', 'steps', 'mistake'],
 };
 
 const LIBRARY: Readonly<Record<string, Readonly<Record<string, TopicLesson>>>> = {
   MATH: MATHS_LESSONS,
   PHSC: SCIENCE_LESSONS,
+  ACCN: ACCOUNTING_LESSONS,
+  LIFE: LIFE_LESSONS,
+  ENGL: ENGLISH_LESSONS,
 };
 
 const STEP_ICONS = ['①', '②', '③', '④', '⑤'];
@@ -89,12 +95,18 @@ function studyMethod(topic: string): TopicLesson {
   };
 }
 
-function gossipAbout(topic: string, notes: TopicLesson): string[] {
+/** The topic told like gossip; topics without their own chat get one from the notes. */
+function gossipAbout(topic: string, notes: TopicLesson): readonly GossipLine[] {
+  if (notes.gossip) {
+    return notes.gossip;
+  }
   return [
-    `Psst… did you hear what happened in ${topic}? 👀`,
-    `Half the class got caught out: “${notes.mistake}”`,
-    `Here’s the tea ☕ ${notes.idea}`,
-    `And it’s not just for tests: ${notes.realWorld.question}`,
+    ['t', `Psst… did you hear what happened in ${topic}? 👀`],
+    ['y', 'No! Tell me'],
+    ['t', `Okay so here’s the tea ☕ ${notes.idea}`],
+    ['y', 'And what goes wrong?'],
+    ['t', `Half the class got caught out: “${notes.mistake}” Don’t be that person.`],
+    ['t', `And it’s not just for tests: ${notes.realWorld.question}`],
   ];
 }
 
@@ -140,7 +152,7 @@ function blockOf(kind: BlockKind, { topic, notes, key }: BlockSource): LessonBlo
     case 'listen':
       return [{ kind, script: listenScript(notes) }];
     case 'gossip':
-      return [{ kind, messages: gossipAbout(topic, notes) }];
+      return [{ kind, lines: gossipAbout(topic, notes) }];
     case 'realWorld':
       return [{ kind, ...notes.realWorld }];
     case 'diagram':

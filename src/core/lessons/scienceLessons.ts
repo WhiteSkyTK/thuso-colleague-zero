@@ -26,6 +26,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
       question: 'Why are pots made of steel but have plastic handles?',
       answer: 'Steel conducts heat to the food; plastic insulates, so you do not burn your hand',
     },
+    gossip: [
+      [
+        't',
+        'Everything around you is either an element, a compound or a mixture. Let me explain the relationships 💞',
+      ],
+      ['y', 'Okay'],
+      ['t', 'An element is single: one kind of atom, like copper or oxygen.'],
+      [
+        't',
+        'A compound is MARRIED: elements chemically bonded in a fixed ratio, like H₂O. Getting them apart takes a chemical reaction.',
+      ],
+      ['y', 'And a mixture?'],
+      [
+        't',
+        'Just dating 😂 Salt water, air, steel — mixed together but you can separate them physically, like by evaporation.',
+      ],
+    ],
     mistake: 'Calling a compound a mixture — a compound has a fixed ratio and new properties.',
     checks: [
       { question: 'Is steel a mixture or a compound?', answer: 'A mixture (an alloy)' },
@@ -64,6 +81,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: 'electrons', count: 11 },
       ],
     },
+    gossip: [
+      ['t', 'Every atom is basically a tiny celebrity with a crew 🌟'],
+      ['y', 'A crew?'],
+      [
+        't',
+        'In the middle, the nucleus: protons and neutrons. Around it, the electrons in shells — 2, then 8, then 8.',
+      ],
+      [
+        't',
+        'The atomic number is how many protons. The mass number is protons + neutrons. So neutrons = mass number − atomic number.',
+      ],
+      ['y', 'Sodium is 11 and 23?'],
+      [
+        't',
+        'Yes! 23 − 11 = 12 neutrons. And don’t swap the two numbers — the mass number is always the bigger one.',
+      ],
+    ],
     mistake: 'Swapping the mass number and the atomic number.',
     checks: [
       {
@@ -100,6 +134,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
       question: 'Why does salt dissolve in water but candle wax does not?',
       answer: 'Salt is ionic and water pulls its ions apart; wax is covalent and non-polar',
     },
+    gossip: [
+      ['t', 'Atoms all want ONE thing: a full outer shell. And they’ll do anything to get it 😏'],
+      ['y', 'Anything?'],
+      [
+        't',
+        'Sodium has one extra electron, chlorine needs one. So sodium just GIVES it away. Na⁺ and Cl⁻ attract — ionic bond.',
+      ],
+      [
+        't',
+        'Two non-metals, though? Neither wants to give, so they SHARE. That’s covalent, like H₂O.',
+      ],
+      ['y', 'So metal + non-metal = ionic?'],
+      [
+        't',
+        'You got it. Non-metal + non-metal = covalent. Calling water ionic is a classic way to lose the mark.',
+      ],
+    ],
     mistake: 'Calling a bond between two non-metals ionic — it is covalent.',
     checks: [
       { question: 'Which bond holds H₂O together?', answer: 'Covalent' },
@@ -127,6 +178,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
       answer: 'λ = v ÷ f = 340 ÷ 680 = 0.5 m',
     },
     diagram: { kind: 'wave', wavelength: 'λ = 1.7 m', amplitude: 'amplitude' },
+    gossip: [
+      ['t', 'Every wave follows one rule: speed = frequency × wavelength. v = fλ 🌊'],
+      ['y', 'What does that mean in real life?'],
+      [
+        't',
+        'Sound in air travels at about 340 m·s⁻¹. A 200 Hz note with 1.7 m waves: 200 × 1.7 = 340. Checks out.',
+      ],
+      [
+        't',
+        'And if the speed stays the same, double the frequency and the wavelength halves. High notes have short waves.',
+      ],
+      ['y', 'Anything else I should know?'],
+      [
+        't',
+        'Sound travels FASTER in solids than in gases. And always write your units: m·s⁻¹. Bare numbers are just vibes.',
+      ],
+    ],
     mistake: 'Leaving out units: Hz × m gives m·s⁻¹.',
     checks: [
       { question: 'Period of a 50 Hz wave', answer: '0.02 s (T = 1 ÷ f)' },
@@ -153,6 +221,20 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
       question: 'A 2 000 W kettle runs on 230 V. What current does it draw?',
       answer: 'I = P ÷ V ≈ 8.7 A',
     },
+    gossip: [
+      ['t', 'Electricity has one celebrity formula: V = IR ⚡'],
+      ['y', 'What’s what?'],
+      [
+        't',
+        'V is the push (voltage), I is the flow (current), R is how hard it is to get through (resistance). 12 V across 4 Ω? I = 12 ÷ 4 = 3 A.',
+      ],
+      ['t', 'Resistors in series just add up: 2 Ω + 3 Ω = 5 Ω. Easy.'],
+      ['y', 'And in parallel?'],
+      [
+        't',
+        'That’s where people slip 🫣 In parallel the total gets SMALLER — two 6 Ω resistors give 3 Ω. Use 1/R = 1/R₁ + 1/R₂.',
+      ],
+    ],
     mistake: 'Adding parallel resistors like series ones. Use 1/R = 1/R₁ + 1/R₂.',
     checks: [
       { question: 'Two 6 Ω resistors in parallel', answer: '3 Ω' },
@@ -191,6 +273,20 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: '5 s', value: 10 },
       ],
     },
+    gossip: [
+      ['t', 'Speed and velocity are NOT the same thing and physics will fight you on this 🥊'],
+      ['y', 'Why not?'],
+      [
+        't',
+        'Velocity is speed WITH a direction. 20 m·s⁻¹ east is a velocity. And acceleration is how fast velocity changes: a = (v − u) ÷ t.',
+      ],
+      ['t', 'A car goes from 0 to 20 m·s⁻¹ in 5 s? a = 20 ÷ 5 = 4 m·s⁻².'],
+      ['y', 'And force?'],
+      [
+        't',
+        'Newton’s second law: F = ma. And always give the direction for vectors — leaving it out is the easiest mark to lose.',
+      ],
+    ],
     mistake: 'Forgetting direction: vectors need a sign or a direction.',
     checks: [
       { question: 'F = ma: m = 2 kg, a = 3 m·s⁻². Find F.', answer: '6 N' },
@@ -228,6 +324,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: '4 m/s', value: 16 },
       ],
     },
+    gossip: [
+      ['t', 'Energy never disappears, it just changes outfits 👗'],
+      ['y', 'Huh?'],
+      [
+        't',
+        'A ball held up high has potential energy: Ep = mgh. Let it fall and that energy turns into kinetic energy: Ek = ½mv².',
+      ],
+      [
+        't',
+        'And here’s the scary part: double the speed and the kinetic energy goes up FOUR times.',
+      ],
+      ['y', 'That’s why fast crashes are so bad'],
+      [
+        't',
+        'Exactly. And in the formula, don’t forget the ½ and don’t forget to square v. Those two slips cost the most marks.',
+      ],
+    ],
     mistake: 'Forgetting the ½ or forgetting to square v.',
     checks: [
       { question: 'Ek of 4 kg moving at 3 m·s⁻¹', answer: '18 J' },
@@ -265,6 +378,23 @@ export const SCIENCE_LESSONS: Readonly<Record<string, TopicLesson>> = {
         { label: 'O', count: 2 },
       ],
     },
+    gossip: [
+      ['t', 'In a chemical reaction, atoms just switch partners. Nobody leaves the party 🎉'],
+      ['y', 'What do you mean?'],
+      [
+        't',
+        'H₂ + O₂ → H₂O looks fine, but count: 2 oxygens on the left, 1 on the right. Someone went missing!',
+      ],
+      [
+        't',
+        'Fix it with the BIG numbers in front: 2H₂ + O₂ → 2H₂O. Now 4 H and 2 O on each side. Balanced.',
+      ],
+      ['y', 'Can’t I just change H₂O to H₂O₂?'],
+      [
+        't',
+        'NO 😱 That changes the substance completely — that’s hydrogen peroxide! Never change the small numbers.',
+      ],
+    ],
     mistake: 'Changing the small numbers (subscripts) instead of the big numbers in front.',
     checks: [
       { question: 'Burning paper: physical or chemical change?', answer: 'Chemical' },

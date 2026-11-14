@@ -124,19 +124,28 @@ function QuestionsBlock({ block }: Block<'questions'>) {
   );
 }
 
+const THUSO_BUBBLE = 'self-start rounded-bl-sm bg-jacaranda-50';
+const FRIEND_BUBBLE = 'self-end rounded-br-sm bg-ink text-paper';
+
+/** The topic told like gossip between Thuso and a friend, as a chat. */
 function GossipBlock({ block }: Block<'gossip'>) {
+  const spoken = block.lines.map(([, text]) => text).join(' ');
   return (
     <section className={CARD} aria-label="Thuso spills the tea">
-      <p className={LABEL}>Thuso spills the tea</p>
-      <ol className="mt-2 flex flex-col gap-2">
-        {block.messages.map((message, at) => (
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className={LABEL}>☕ Thuso spills the tea</p>
+        <SpeakButton text={spoken} label="🔊 Hear the gossip" />
+      </div>
+      <ol className="mt-3 flex flex-col gap-2">
+        {block.lines.map(([who, text], at) => (
           <li
-            key={message}
-            className="ask-reply max-w-[85%] rounded-2xl rounded-bl-sm bg-jacaranda-50 px-3 py-2"
-            style={{ animationDelay: `${at * 350}ms` }}
+            key={text}
+            className={`ask-reply max-w-[85%] rounded-2xl px-3 py-2 ${who === 't' ? THUSO_BUBBLE : FRIEND_BUBBLE}`}
+            style={{ animationDelay: `${at * 300}ms` }}
           >
-            <span aria-hidden="true">🦉 </span>
-            {message}
+            <span className="sr-only">{who === 't' ? 'Thuso: ' : 'Friend: '}</span>
+            {who === 't' && <span aria-hidden="true">🦉 </span>}
+            {text}
           </li>
         ))}
       </ol>

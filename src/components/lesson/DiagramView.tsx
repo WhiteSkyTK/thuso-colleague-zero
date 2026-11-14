@@ -193,12 +193,59 @@ function Wave({ diagram }: Of<'wave'>) {
   );
 }
 
+const FLOW_BOX = 30;
+const FLOW_GAP = 16;
+const FLOW_PITCH = FLOW_BOX + FLOW_GAP;
+
+/** A process, top to bottom: one box per step, joined by arrows. */
+function Flow({ diagram }: Of<'flow'>) {
+  return (
+    <>
+      {diagram.steps.map((step, at) => {
+        const y = 4 + at * FLOW_PITCH;
+        const isLast = at === diagram.steps.length - 1;
+        return (
+          <g key={step} className="pop-dot" style={{ animationDelay: `${at * 120}ms` }}>
+            <rect
+              x={20}
+              y={y}
+              width={WIDTH - 40}
+              height={FLOW_BOX}
+              rx={10}
+              className={isLast ? 'fill-jacaranda-500' : 'fill-jacaranda-50 stroke-jacaranda-500'}
+            />
+            <text
+              x={WIDTH / 2}
+              y={y + FLOW_BOX / 2 + 4}
+              textAnchor="middle"
+              className={isLast ? 'fill-white text-[12px] font-bold' : 'fill-ink text-[12px]'}
+            >
+              {step}
+            </text>
+            {!isLast && (
+              <path
+                d={`M ${WIDTH / 2} ${y + FLOW_BOX + 2} v ${FLOW_GAP - 8} l -5 -5 m 5 5 l 5 -5`}
+                className="fill-none stroke-ember-700"
+                strokeWidth={2}
+              />
+            )}
+          </g>
+        );
+      })}
+    </>
+  );
+}
+
+const heightOf = (diagram: Diagram) =>
+  diagram.kind === 'flow' ? diagram.steps.length * FLOW_PITCH - FLOW_GAP + 8 : HEIGHT;
+
 const TITLE: Record<Diagram['kind'], string> = {
   bars: 'Bar chart',
   triangle: 'Right-angled triangle',
   parabola: 'Graph of a parabola',
   dots: 'Counting picture',
   wave: 'A wave',
+  flow: 'Step by step',
 };
 
 function Drawing({ diagram }: Readonly<{ diagram: Diagram }>) {
@@ -213,6 +260,8 @@ function Drawing({ diagram }: Readonly<{ diagram: Diagram }>) {
       return <Dots diagram={diagram} />;
     case 'wave':
       return <Wave diagram={diagram} />;
+    case 'flow':
+      return <Flow diagram={diagram} />;
   }
 }
 
@@ -223,7 +272,7 @@ export function DiagramView({ diagram }: Readonly<{ diagram: Diagram }>) {
     <figure className="rounded-card bg-white p-5 shadow-card">
       <p className="font-mono text-xs uppercase tracking-widest text-jacaranda-700">See it</p>
       <svg
-        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        viewBox={`0 0 ${WIDTH} ${heightOf(diagram)}`}
         role="img"
         aria-label={caption}
         className="mt-2 w-full max-w-lg"

@@ -64,7 +64,7 @@ export function AccountForm({ subjects, onCreate }: AccountFormProps) {
           }
         : {
             teaching: form.getAll('teaching').map((value) => {
-              const [grade, subjectId] = String(value).split('|');
+              const [grade, subjectId] = (typeof value === 'string' ? value : '').split('|');
               return { grade: Number(grade), subjectId };
             }),
           };
