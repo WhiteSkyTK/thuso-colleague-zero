@@ -14,11 +14,10 @@ const MAX_TOKENS = 350;
 const MAX_ANSWER_CHARS = 900;
 
 async function openAiCompatible(
-  base: string,
-  key: string,
-  model: string,
+  target: { base: string; key: string; model: string },
   prompt: { system: string; user: string },
 ): Promise<string> {
+  const { base, key, model } = target;
   const response = await fetch(`${base}/chat/completions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
@@ -86,10 +85,10 @@ function chain(): ChatModel[] {
       models.push({
         name: model,
         ask: (system, user) =>
-          openAiCompatible('https://generativelanguage.googleapis.com/v1beta/openai', key, model, {
-            system,
-            user,
-          }),
+          openAiCompatible(
+            { base: 'https://generativelanguage.googleapis.com/v1beta/openai', key, model },
+            { system, user },
+          ),
       });
     }
   }
@@ -104,7 +103,10 @@ function chain(): ChatModel[] {
     models.push({
       name: model,
       ask: (system, user) =>
-        openAiCompatible('https://integrate.api.nvidia.com/v1', key, model, { system, user }),
+        openAiCompatible(
+          { base: 'https://integrate.api.nvidia.com/v1', key, model },
+          { system, user },
+        ),
     });
   }
   if (env.OPENROUTER_API_KEY) {
@@ -113,7 +115,7 @@ function chain(): ChatModel[] {
     models.push({
       name: model,
       ask: (system, user) =>
-        openAiCompatible('https://openrouter.ai/api/v1', key, model, { system, user }),
+        openAiCompatible({ base: 'https://openrouter.ai/api/v1', key, model }, { system, user }),
     });
   }
   return models;
