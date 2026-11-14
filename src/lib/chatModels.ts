@@ -74,14 +74,14 @@ async function anthropic(key: string, model: string, prompt: { system: string; u
 function chain(): ChatModel[] {
   const env = process.env;
   const models: ChatModel[] = [];
-  if (env.GOOGLE_GENERATIVE_AI_API_KEY) {
-    const key = env.GOOGLE_GENERATIVE_AI_API_KEY;
-    // A comma-separated list: the fast model first, then backups on the same key.
-    const names = (env.CHAT_GOOGLE_MODELS ?? 'gemini-flash-lite-latest,gemini-3.1-flash-lite')
-      .split(',')
-      .map((name) => name.trim())
-      .filter(Boolean);
-    for (const model of names) {
+  // A comma-separated list: the fast model first, then backups; each Gemini key has its own quota.
+  const googleNames = (env.CHAT_GOOGLE_MODELS ?? 'gemini-flash-lite-latest,gemini-3.1-flash-lite')
+    .split(',')
+    .map((name) => name.trim())
+    .filter(Boolean);
+  const googleKeys = [env.GOOGLE_GENERATIVE_AI_API_KEY, env.GOOGLE_GENERATIVE_AI_API_KEY_2];
+  for (const key of googleKeys.filter((k): k is string => Boolean(k))) {
+    for (const model of googleNames) {
       models.push({
         name: model,
         ask: (system, user) =>
@@ -97,9 +97,10 @@ function chain(): ChatModel[] {
     const model = env.LLM_MODEL_FAST ?? 'claude-haiku-5-5';
     models.push({ name: model, ask: (system, user) => anthropic(key, model, { system, user }) });
   }
-  if (env.NVIDIA_API_KEY) {
-    const key = env.NVIDIA_API_KEY;
-    const model = env.CHAT_NVIDIA_MODEL ?? 'moonshotai/kimi-k3';
+  const nvidiaKey = env.NVIDIA_API_KEY_2 ?? env.NVIDIA_API_KEY;
+  if (nvidiaKey) {
+    const key = nvidiaKey;
+    const model = env.CHAT_NVIDIA_MODEL ?? 'openai/gpt-oss-20b';
     models.push({
       name: model,
       ask: (system, user) =>
