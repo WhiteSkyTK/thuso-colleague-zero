@@ -2,7 +2,7 @@
 
 > Built for **Colleague Zero**, Melsoft Academy's 24-hour hackathon on multi-agent workflows for education (13–14 November 2026). *Thuso* is Sesotho and Setswana for "help".
 
-**Live demo: <https://thuso-colleague-zero.vercel.app>** — open the school portal and click **Learner**, **Teacher** or **Principal** (synthetic data, no sign-up). Press **Run** on `/run` to watch the five agents work.
+**Live demo: <https://thuso-colleague-zero.vercel.app>** — open `/login` and tap a demo account — **Learner** (Grades 10–12), **Teacher** or **Principal** (synthetic data, no sign-up). Press **Run** on `/run` to watch the five agents work.
 
 ## The problem
 A Grade 10 Mathematics teacher in South Africa can have 40 or more learners in one class. By the time a term report shows that a learner is failing, it is too late to fix. The marks are visible — what the teacher does not have is the time to work out **why** each learner is slipping and to build a plan for each one.
@@ -14,7 +14,20 @@ The teacher gives one goal in plain words:
 
 > "Find every Grade 10 learner at risk of failing Mathematics this term, work out why, and send each one a personalised 2-week catch-up plan with a booked support session."
 
-Thuso plans the work, does it, checks its own output, fixes what is wrong and delivers the finished plans. It is not a chatbot (nobody asks it questions) and not a fixed script (the plan is built at run time from the goal and the data).
+Thuso plans the work, does it, checks its own output, fixes what is wrong and delivers the finished plans. It is not just a chatbot (it acts, and works in the background on its own) and not a fixed script (the plan is built at run time from the goal and the data).
+
+## Everything Thuso does
+- **Teachers:** see who is at risk and why; run the agent team on any goal; Ask Thuso (“who is failing maths?”); **Thuso writes a practice paper** to edit and approve; Thuso marks hand-ins and flags what it is unsure of, the teacher accepts or overrides; past papers with uploads; alerts when a learner slips.
+- **Learners:** a lesson for **every topic in six subjects, Grades 10–12**, in the way they learn — worked steps, patterns, pictures, read-aloud, exam practice — plus **gossip mode** (the topic told as a chat with a friend), real-world problems, notes, and **“Make me a question”** with fresh numbers marked in code.
+- **The learner’s own agent team:** “Plan my week” — Planner, Analyst, Coach, Reviewer and Messenger build a 5-day plan from their marks and what they told Thuso; the Reviewer catches problems (cause skipped, too long, a format that did not help), the Coach fixes them, the teacher is told.
+- **It learns each learner:** daily one-tap check-ins and “did this help?” reorder their learning formats; “I feel lost” sends a start-here lesson now and tells the teacher.
+- **Ask Thuso, any question:** built-in answers from live data first (marks, groups, any lesson topic, feelings, how the agents decide and self-correct); anything else goes to a model chain (Gemini → Claude → NVIDIA → OpenRouter) with a safe built-in reply if every model fails.
+- **Principal and admin:** every grade side by side; create learners and teachers one at a time or **from a spreadsheet (CSV)**, with logins to copy or download; a daily background watch with alerts; run history and replay.
+- **Built for a full room:** up to 40 agent runs at once per server on the scripted model, per-account limits sized for shared demo accounts, friendly error and not-found pages.
+
+### Judges’ questions
+- **How does it decide what to do next?** The Planner builds the steps at run time from the goal and the live class data — change the grade, subject or threshold and the plan changes; a question gets a report instead of plans. Missing data or a failed step triggers a re-plan.
+- **How does it detect its own mistakes?** The Reviewer runs eight checks in code (real cause addressed, resources exist, format and workload fit, session booked, no other learner’s data, no injected instructions), then a model review. Failures go back to the Coach with evidence and a fix, are checked again (at most 3 times), and anything still failing is escalated to a human and listed — never hidden. Every fix is logged in the live run.
 
 ## Which agent does what
 | Code | Agent | Job |
@@ -93,7 +106,7 @@ The pathway finder (idea 5) turns marks into an APS score (best six subjects, CA
 - **Hosting on Vercel**: import the GitHub repo, then set `DATABASE_URL`, `ADMIN_PASSWORD`, and for real AI `LLM_PROVIDER=anthropic`, `ANTHROPIC_API_KEY`, `LLM_MODEL_REASONING`, `LLM_MODEL_FAST` in the project's environment variables.
 
 ## Status
-The five agents run end to end on a synthetic school of 96 learners in Grades 10 to 12 (two subjects each), read from Postgres, with the full correction loop, re-planning, budgets and the live event log. Model calls go to Claude when `LLM_PROVIDER=anthropic` and a key is set, and to an offline stand-in (`LLM_PROVIDER=mock`) otherwise. Email delivery with calendar invites is next. The past-paper entries in the resource catalogue are placeholders, not real papers yet. See [ROADMAP.md](ROADMAP.md).
+The five agents run end to end on a synthetic school of 96 learners in Grades 10 to 12 (six subjects each), read from Postgres, with the full correction loop, re-planning, budgets and the live event log. Agent runs use Claude when `LLM_PROVIDER=anthropic` and a key with credit is set, and an offline scripted stand-in (`LLM_PROVIDER=mock`) otherwise — the live demo uses the stand-in so a full room can run it at once. Ask Thuso’s free-text answers use the model chain in `.env.example`. Calendar invites (.ics and Google Calendar) work; email sends only when SMTP is configured. See [ROADMAP.md](ROADMAP.md).
 
 ## Tech
 TypeScript (strict) · Next.js · Zod · Vitest. The engine in `src/core` is framework-free. Project rules are in [CLAUDE.md](CLAUDE.md); the design direction is in [docs/DESIGN.md](docs/DESIGN.md).
