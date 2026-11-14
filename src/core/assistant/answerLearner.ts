@@ -23,6 +23,7 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       links: [
         { label: 'My page', href: '/portal/learner' },
         { label: 'Practice papers', href: '/portal/practice' },
+        { label: 'Plan my week', href: '/portal/learner#study-team' },
       ],
     };
   }

@@ -31,6 +31,15 @@ export const CHECK_INS: readonly CheckIn[] = [
     ],
   },
   {
+    id: 'minutes',
+    question: 'How much time can you study on a school day?',
+    options: [
+      { value: '15', label: '⏱ 15 min' },
+      { value: '30', label: '⏱ 30 min' },
+      { value: '60', label: '⏱ An hour' },
+    ],
+  },
+  {
     id: 'time',
     question: 'When do you like to study?',
     options: [

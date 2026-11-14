@@ -1,23 +1,43 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useTransition } from 'react';
+import type { AssistantLink } from '@/core/assistant/answerQuestion';
 import type { CheckIn } from '@/core/assistant/checkIns';
+
+export interface CheckInReply {
+  message: string;
+  links: AssistantLink[];
+}
 
 interface CheckInCardProps {
   readonly checkIn: CheckIn;
-  readonly onAnswer: (input: { id: string; value: string }) => Promise<{ message: string }>;
+  readonly onAnswer: (input: { id: string; value: string }) => Promise<CheckInReply>;
 }
 
-/** Today's one-tap question: how Thuso learns how this learner learns. */
+/** Today's one-tap question. Thuso answers by doing something: a lesson, a plan, a word to the teacher. */
 export function CheckInCard({ checkIn, onAnswer }: CheckInCardProps) {
-  const [message, setMessage] = useState<string | null>(null);
+  const [reply, setReply] = useState<CheckInReply | null>(null);
   const [isPending, startTransition] = useTransition();
 
-  if (message) {
+  if (reply) {
     return (
-      <p className="ask-reply mt-2 rounded-lg bg-jacaranda-50 p-2 text-xs font-semibold">
-        {message}
-      </p>
+      <div className="ask-reply mt-2 flex flex-col gap-2 rounded-lg bg-jacaranda-50 p-2 text-xs">
+        <p className="font-semibold">{reply.message}</p>
+        {reply.links.length > 0 && (
+          <div className="flex flex-wrap gap-2 font-semibold">
+            {reply.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full border-2 border-ink bg-white px-2 py-0.5"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
     );
   }
   return (
@@ -32,8 +52,7 @@ export function CheckInCard({ checkIn, onAnswer }: CheckInCardProps) {
             disabled={isPending}
             onClick={() =>
               startTransition(async () => {
-                const result = await onAnswer({ id: checkIn.id, value: option.value });
-                setMessage(result.message);
+                setReply(await onAnswer({ id: checkIn.id, value: option.value }));
               })
             }
             className="rounded-full border-2 border-ink/20 bg-white px-2 py-0.5 text-xs"

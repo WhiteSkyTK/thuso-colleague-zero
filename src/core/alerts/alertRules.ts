@@ -7,7 +7,14 @@ import { InMemoryClassRepository } from '../repositories/InMemoryClassRepository
 export const LOW_MARK_PCT = 40;
 
 export type AlertKind =
-  'at-risk' | 'low-mark' | 'plan-ready' | 'run-summary' | 'to-mark' | 'marked';
+  | 'at-risk'
+  | 'low-mark'
+  | 'plan-ready'
+  | 'run-summary'
+  | 'to-mark'
+  | 'marked'
+  | 'check-in'
+  | 'study-plan';
 
 /** Something Thuso noticed, before it is addressed to people. */
 export interface Alert {

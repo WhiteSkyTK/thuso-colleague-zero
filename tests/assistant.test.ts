@@ -66,7 +66,7 @@ describe('Ask Thuso — learner questions', () => {
 describe('daily check-ins', () => {
   it('asks one question a day, in turn', () => {
     const day = 86_400_000;
-    const ids = [0, 1, 2].map((n) => checkInFor(new Date(n * day)).id);
+    const ids = [0, 1, 2, 3].map((n) => checkInFor(new Date(n * day)).id);
     expect(new Set(ids).size).toBe(CHECK_INS.length);
   });
 

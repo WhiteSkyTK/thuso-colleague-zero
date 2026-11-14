@@ -7,7 +7,7 @@ import type { CheckIn } from '@/core/assistant/checkIns';
 import type { Notification } from '@/core/school/NotificationRepository';
 import { useSeenTips } from '@/hooks/useSeenTips';
 import { AskBox } from './AskBox';
-import { CheckInCard } from './CheckInCard';
+import { CheckInCard, type CheckInReply } from './CheckInCard';
 import { MascotRun } from './MascotRun';
 import { ThusoFace } from './ThusoFace';
 
@@ -28,7 +28,7 @@ interface ThusoMascotProps {
   /** Learners: today's one-tap question, until it is answered. */
   readonly checkIn?: {
     question: CheckIn;
-    onAnswer: (input: { id: string; value: string }) => Promise<{ message: string }>;
+    onAnswer: (input: { id: string; value: string }) => Promise<CheckInReply>;
   };
 }
 
@@ -39,6 +39,8 @@ const KIND_ICON: Record<Notification['kind'], string> = {
   'run-summary': '★',
   'to-mark': '✎',
   marked: '✓',
+  'check-in': '💬',
+  'study-plan': '🤝',
 };
 
 function AlertList({
@@ -111,7 +113,9 @@ function greeting(now: Date): string {
  * seen yet, an alert or a live run — and tucks itself away once everything has been read.
  */
 export function ThusoMascot(props: ThusoMascotProps) {
-  const { tips, live, alerts = [], onReadAlerts, runGrade, ask, checkIn } = props;
+  const { tips, live, alerts = [], onReadAlerts, runGrade, ask } = props;
+  // Kept after it is answered, so the reply stays on screen when the page refreshes.
+  const [checkIn] = useState(props.checkIn);
   const { seen, markSeen } = useSeenTips();
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState<'open' | 'closed' | null>(null);

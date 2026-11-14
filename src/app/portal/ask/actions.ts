@@ -4,10 +4,10 @@ import { randomUUID } from 'node:crypto';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import type { AssistantAnswer } from '@/core/assistant/answerQuestion';
-import { CHECK_INS, isFormat } from '@/core/assistant/checkIns';
+import { CHECK_INS } from '@/core/assistant/checkIns';
 import { askThuso } from '@/lib/askThuso';
 import { requireUser } from '@/lib/auth';
-import { rememberFormat } from '@/lib/rememberFormat';
+import { followUpCheckIn, type FollowUp } from '@/lib/checkInFollowUp';
 import { school } from '@/lib/school';
 
 const QUESTION_MAX = 300;
@@ -44,14 +44,14 @@ export async function askThusoAction(question: unknown): Promise<AssistantAnswer
 
 const CheckInSchema = z.object({ id: z.string().max(20), value: z.string().max(40) });
 
-/** A learner answers today's check-in: Thuso keeps a note, and a format answer changes how it teaches. */
-export async function answerCheckInAction(input: unknown): Promise<{ message: string }> {
+/** A learner answers today's check-in: Thuso keeps a note and acts on it (lesson, teacher, format). */
+export async function answerCheckInAction(input: unknown): Promise<FollowUp> {
   const user = await requireUser(['learner']);
   const parsed = CheckInSchema.safeParse(input);
   const checkIn = CHECK_INS.find((c) => c.id === parsed.data?.id);
   const option = checkIn?.options.find((o) => o.value === parsed.data?.value);
   if (!checkIn || !option) {
-    return { message: 'Pick one of the answers.' };
+    return { message: 'Pick one of the answers.', links: [] };
   }
   const { notes } = await school();
   await notes.add({
@@ -60,9 +60,7 @@ export async function answerCheckInAction(input: unknown): Promise<{ message: st
     question: checkIn.question,
     answer: option.label,
   });
-  if (isFormat(option.value) && user.grade !== null) {
-    await rememberFormat(user.id, user.grade, option.value);
-  }
+  const followUp = await followUpCheckIn(user, checkIn.id, option.value);
   revalidatePath('/portal/learner');
-  return { message: 'Thanks — noted. I’ll use that.' };
+  return followUp;
 }

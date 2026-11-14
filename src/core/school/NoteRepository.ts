@@ -51,6 +51,23 @@ export class NoteRepository {
     );
   }
 
+  /** The study team's latest plan for a learner (the days, as JSON). */
+  async savePlan(learnerId: string, days: unknown): Promise<void> {
+    await this.db.query(
+      `INSERT INTO study_plans (learner_id, plan) VALUES ($1, $2::jsonb)
+       ON CONFLICT (learner_id) DO UPDATE SET plan = EXCLUDED.plan, created_at = now()`,
+      [learnerId, JSON.stringify(days)],
+    );
+  }
+
+  async latestPlan(learnerId: string): Promise<unknown> {
+    const [row] = await this.db.query<{ plan: unknown }>(
+      'SELECT plan FROM study_plans WHERE learner_id = $1',
+      [learnerId],
+    );
+    return row?.plan;
+  }
+
   /** True when the learner already answered a check-in today (South African time). */
   async answeredToday(learnerId: string): Promise<boolean> {
     const [row] = await this.db.query<{ count: number }>(

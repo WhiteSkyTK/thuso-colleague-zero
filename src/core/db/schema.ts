@@ -128,6 +128,10 @@ const SCHEMA = [
     text text NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(),
     PRIMARY KEY (learner_id, resource_id)
   )`,
+  `CREATE TABLE IF NOT EXISTS study_plans (
+    learner_id text PRIMARY KEY REFERENCES users (id) ON DELETE CASCADE,
+    plan jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now()
+  )`,
   `CREATE TABLE IF NOT EXISTS calendar (date text PRIMARY KEY, free_slots text[] NOT NULL)`,
 ] as const;
 
