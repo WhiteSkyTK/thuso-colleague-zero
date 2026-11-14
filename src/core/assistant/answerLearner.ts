@@ -86,5 +86,6 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       { label: '🤝 Plan my week', href: '/portal/learner#study-team' },
       { label: 'My page', href: '/portal/learner' },
     ],
+    isFallback: true,
   };
 }

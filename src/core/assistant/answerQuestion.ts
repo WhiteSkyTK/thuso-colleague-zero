@@ -14,6 +14,8 @@ export interface AssistantLink {
 export interface AssistantAnswer {
   answer: string;
   links: AssistantLink[];
+  /** No built-in answer fitted: a model may answer instead (the text stays as the safe reply). */
+  isFallback?: boolean;
 }
 
 const MAX_NAMES = 8;
@@ -207,5 +209,6 @@ export function answerStaff(rawQuestion: string, context: StaffContext): Assista
       { label: 'My classes', href: '/portal' },
       { label: 'Watch the agents work', href: '/run' },
     ],
+    isFallback: true,
   };
 }

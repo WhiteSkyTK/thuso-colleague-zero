@@ -110,6 +110,26 @@ export function answerSmallTalk(
   if (/ (thanks|thank you|dankie|ngiyabonga|enkosi|ke a leboha|siyabonga) /.test(text)) {
     return { answer: 'Any time 💜 I’m here whenever you need me.', links: [] };
   }
+  if (
+    / (decide|decides|choose|next step|what to do next|plan) /.test(text) &&
+    / (how|why) /.test(text)
+  ) {
+    return {
+      answer:
+        'The Planner reads the goal and the live class data, then builds the steps at run time — there is no fixed script. Change the grade, subject or threshold and the plan changes; ask a question and it plans a report instead. If data is missing or a step fails, it re-plans. Every step has limits on attempts, time and tokens.',
+      links: [{ label: 'Watch it plan live', href: '/run' }],
+    };
+  }
+  if (
+    / (mistake|mistakes|error|errors|wrong|check|checks|catch|detect|correct) /.test(text) &&
+    / (how|do|does) /.test(text)
+  ) {
+    return {
+      answer:
+        'Every plan goes to the Reviewer. It runs eight checks in code first — is the real cause addressed, do the resources exist, does it fit the learner’s format and week, is a session booked, no other learner’s data, no hidden instructions — then a model review. A failure goes back to the Coach with the evidence and a fix; it is checked again, up to 3 times, then escalated to a human and listed. Every fix is logged.',
+      links: [{ label: 'See a fix in the live log', href: '/run' }],
+    };
+  }
   if (/ (who are you|what are you|what can you do|how do you work) /.test(text)) {
     return {
       answer: `I’m Thuso — “help” in Sesotho and Setswana. A team of agents that watches every learner, works out why someone is slipping and helps them catch up. Try ${tryThis}.`,
