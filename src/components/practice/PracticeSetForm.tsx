@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react';
 import type { ActionResult } from '@/app/portal/teacher/actions';
 import { FileDrop } from '@/components/files/FileDrop';
 import type { SubjectChoice } from '@/components/papers/PaperForm';
+import { draftPaper } from '@/core/lessons/draftPaper';
 
 interface QuestionDraft {
   key: number;
@@ -20,6 +21,12 @@ interface PracticeSetFormProps {
 
 const FIELD = 'w-full rounded-lg border-2 border-ink/20 bg-white px-3 py-2';
 const MAX_QUESTIONS = 30;
+
+/** Fresh numbers for drafted questions (Web Crypto: no predictable sequence). */
+function pick(min: number, max: number): number {
+  const [value = 0] = crypto.getRandomValues(new Uint32Array(1));
+  return min + (value % (max - min + 1));
+}
 
 /** Build a practice paper: questions with memo answers Thuso marks against, plus the paper file. */
 export function PracticeSetForm({ subjects, onCreate }: PracticeSetFormProps) {
@@ -166,6 +173,19 @@ export function PracticeSetForm({ subjects, onCreate }: PracticeSetFormProps) {
         ))}
       </ol>
       <div className="flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={() => {
+            const drafted = draftPaper(subject?.id ?? '', subject?.topics ?? [], pick);
+            if (drafted.length > 0) {
+              setQuestions(drafted.map((q, at) => ({ key: Date.now() + at, ...q })));
+              setTitle((value) => value || `${subject?.name ?? 'Practice'} — practice by Thuso`);
+            }
+          }}
+          className="rounded-full bg-ink px-4 py-2 text-sm font-bold text-paper"
+        >
+          ✦ Let Thuso write the questions
+        </button>
         <button
           type="button"
           disabled={questions.length >= MAX_QUESTIONS}

@@ -164,3 +164,21 @@ describe('accounts and notes', () => {
     expect(await notes.lessonNote('L-014', 'R-007')).toBe('second');
   });
 });
+
+describe('Thuso drafts a practice paper', () => {
+  it('writes exact-answer questions where it can and memo questions elsewhere', async () => {
+    const { draftPaper } = await import('@/core/lessons/draftPaper');
+    const lowest = (min: number) => min;
+    const maths = draftPaper('MATH', ['equations and inequalities', 'euclidean geometry'], lowest);
+    expect(maths[0]).toEqual({
+      prompt: 'Solve 2x + 1 = -9',
+      answer: '-5',
+      marks: 2,
+      topic: 'equations and inequalities',
+    });
+    expect(maths.some((q) => q.topic === 'euclidean geometry' && q.answer.includes('70°'))).toBe(
+      true,
+    );
+    expect(draftPaper('HIST', ['the cold war'], lowest)).toEqual([]);
+  });
+});

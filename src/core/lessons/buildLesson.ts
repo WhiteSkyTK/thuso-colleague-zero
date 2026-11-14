@@ -214,3 +214,8 @@ export const LESSON_INDEX: readonly { subjectId: string; topic: string; idea: st
   Object.entries(LIBRARY).flatMap(([subjectId, lessons]) =>
     Object.entries(lessons).map(([topic, notes]) => ({ subjectId, topic, idea: notes.idea })),
   );
+
+/** Thuso's notes for one topic (by its name or the lesson it builds on), if it has them. */
+export function topicNotes(subjectId: string, topic: string): TopicLesson | undefined {
+  return LIBRARY[subjectId]?.[lessonTopic(subjectId, topic)];
+}
