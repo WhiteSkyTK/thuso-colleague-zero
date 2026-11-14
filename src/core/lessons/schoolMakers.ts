@@ -83,6 +83,87 @@ export const SCHOOL_MAKERS: Readonly<Record<string, Maker>> = {
   'ACCN:budgets': budget,
   'ACCN:analysis of financial statements': markUp,
   'ACCN:ratio analysis': markUp,
+  'LIFO:careers and career choices': (pick) => {
+    const mark = pick(20, 99);
+    const points = Math.max(1, Math.min(7, Math.floor(mark / 10) - 1));
+    return {
+      question: `How many APS points is ${mark}%?`,
+      answer: points,
+      unit: 'points',
+      working: [
+        '80–100% = 7, 70–79% = 6, 60–69% = 5, 50–59% = 4, 40–49% = 3, 30–39% = 2, below 30% = 1',
+        `${mark}% → ${points}`,
+      ],
+    };
+  },
+  'ACCN:partnerships': (pick) => {
+    const [a, b] = [pick(1, 4), pick(1, 4)];
+    const profit = (a + b) * pick(2, 20) * 1000;
+    const share = (profit * a) / (a + b);
+    return {
+      question: `Profit R${profit} is shared ${a}:${b} between partners A and B. A’s share in rand?`,
+      answer: share,
+      unit: 'R',
+      working: [
+        `R${profit} ÷ ${a + b} parts = R${profit / (a + b)} a part`,
+        `A gets ${a} parts = R${share}`,
+      ],
+    };
+  },
+  'ACCN:fixed assets': (pick) => {
+    const [cost, rate, years] = [pick(4, 40) * 10000, fromList(pick, [10, 15, 20, 25]), pick(1, 3)];
+    const value = cost - (cost * rate * years) / 100;
+    return {
+      question: `Cost R${cost}, depreciation ${rate}% a year on cost. Carrying value after ${years} year(s)?`,
+      answer: value,
+      unit: 'R',
+      working: [
+        `Each year: R${cost} × ${rate}% = R${(cost * rate) / 100}`,
+        `R${cost} − ${years} × R${(cost * rate) / 100} = R${value}`,
+      ],
+    };
+  },
+  'ACCN:companies': (pick) => {
+    const [shares, cents] = [pick(1, 50) * 1000, fromList(pick, [10, 15, 20, 25, 40, 50])];
+    const total = (shares * cents) / 100;
+    return {
+      question: `${shares} shares get a dividend of ${cents}c each. Total dividend in rand?`,
+      answer: total,
+      unit: 'R',
+      working: ['Dividends = shares × cents per share', `${shares} × R${cents / 100} = R${total}`],
+    };
+  },
+  'ACCN:cost accounting': (pick) => {
+    const [units, unit] = [pick(1, 10) * 500, pick(5, 60)];
+    return {
+      question: `Total production cost R${units * unit} for ${units} units. Cost per unit?`,
+      answer: unit,
+      unit: 'R',
+      working: ['Unit cost = total cost ÷ units', `R${units * unit} ÷ ${units} = R${unit}`],
+    };
+  },
+  'LIFE:population ecology': (pick) => {
+    const [marked, recaptured, ratio] = [pick(2, 10) * 5, pick(2, 8), pick(3, 8)];
+    const caught = recaptured * ratio;
+    return {
+      question: `${marked} animals are marked. Later ${caught} are caught and ${recaptured} are marked. Estimate the population.`,
+      answer: (marked * caught) / recaptured,
+      unit: '',
+      working: [
+        'N = (M × C) ÷ R',
+        `(${marked} × ${caught}) ÷ ${recaptured} = ${(marked * caught) / recaptured}`,
+      ],
+    };
+  },
+  'LIFE:genetics and inheritance': (pick) => {
+    const seeds = pick(5, 50) * 8;
+    return {
+      question: `Tt × Tt produces ${seeds} offspring. How many are expected to be short (tt)?`,
+      answer: seeds / 4,
+      unit: '',
+      working: ['Punnett square: TT, Tt, Tt, tt → 1 in 4 short', `${seeds} ÷ 4 = ${seeds / 4}`],
+    };
+  },
   'LIFE:cells': (pick) => {
     const magnification = fromList(pick, [100, 200, 400, 1000]);
     const actualUm = pick(2, 20) * 5;

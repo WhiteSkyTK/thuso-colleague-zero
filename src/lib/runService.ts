@@ -7,10 +7,13 @@ import type { EventListener } from '@/core/events/EventBus';
 import { notifyRunFinished } from './alerts';
 import { classFor, school } from './school';
 
-/** One run at a time: protects the token budget and keeps the demo readable. */
-const MAX_ACTIVE_RUNS = 1;
+/**
+ * Runs at once per server. A real model spends tokens, so only a few; the scripted model costs
+ * nothing, so a room full of people (100 at the event) can each run Thuso at the same time.
+ */
+const MAX_ACTIVE_RUNS = { model: 3, scripted: 40 } as const;
 /** Finished runs kept in memory for late viewers on this server; history lives in the database. */
-const MAX_KEPT_RUNS = 20;
+const MAX_KEPT_RUNS = 60;
 
 interface RunStore {
   runs: Map<string, Colleague>;
@@ -69,13 +72,14 @@ export async function startRun(
   startedBy?: string,
 ): Promise<StartResult> {
   const { runs: memory, active } = store();
-  if (active.size >= MAX_ACTIVE_RUNS) {
+  const config = loadConfig();
+  const limit = config.llm.provider === 'mock' ? MAX_ACTIVE_RUNS.scripted : MAX_ACTIVE_RUNS.model;
+  if (active.size >= limit) {
     return { busy: true };
   }
   const runId = randomUUID();
   active.add(runId);
   try {
-    const config = loadConfig();
     const [{ messages, delivery, transport, runs }, classData] = await Promise.all([
       school(),
       classFor(grade),

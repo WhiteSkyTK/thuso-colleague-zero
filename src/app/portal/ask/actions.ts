@@ -13,8 +13,8 @@ import { school } from '@/lib/school';
 const QUESTION_MAX = 300;
 const QuestionSchema = z.string().trim().min(2).max(QUESTION_MAX);
 
-/** Twenty questions per person per minute (in memory, per server instance). */
-const MAX_PER_MINUTE = 20;
+/** Per account per minute (in memory, per server). High because a whole room shares the demo accounts. */
+const MAX_PER_MINUTE = 120;
 const WINDOW_MS = 60_000;
 const asked = new Map<string, { count: number; resetAt: number }>();
 

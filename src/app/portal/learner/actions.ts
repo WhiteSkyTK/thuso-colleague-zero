@@ -5,8 +5,8 @@ import type { StudyTeamResult } from '@/core/tutor/studyTeam';
 import { requireUser } from '@/lib/auth';
 import { runStudyTeamFor } from '@/lib/studyTeam';
 
-/** Two runs per learner per minute is plenty (in memory, per server instance). */
-const MAX_PER_MINUTE = 2;
+/** Per account per minute (in memory, per server). High because a whole room shares the demo accounts. */
+const MAX_PER_MINUTE = 30;
 const WINDOW_MS = 60_000;
 const runs = new Map<string, { count: number; resetAt: number }>();
 

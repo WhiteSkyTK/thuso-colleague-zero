@@ -1,6 +1,9 @@
 import type { Resource } from '../domain/classData';
 import type { LearningFormat } from '../domain/vocab';
 import { ACCOUNTING_LESSONS } from './accountingLessons';
+import { ACCOUNTING_SENIOR_LESSONS } from './accountingSeniorLessons';
+import { LIFE_SENIOR_LESSONS } from './lifeSeniorLessons';
+import { LO_LESSONS } from './loLessons';
 import { ENGLISH_LESSONS } from './englishLessons';
 import { LIFE_LESSONS } from './lifeLessons';
 import { MATHS_LESSONS } from './mathsLessons';
@@ -48,10 +51,26 @@ const ORDER: Record<LearningFormat, readonly BlockKind[]> = {
 const LIBRARY: Readonly<Record<string, Readonly<Record<string, TopicLesson>>>> = {
   MATH: MATHS_LESSONS,
   PHSC: SCIENCE_LESSONS,
-  ACCN: ACCOUNTING_LESSONS,
-  LIFE: LIFE_LESSONS,
+  ACCN: { ...ACCOUNTING_LESSONS, ...ACCOUNTING_SENIOR_LESSONS },
+  LIFE: { ...LIFE_LESSONS, ...LIFE_SENIOR_LESSONS },
   ENGL: ENGLISH_LESSONS,
+  LIFO: LO_LESSONS,
 };
+
+/** Grade 11–12 topics that build on a Grade 10 lesson Thuso already has. */
+const SAME_AS: Readonly<Record<string, string>> = {
+  'MATH:finance, growth and decay': 'finance and growth',
+  'PHSC:electric circuits': 'electricity',
+  'PHSC:work, energy and power': 'energy',
+  'PHSC:stoichiometry': 'chemical change',
+  'PHSC:atomic combinations': 'chemical bonding',
+};
+
+/** The library key for a topic: its own name, or the lesson it builds on. */
+export function lessonTopic(subjectId: string, topic: string): string {
+  const name = topic.toLowerCase();
+  return SAME_AS[`${subjectId}:${name}`] ?? name;
+}
 
 const STEP_ICONS = ['①', '②', '③', '④', '⑤'];
 
@@ -172,13 +191,10 @@ export function buildLesson(
   subjectName: string,
   format: LearningFormat,
 ): Lesson {
-  const found = LIBRARY[resource.subjectId]?.[resource.topic.toLowerCase()];
+  const topic = lessonTopic(resource.subjectId, resource.topic);
+  const found = LIBRARY[resource.subjectId]?.[topic];
   const notes = found ?? studyMethod(resource.topic);
-  const source = {
-    topic: resource.topic,
-    notes,
-    key: makerKey(resource.subjectId, resource.topic),
-  };
+  const source = { topic: resource.topic, notes, key: makerKey(resource.subjectId, topic) };
   return {
     title: resource.title,
     subjectName,

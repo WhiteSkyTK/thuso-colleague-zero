@@ -9,12 +9,37 @@ import { buildStudyPlan } from '@/core/lessons/studyPlan';
 import { AccountRepository } from '@/core/school/AccountRepository';
 import { NoteRepository } from '@/core/school/NoteRepository';
 import { SchoolDataRepository } from '@/core/school/SchoolDataRepository';
+import { deriveGrade } from '@/core/seed/deriveGrade';
 import { withExtraSubjects } from '@/core/seed/extraSubjects';
 import { seedSchool } from '@/core/seed/seedSchool';
 import { seedClassData } from './helpers/testKit';
 
 const data = seedClassData();
 const resourceOn = (topic: string) => data.resources.find((r) => r.topic === topic)!;
+
+/** Grade 11–12 topics still taught with the general study method (being written next). */
+const KNOWN_GAPS: readonly string[] = [
+  'MATH: exponents and surds',
+  'MATH: number patterns',
+  'MATH: analytical geometry',
+  'PHSC: vectors in two dimensions',
+  "PHSC: Newton's laws",
+  'PHSC: intermolecular forces',
+  'PHSC: geometrical optics',
+  'PHSC: electrostatics',
+  'MATH: sequences and series',
+  'MATH: functions and inverses',
+  'MATH: exponential and logarithmic functions',
+  'MATH: polynomials',
+  'MATH: differential calculus',
+  'PHSC: momentum and impulse',
+  'PHSC: vertical projectile motion',
+  'PHSC: organic chemistry',
+  'PHSC: rates of reaction',
+  'PHSC: chemical equilibrium',
+  'PHSC: acids and bases',
+  'PHSC: electrochemistry',
+];
 
 describe('lessons in the learner’s format', () => {
   it('teaches the same topic in every format, each in its own order', () => {
@@ -48,19 +73,29 @@ describe('lessons in the learner’s format', () => {
     expect(gossip?.kind === 'gossip' && gossip.lines.some(([who]) => who === 'y')).toBe(true);
   });
 
-  it('has hand-written lessons with a gossip chat for every Grade 10 topic in five subjects', () => {
-    const covered = ['MATH', 'PHSC', 'ACCN', 'LIFE', 'ENGL'];
-    const topics = withExtraSubjects(data, 10).subjects.filter((s) => covered.includes(s.id));
-    expect(topics).toHaveLength(covered.length);
-    for (const subject of topics) {
-      for (const topic of subject.topics) {
-        const resource = { ...resourceOn('functions'), subjectId: subject.id, topic };
-        const lesson = buildLesson(resource, subject.name, 'audio');
-        expect(lesson.hasTopicNotes, `${subject.id}: ${topic}`).toBe(true);
-        const gossip = lesson.blocks.find((b) => b.kind === 'gossip');
-        expect(gossip?.kind === 'gossip' && gossip.lines.length >= 5).toBe(true);
+  it('has a full lesson with a gossip chat for every topic of six subjects in Grades 10–12', () => {
+    const covered = ['ACCN', 'LIFE', 'ENGL', 'LIFO', 'MATH', 'PHSC'];
+    const missing: string[] = [];
+    for (const grade of [10, 11, 12] as const) {
+      const base = grade === 10 ? data : deriveGrade(data, grade);
+      const subjects = withExtraSubjects(base, grade).subjects.filter((s) =>
+        covered.includes(s.id),
+      );
+      expect(subjects).toHaveLength(covered.length);
+      for (const subject of subjects) {
+        for (const topic of subject.topics) {
+          const resource = { ...resourceOn('functions'), subjectId: subject.id, topic };
+          const lesson = buildLesson(resource, subject.name, 'audio');
+          const gossip = lesson.blocks.find((b) => b.kind === 'gossip');
+          const isFull =
+            lesson.hasTopicNotes && gossip?.kind === 'gossip' && gossip.lines.length >= 5;
+          if (!isFull) {
+            missing.push(`${subject.id}: ${topic}`);
+          }
+        }
       }
     }
+    expect([...new Set(missing)]).toEqual(KNOWN_GAPS);
   });
 });
 
