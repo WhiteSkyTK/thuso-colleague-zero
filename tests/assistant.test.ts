@@ -102,3 +102,19 @@ describe('daily check-ins', () => {
     expect(isFormat('morning')).toBe(false);
   });
 });
+
+describe('Ask Thuso — loose words do not hijack questions', () => {
+  const data2 = seedClassData();
+  const profile = buildLearnerProfile(data2, 'L-014', 40)!;
+  const context = { profile, chosenSubjects: [], grade: 10, resources: data2.resources };
+  it('leaves open questions to the model chain', () => {
+    for (const question of [
+      'should I take History or Geography next year?',
+      'who won the soccer on Saturday?',
+      'perhaps you can tell me a joke',
+    ]) {
+      expect(answerLearner(question, context).isFallback, question).toBe(true);
+    }
+    expect(answerLearner('what should I study?', context).isFallback).toBeUndefined();
+  });
+});

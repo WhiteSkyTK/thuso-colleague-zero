@@ -25,7 +25,11 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
     return common;
   }
   const subjects = [...profile.subjects].sort((a, b) => a.averagePct - b.averagePct);
-  if (/study|learn|next|help|practi[cs]e/.test(question)) {
+  if (
+    /\b(what (should|do|can) i (study|learn|do|work on)|study next|what next|help me (study|learn|revise)|revise|revision|practi[cs]e)\b/.test(
+      question,
+    )
+  ) {
     const subject = subjects[0];
     const resource = subject?.suggestions[0];
     return {
@@ -39,7 +43,11 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       ],
     };
   }
-  if (/mark|doing|result|average|score/.test(question)) {
+  if (
+    /\b(how am i doing|my (marks?|results?|average|scores?|report)|am i passing|am i failing)\b/.test(
+      question,
+    )
+  ) {
     return {
       answer: subjects
         .map((s) => `${s.subjectName}: ${s.averagePct}% (CAPS ${s.capsLevel})`)
@@ -47,7 +55,7 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       links: [{ label: 'My page', href: '/portal/learner' }],
     };
   }
-  if (/weak|worst|struggl/.test(question)) {
+  if (/\b(weak(est)?|worst|struggl\w*)\b/.test(question)) {
     const weakest = subjects[0];
     return {
       answer: weakest
@@ -56,7 +64,7 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       links: [],
     };
   }
-  if (/session|calendar|when|book/.test(question)) {
+  if (/\b(session|calendar|booked|booking|when is my|appointment)\b/.test(question)) {
     return {
       answer: context.nextSession
         ? `Your support session: ${context.nextSession}.`
@@ -64,7 +72,7 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       links: [{ label: 'My calendar', href: '/portal/calendar' }],
     };
   }
-  if (/subject/.test(question)) {
+  if (/\b(my subjects?|which subjects do i)\b/.test(question)) {
     return {
       answer: context.chosenSubjects.length
         ? `Your subjects: ${context.chosenSubjects.join(', ')}.`
@@ -72,7 +80,7 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
       links: [{ label: 'My subjects', href: '/portal/subjects' }],
     };
   }
-  if (/career|job|university|varsity|college|future/.test(question)) {
+  if (/\b(career|job|university|varsity|college|after school|aps)\b/.test(question)) {
     return {
       answer:
         'Open "Where can my marks take me?" on your page — change a mark to see which doors it opens.',
