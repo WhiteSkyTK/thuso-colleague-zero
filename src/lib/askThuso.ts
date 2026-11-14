@@ -19,7 +19,7 @@ const SESSION_FORMAT = new Intl.DateTimeFormat('en-ZA', {
 });
 const RFC5545 = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})/;
 const RECENT_MESSAGES = 5;
-const NEWLINE = String.fromCharCode(10);
+const NEWLINE = String.fromCodePoint(10);
 
 /** 20261116T123000Z → "Mon 16 Nov, 14:30" (school time). */
 export function sessionWhen(start: string): string {

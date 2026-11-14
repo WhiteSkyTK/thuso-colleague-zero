@@ -38,7 +38,7 @@ async function openAiCompatible(
   const body = (await response.json()) as { choices?: { message?: { content?: unknown } }[] };
   const text = body.choices?.[0]?.message?.content;
   if (typeof text !== 'string') {
-    throw new Error(`${model}: no text`);
+    throw new TypeError(`${model}: no text`);
   }
   return text;
 }
@@ -65,7 +65,7 @@ async function anthropic(key: string, model: string, prompt: { system: string; u
   const body = (await response.json()) as { content?: { type: string; text?: string }[] };
   const text = body.content?.find((part) => part.type === 'text')?.text;
   if (typeof text !== 'string') {
-    throw new Error(`${model}: no text`);
+    throw new TypeError(`${model}: no text`);
   }
   return text;
 }
@@ -145,3 +145,6 @@ export async function askModels(question: string, context: string): Promise<stri
   }
   return undefined;
 }
+
+/** How many chat models have keys here (for the health check; never their names or keys). */
+export const configuredChatModels = (): number => chain().length;

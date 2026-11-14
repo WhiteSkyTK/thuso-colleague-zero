@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { NOT_SAVED, orFallback } from '@/lib/orFallback';
 
 interface LessonFeedbackProps {
   readonly onAnswer: (helped: boolean) => Promise<{ message: string }>;
@@ -11,7 +12,9 @@ export function LessonFeedback({ onAnswer }: LessonFeedbackProps) {
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const answer = (helped: boolean) =>
-    startTransition(async () => setMessage((await onAnswer(helped)).message));
+    startTransition(async () =>
+      setMessage((await orFallback(() => onAnswer(helped), { message: NOT_SAVED })).message),
+    );
 
   if (message) {
     return <p className="ask-reply rounded-card bg-jacaranda-50 p-4 font-semibold">{message}</p>;

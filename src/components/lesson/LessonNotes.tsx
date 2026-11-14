@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { NOT_SAVED, orFallback } from '@/lib/orFallback';
 
 interface LessonNotesProps {
   readonly initial: string;
@@ -17,7 +18,15 @@ export function LessonNotes({ initial, summary, onSave }: LessonNotesProps) {
   const [status, setStatus] = useState('');
   const [isPending, startTransition] = useTransition();
   const save = (value: string) =>
-    startTransition(async () => setStatus((await onSave(value)).message));
+    startTransition(async () =>
+      setStatus(
+        (
+          await orFallback(() => onSave(value), {
+            message: `${NOT_SAVED} Your notes are still here.`,
+          })
+        ).message,
+      ),
+    );
 
   return (
     <section className="rounded-card bg-white p-5 shadow-card">

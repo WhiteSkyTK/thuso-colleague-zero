@@ -19,7 +19,7 @@ function download(name: string, text: string) {
   URL.revokeObjectURL(url);
 }
 
-const quote = (value: string) => `"${value.replace(/"/g, '""')}"`;
+const quote = (value: string) => `"${value.replaceAll('"', '""')}"`;
 
 /** Many accounts at once from a spreadsheet saved as CSV; the new logins download as one file. */
 export function CsvImport({ onImport }: CsvImportProps) {

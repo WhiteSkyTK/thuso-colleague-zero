@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useTransition } from 'react';
 import type { AssistantLink } from '@/core/assistant/answerQuestion';
 import type { CheckIn } from '@/core/assistant/checkIns';
+import { NOT_SAVED, orFallback } from '@/lib/orFallback';
 
 export interface CheckInReply {
   message: string;
@@ -52,7 +53,12 @@ export function CheckInCard({ checkIn, onAnswer }: CheckInCardProps) {
             disabled={isPending}
             onClick={() =>
               startTransition(async () => {
-                setReply(await onAnswer({ id: checkIn.id, value: option.value }));
+                setReply(
+                  await orFallback(() => onAnswer({ id: checkIn.id, value: option.value }), {
+                    message: NOT_SAVED,
+                    links: [],
+                  }),
+                );
               })
             }
             className="rounded-full border-2 border-ink/20 bg-white px-2 py-0.5 text-xs"

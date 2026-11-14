@@ -6,6 +6,7 @@ import type { SubjectChoice } from '@/components/papers/PaperForm';
 import { GRADES } from '@/core/domain/schoolUser';
 import { LEARNING_FORMATS } from '@/core/domain/vocab';
 import { FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
+import { NOT_SAVED, orFallback } from '@/lib/orFallback';
 
 interface AccountFormProps {
   readonly subjects: readonly SubjectChoice[];
@@ -106,7 +107,9 @@ export function AccountForm({ subjects, onCreate }: AccountFormProps) {
             }),
           };
     startTransition(async () => {
-      const outcome = await onCreate({ ...person, ...details });
+      const outcome = await orFallback(() => onCreate({ ...person, ...details }), {
+        error: `${NOT_SAVED} Nothing was created.`,
+      });
       setResult(outcome);
       const account = outcome.created;
       if (account) {

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState, useTransition } from 'react';
 import type { StudyTeamResult, TeamAgent, TeamDay, TeamEvent } from '@/core/tutor/studyTeam';
 import { FORMAT_ICON, FORMAT_LABEL } from '@/lib/labels';
+import { NOT_SAVED, orFallback } from '@/lib/orFallback';
 
 interface StudyTeamProps {
   readonly savedDays: readonly TeamDay[];
@@ -86,7 +87,14 @@ export function StudyTeam({ savedDays, onRun }: StudyTeamProps) {
   const run = () =>
     startTransition(async () => {
       setShown(0);
-      setResult(await onRun());
+      setResult(
+        await orFallback(onRun, {
+          events: [
+            { agent: 'PL', level: 'PLAN', message: `${NOT_SAVED} Your saved plan is still below.` },
+          ],
+          days: [...savedDays],
+        }),
+      );
     });
   const days = result && !isPlaying ? result.days : savedDays;
 
