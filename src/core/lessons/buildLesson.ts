@@ -208,3 +208,9 @@ export function buildLesson(
     blocks: ORDER[format].flatMap((kind) => blockOf(kind, source)),
   };
 }
+
+/** Every topic Thuso has a full lesson for, with its key idea (for the chat). */
+export const LESSON_INDEX: readonly { subjectId: string; topic: string; idea: string }[] =
+  Object.entries(LIBRARY).flatMap(([subjectId, lessons]) =>
+    Object.entries(lessons).map(([topic, notes]) => ({ subjectId, topic, idea: notes.idea })),
+  );

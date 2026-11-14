@@ -25,9 +25,18 @@ export function AskBox({ onAsk, examples }: AskBoxProps) {
       return;
     }
     startTransition(async () => {
-      const answer = await onAsk(trimmed);
-      setReply({ ...answer, question: trimmed });
-      setQuestion('');
+      try {
+        const answer = await onAsk(trimmed);
+        setReply({ ...answer, question: trimmed });
+        setQuestion('');
+      } catch {
+        // Network drop or a signed-out session: say so, and keep what they typed.
+        setReply({
+          question: trimmed,
+          answer: 'I couldn’t reach the school just now. Check your connection and ask again.',
+          links: [{ label: 'Sign in again', href: '/login' }],
+        });
+      }
     });
   };
   const submit = (event: FormEvent<HTMLFormElement>) => {

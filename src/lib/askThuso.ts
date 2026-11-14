@@ -64,6 +64,8 @@ async function learnerAnswer(user: SchoolUser, question: string): Promise<Assist
     profile: view.profile,
     chosenSubjects: view.chosenSubjects,
     nextSession: session ? `${session.title}, ${sessionWhen(session.start)}` : undefined,
+    grade: view.profile.learner.grade,
+    resources: (await classFor(view.profile.learner.grade)).resources,
   });
 }
 

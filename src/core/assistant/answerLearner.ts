@@ -1,4 +1,6 @@
 import type { LearnerProfile } from '../insights/learnerProfile';
+import type { Resource } from '../domain/classData';
+import { answerFeeling, answerSmallTalk, answerTopic } from './answerCommon';
 import type { AssistantAnswer } from './answerQuestion';
 
 /** What a learner's questions are answered from: their own picture only. */
@@ -6,12 +8,22 @@ export interface LearnerContext {
   profile: LearnerProfile;
   chosenSubjects: readonly string[];
   nextSession?: string;
+  grade: number;
+  /** The learner’s grade’s lessons, so a named topic links straight to its lesson. */
+  resources: readonly Resource[];
 }
 
 /** Answers a learner's question about their own learning. */
 export function answerLearner(rawQuestion: string, context: LearnerContext): AssistantAnswer {
   const question = rawQuestion.toLowerCase();
   const { profile } = context;
+  const common =
+    answerSmallTalk(question, 'learner') ??
+    answerTopic(question, [{ grade: context.grade, resources: context.resources }]) ??
+    answerFeeling(question);
+  if (common) {
+    return common;
+  }
   const subjects = [...profile.subjects].sort((a, b) => a.averagePct - b.averagePct);
   if (/study|learn|next|help|practi[cs]e/.test(question)) {
     const subject = subjects[0];
@@ -69,7 +81,10 @@ export function answerLearner(rawQuestion: string, context: LearnerContext): Ass
   }
   return {
     answer:
-      'Ask me: "what should I study?", "how am I doing?", "what is my weakest subject?", "when is my session?" or "what can I study after school?"',
-    links: [],
+      'I didn’t quite catch that, but I’m learning. I can explain any topic (“what is VAT?”), plan your week, show your marks or your next session — or just tell me how you’re feeling.',
+    links: [
+      { label: '🤝 Plan my week', href: '/portal/learner#study-team' },
+      { label: 'My page', href: '/portal/learner' },
+    ],
   };
 }

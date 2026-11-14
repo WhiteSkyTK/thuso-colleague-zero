@@ -38,7 +38,17 @@ describe('Ask Thuso — staff questions', () => {
     expect(answerStaff('how many learners?', staff).answer).toBe(
       `Grade 10: ${data.learners.length} learners`,
     );
-    expect(answerStaff('hello', staff).answer).toMatch(/^Ask me things like/);
+    expect(answerStaff('hello', staff).answer).toMatch(/^Hi! I’m Thuso/);
+    expect(answerStaff('blah blah', staff).answer).toMatch(/^I didn’t quite catch that/);
+  });
+
+  it('explains any lesson topic, by name or an everyday word, with a link to the lesson', () => {
+    const vat = answerStaff('what is photosynthesis?', staff);
+    expect(vat.answer).toMatch(/^Energy transformations in one breath:/);
+    const trig = answerStaff('can you explain trig', staff);
+    expect(trig.answer).toMatch(/^Trigonometry/);
+    expect(trig.links[0]?.href).toMatch(/^\/portal\/lesson\/R-\d{3}\?grade=10$/);
+    expect(answerStaff('what is private school like', staff).answer).not.toMatch(/^Vat/i);
   });
 });
 
@@ -48,7 +58,18 @@ describe('Ask Thuso — learner questions', () => {
     profile,
     chosenSubjects: ['Mathematics'],
     nextSession: 'Catch-up, Mon 16 Nov, 14:30',
+    grade: 10,
+    resources: data.resources,
   };
+
+  it('answers greetings, thanks and feelings — and offers something to do', () => {
+    expect(answerLearner('hey', context).answer).toMatch(/^Hi! I’m Thuso/);
+    expect(answerLearner('thank you!', context).answer).toMatch(/^Any time/);
+    const feeling = answerLearner('I am so stressed about exams', context);
+    expect(feeling.answer).toMatch(/not alone/);
+    expect(feeling.links[0]?.href).toBe('/portal/learner#study-team');
+    expect(answerLearner('what is VAT?', context).answer).toMatch(/^VAT in one breath: VAT/);
+  });
 
   it('points the learner at their weakest subject first', () => {
     const reply = answerLearner('What should I study?', context);

@@ -3,6 +3,7 @@ import type { ClassData } from '../domain/classData';
 import { buildClassInsights } from '../insights/classInsights';
 import { CATEGORIES, categoriseClass, type CategoryKey } from '../insights/learnerCategory';
 import { buildLearnerProfile } from '../insights/learnerProfile';
+import { answerSmallTalk, answerTopic } from './answerCommon';
 import { InMemoryClassRepository } from '../repositories/InMemoryClassRepository';
 
 export interface AssistantLink {
@@ -163,6 +164,10 @@ export function answerStaff(rawQuestion: string, context: StaffContext): Assista
   if (learner) {
     return answerAboutLearner(learner, context.riskThreshold);
   }
+  const smallTalk = answerSmallTalk(question, 'staff');
+  if (smallTalk) {
+    return smallTalk;
+  }
   const category = CATEGORY_WORDS.find(([words]) => words.test(question))?.[1];
   if (category) {
     return answerCategory(question, context, category);
@@ -181,6 +186,13 @@ export function answerStaff(rawQuestion: string, context: StaffContext): Assista
     );
     return { answer: counts.join('\n'), links: [] };
   }
+  const topic = answerTopic(
+    question,
+    context.classes.map(({ grade, data }) => ({ grade, resources: data.resources })),
+  );
+  if (topic) {
+    return topic;
+  }
   if (/plan|run|help them|catch.?up/.test(question)) {
     return {
       answer:
@@ -190,7 +202,10 @@ export function answerStaff(rawQuestion: string, context: StaffContext): Assista
   }
   return {
     answer:
-      'Ask me things like: "who is failing maths?", "who is at risk in grade 11 science?", "who is missing lessons?", "weakest topic in life sciences?" or "how many learners in grade 12?"',
-    links: [],
+      'I didn’t quite catch that, but I’m learning. I can tell you who is failing, at risk or missing lessons, how one learner is doing, the weakest topic, or explain any topic — try “who is failing maths?” or “explain photosynthesis”.',
+    links: [
+      { label: 'My classes', href: '/portal' },
+      { label: 'Watch the agents work', href: '/run' },
+    ],
   };
 }
