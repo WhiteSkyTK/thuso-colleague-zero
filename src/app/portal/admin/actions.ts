@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { hashPassword } from '@/core/auth/passwords';
 import { LEARNING_FORMATS, LearningFormatSchema } from '@/core/domain/vocab';
 import { defaultSubjectChoice } from '@/core/seed/extraSubjects';
+import { parseAccountsCsv } from '@/core/school/parseAccountsCsv';
 import { requireUser } from '@/lib/auth';
 import { classFor, forgetClass, school } from '@/lib/school';
 
@@ -81,6 +82,38 @@ async function save(account: Account, passwordHash: string): Promise<string> {
 /** The admin or principal opens an account: a learner in a grade, or a teacher with classes. */
 export async function createAccountAction(input: unknown): Promise<AccountResult> {
   await requireUser(['admin', 'principal']);
+  return createOne(input);
+}
+
+const MAX_CSV_CHARS = 200_000;
+const MAX_ROWS = 300;
+
+export interface ImportRow extends AccountResult {
+  line: number;
+  name: string;
+}
+
+/** A spreadsheet (saved as CSV) of learners and teachers: one account per row, each checked. */
+export async function importAccountsAction(
+  csv: unknown,
+): Promise<{ rows: ImportRow[]; error?: string }> {
+  await requireUser(['admin', 'principal']);
+  if (typeof csv !== 'string' || csv.length > MAX_CSV_CHARS) {
+    return { rows: [], error: 'Upload a CSV file of up to 200 KB.' };
+  }
+  const parsed = parseAccountsCsv(csv);
+  if (parsed.error) {
+    return { rows: [], error: parsed.error };
+  }
+  const rows: ImportRow[] = [];
+  // One at a time: each new id is the next free one in its block.
+  for (const row of parsed.rows.slice(0, MAX_ROWS)) {
+    rows.push({ line: row.line, name: row.name, ...(await createOne(row.input)) });
+  }
+  return { rows };
+}
+
+async function createOne(input: unknown): Promise<AccountResult> {
   const parsed = AccountSchema.safeParse(input);
   if (!parsed.success) {
     const issue = parsed.error.issues[0];
